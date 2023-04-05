@@ -1,0 +1,22 @@
+#NavBg {
+  height:100%;
+}
+
+.MenuItems {
+  padding: 0;
+  list-style-type: none;
+}
+
+.MenuItems a li {
+  margin-bottom: 15px;
+  font-size: 20px;
+  color: black;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+li:hover {
+  background-image: linear-gradient(to right, #9354ff, #54c0ff);
+}

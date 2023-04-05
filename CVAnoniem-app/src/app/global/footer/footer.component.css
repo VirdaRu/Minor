@@ -1,0 +1,28 @@
+.Background{
+  background-image: linear-gradient(to right, #546bff, #9354ff);
+}
+
+.LogoPlaceholder {
+  color: white;
+}
+
+.FooterItems {
+  display:table;
+  list-style-type: none;
+  margin: 0 auto;
+  padding: 0;
+}
+
+li{
+  float: left;
+}
+
+.FooterItems li a {
+  color: white;
+  font-size: 20px;
+  padding: 20px;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+}
+
