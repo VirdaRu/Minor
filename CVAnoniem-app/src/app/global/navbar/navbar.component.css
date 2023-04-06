@@ -1,22 +1,26 @@
-#NavBg {
-  height:100%;
-}
-
 .MenuItems {
   padding: 0;
   list-style-type: none;
 }
 
-.MenuItems a li {
+a {
+  text-decoration: none;
+  color: black;
   margin-bottom: 15px;
   font-size: 20px;
-  color: black;
 }
 
-a:hover {
-  text-decoration: none;
+li {
+  padding: 5px;
+  transition: 0.3s;
+  opacity: 0.75;
+  margin-bottom: 10px;
 }
 
-li:hover {
-  background-image: linear-gradient(to right, #9354ff, #54c0ff);
+a li:hover {
+  background-image: linear-gradient(to right, #54c0ff, #9354ff);
+  border-radius: 5px;
+  color: white;
+  opacity: 1;
+  scale: 104%;
 }
