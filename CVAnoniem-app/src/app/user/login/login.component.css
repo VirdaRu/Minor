@@ -5,3 +5,8 @@
   margin-right: auto;
 }
 
+.form-login{
+  border: black 1px;
+  border-radius: 10px;
+  background-image: linear-gradient(to bottom right, rgba(147,84,255,0.5),rgba(84,107,255,0.5),rgba(84, 192, 255,0.5));
+}

@@ -1,0 +1,24 @@
+.pdfViewer {
+  border: 2px solid rgba(0,0,0,0.2);
+  font-size: 18px;
+  border-radius: 10px;
+  padding: 25px;
+}
+
+.btn-outline{
+  border: 3px solid #54c0ff;
+  color: #54c0ff;
+  font-size: 12px;
+  font-weight: 550;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: white;
+  border-radius: 10px;
+  padding: 5px;
+  transition: linear 0.2s;
+}
+
+.btn-outline:hover{
+  scale: 105%;
+  background-color: #54c0ff;
+  color: white;
+}

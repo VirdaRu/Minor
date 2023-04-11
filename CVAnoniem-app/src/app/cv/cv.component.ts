@@ -6,6 +6,7 @@ import {Component, Input} from '@angular/core';
   styleUrls: ['./cv.component.css']
 })
 export class CvComponent{
+  @Input() PDFPath: string = "";
   @Input() Branche: string = "";
   @Input() Beschrijving: string = "";
   @Input() Provincie: string = "";
