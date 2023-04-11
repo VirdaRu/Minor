@@ -1,7 +1,21 @@
 <div class="row">
-  <div class="col-xs-12">
-    <!--<h1>CV works!</h1>
-    <app-cv-full></app-cv-full>
-    <app-cv-list></app-cv-list>-->
+  <div class="col-xs-12 col-lg-7">
+    <div class="SearchResult">
+      <div class="row">
+
+        <div class="col-xs-3">
+          <img alt="CV pdf" class="img-responsive img-rounded" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/1200px-Angular_full_color_logo.svg.png">
+        </div>
+
+        <div class="col-xs-9">
+          <strong>Branche: </strong><p [textContent]="Branche"></p>
+          <strong>Beschrijving: </strong><p [textContent]="Beschrijving"></p>
+          <strong>Provincie: </strong><p [textContent]="Provincie"></p>
+        </div>
+
+      </div>
+    </div>
   </div>
 </div>
+
+<br>
