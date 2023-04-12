@@ -7,3 +7,22 @@
   color: white;
   margin: 10px;
 }
+
+/*Outline Button*/
+.btn-outline{
+  border: 3px solid #54c0ff;
+  color: #54c0ff;
+  font-size: 16px;
+  font-weight: 550;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: white;
+  border-radius: 10px;
+  padding: 10px;
+  transition: linear 0.2s;
+}
+/*Hover over Outline Button*/
+.btn-outline:hover{
+  scale: 105%;
+  background-color: #54c0ff;
+  color: white;
+}

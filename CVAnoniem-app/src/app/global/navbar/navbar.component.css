@@ -1,5 +1,6 @@
 #Navbar{
   margin-left: 10px;
+  position: sticky;
 }
 
 .MenuItems {
