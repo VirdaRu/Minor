@@ -1,5 +1,36 @@
 <div class="row">
   <div class="col-xs-12">
-    <h1>e-mail works!</h1>
+    <h1>E-mail versturen</h1>
+
+      <form class="form-group">
+        <!--Drop down-->
+        <label>Onderwerp
+          <select class="form-control">
+            <option disabled selected>Kies hier uw onderwerp</option>
+            <option>Website</option>
+            <option>Security en Privacy</option>
+            <option>Suggestie</option>
+            <option>Fout melden</option>
+            <option>Overig</option>
+          </select>
+        </label>
+
+        <br><br>
+
+        <label for="email"> My Email:
+          <input class="form-control" placeholder="Emailadres" id="email" type="email">
+        </label>
+
+        <br><br>
+
+        <label for="textField">Uw Bericht:</label>
+        <textarea id="textField" class="form-control" rows="3" placeholder="Typ hier uw bericht..."></textarea>
+
+        <br>
+
+
+        <button class="btn-outline">Bericht versturen</button>
+        <br>
+      </form>
   </div>
 </div>
