@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+
+/*Small Icons for login using social media*/
+.Icon svg{
+  width: 7.5%;
+  height:7.5%;
+  color: white;
+  margin: 10px;
+}
