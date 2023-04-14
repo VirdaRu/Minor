@@ -1,5 +1,6 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
+import {RouterModule, RouterOutlet, Routes} from '@angular/router';
 
 import {AppComponent} from './app.component';
 import {HomeComponent} from './home/home.component';
@@ -25,6 +26,15 @@ import {UserComponent} from './user/user.component';
 import {RecaptchaComponent} from './user/recaptcha/recaptcha.component';
 import {SocialLoginComponent} from './user/social-login/social-login.component';
 import {SearchComponent} from './home/search/search.component';
+
+const Route: Routes = [
+  //{path: '', redirectTo: 'Home',},
+  {path: '', component : HomeComponent},
+  {path: 'Login', component : LoginComponent},
+  {path: 'Register', component : RegisterComponent},
+  {path: 'FAQ', component : FAQComponent},
+  {path: 'Contact', component : ContactComponent}
+]
 
 @NgModule({
   declarations: [
@@ -54,7 +64,9 @@ import {SearchComponent} from './home/search/search.component';
     SearchComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterModule.forRoot(Route),
+    RouterOutlet
   ],
   providers: [],
   bootstrap: [AppComponent]

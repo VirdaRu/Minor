@@ -5,6 +5,12 @@
   margin-right: auto;
 }
 
+.text-white{
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+}
+
 .form-login{
   border: black 1px;
   border-radius: 10px;

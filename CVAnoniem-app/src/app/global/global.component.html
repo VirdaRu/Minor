@@ -1,8 +1,11 @@
-<div class="row">
-  <div class="col-xs-12">
-    <h1>global works!</h1>
-    <app-error></app-error>
-    <app-footer></app-footer>
-    <app-header></app-header>
+<app-header></app-header>
+
+  <div class="row">
+    <div class="col-sm-12 col-md-2">
+      <app-navbar></app-navbar>
+    </div>
+    <div class="col-xs-12 col-md-8">
+      <router-outlet></router-outlet>
+    </div>
   </div>
-</div>
+<app-footer></app-footer>
