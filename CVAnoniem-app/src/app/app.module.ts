@@ -33,7 +33,8 @@ const Route: Routes = [
   {path: 'Login', component : LoginComponent},
   {path: 'Register', component : RegisterComponent},
   {path: 'FAQ', component : FAQComponent},
-  {path: 'Contact', component : ContactComponent}
+  {path: 'Contact', component : ContactComponent},
+  {path: 'Account', component : AccountComponent}
 ]
 
 @NgModule({

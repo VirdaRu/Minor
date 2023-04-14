@@ -26,7 +26,7 @@ a li:hover {
   border-radius: 5px;
   color: white;
   opacity: 1;
-  /*scale: 104%;*/
+  scale: 104%;
 }
 
 .whitespace {
