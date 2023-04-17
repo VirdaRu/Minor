@@ -26,6 +26,7 @@ import {UserComponent} from './user/user.component';
 import {RecaptchaComponent} from './user/recaptcha/recaptcha.component';
 import {SocialLoginComponent} from './user/social-login/social-login.component';
 import {SearchComponent} from './home/search/search.component';
+import { PrivacyComponent } from './privacy/privacy.component';
 
 const Route: Routes = [
   //{path: '', redirectTo: 'Home',},
@@ -33,6 +34,7 @@ const Route: Routes = [
   {path: 'Login', component : LoginComponent},
   {path: 'Register', component : RegisterComponent},
   {path: 'FAQ', component : FAQComponent},
+  {path: 'Privacy', component : PrivacyComponent},
   {path: 'Contact', component : ContactComponent},
   {path: 'Account', component : AccountComponent}
 ]
@@ -62,7 +64,8 @@ const Route: Routes = [
     UserComponent,
     RecaptchaComponent,
     SocialLoginComponent,
-    SearchComponent
+    SearchComponent,
+    PrivacyComponent
   ],
   imports: [
     BrowserModule,

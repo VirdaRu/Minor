@@ -1,5 +1,7 @@
 #Navbar{
   position: sticky;
+  width: 0;
+  overflow-x: hidden;
 }
 
 .MenuItems {
