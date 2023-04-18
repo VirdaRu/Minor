@@ -1,51 +1,119 @@
-<span style="font-size:30px;cursor:pointer" (click)="ChangeNav()">&#9776; Open</span>
 
-<div id="Navbar">
-  <div class="row">
-    <div class="col-xs-12">
-      <nav id="NavMenu" class="navbar navbar-default">
-        <ul class="MenuItems">
-          <div class="container-fluid">
+<div id="largeWindow" class="hidden-xs hidden-sm">
+  <div class="hamburger-btn">
+    <i class="glyphicon glyphicon-menu-hamburger" onclick="changeNav('lgNavbar')"></i>
+  </div>
 
-            <br>
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <div id="lgNavbar">
+    <div class="row">
+      <div class="hidden-sm col-md-12">
+        <nav id="NavMenu" class="navbar">
+          <ul class="MenuItems">
+            <div class="container-fluid">
 
-            <a routerLink="/"><li>
-              <i class="glyphicon glyphicon-home"></i>
-              Home
-            </li></a>
+              <br>
 
-            <a><li>
-              <i class="glyphicon glyphicon-list-alt"></i>
-              CV's
-            </li></a>
+              <a routerLink="/"><li>
+                <i class="glyphicon glyphicon-home"></i>
+                Home
+              </li></a>
 
-            <a href="javascript:void(0)" (click)="isLoggedIn()"><li>
-              <i class="glyphicon glyphicon-user"></i>
-              Mijn Account
-            </li></a>
+              <a><li>
+                <i class="glyphicon glyphicon-list-alt"></i>
+                CV's
+              </li></a>
 
-            <div class="whitespace">
+              <a (click)="isLoggedIn()"><li>
+                <i class="glyphicon glyphicon-user"></i>
+                Mijn Account
+              </li></a>
+
+              <div class="whitespace">
+              </div>
+
+              <a routerLink="/Privacy"><li>
+                <i class="glyphicon glyphicon-lock"></i>
+                Privacy
+              </li></a>
+
+              <a routerLink="/Contact"><li>
+                <i class="glyphicon glyphicon-earphone"></i>
+                Contact
+              </li></a>
+
+              <a routerLink="/FAQ"><li>
+                <i class="glyphicon glyphicon-question-sign"></i>
+                FAQ
+              </li></a>
+
+              <br>
             </div>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
 
-            <a routerLink="/Privacy"><li>
-              <i class="glyphicon glyphicon-lock"></i>
-              Privacy
-            </li></a>
 
-            <a routerLink="/Contact"><li>
-              <i class="glyphicon glyphicon-earphone"></i>
-              Contact
-            </li></a>
 
-            <a routerLink="/FAQ"><li>
-              <i class="glyphicon glyphicon-question-sign"></i>
-              FAQ
-            </li></a>
+<div class="hidden-md hidden-lg smallWindow">
+  <div class="hamburger-btn">
+    <i class="glyphicon glyphicon-menu-hamburger" onclick="changeNav('SmNavbar')"></i>
+  </div>
 
-          </div>
-        </ul>
-      </nav>
+  <div id="SmNavbar">
+    <div class="row">
+      <div class="col-md-12">
+        <nav id="SmNavMenu" class="navbar navbar-default">
+          <ul class="MenuItems">
+            <div class="container-fluid">
+
+              <br>
+
+              <a onclick="closeNav('SmNavbar')"><li>
+                <i class="glyphicon glyphicon-remove"></i>
+              </li></a>
+
+              <a routerLink="/"><li>
+                <i class="glyphicon glyphicon-home"></i>
+                Home
+              </li></a>
+
+              <a><li>
+                <i class="glyphicon glyphicon-list-alt"></i>
+                CV's
+              </li></a>
+
+              <a (click)="isLoggedIn()"><li>
+                <i class="glyphicon glyphicon-user"></i>
+                Mijn Account
+              </li></a>
+
+              <div class="whitespace">
+              </div>
+
+              <a routerLink="/Privacy"><li>
+                <i class="glyphicon glyphicon-lock"></i>
+                Privacy
+              </li></a>
+
+              <a routerLink="/Contact"><li>
+                <i class="glyphicon glyphicon-earphone"></i>
+                Contact
+              </li></a>
+
+              <a routerLink="/FAQ"><li>
+                <i class="glyphicon glyphicon-question-sign"></i>
+                FAQ
+              </li></a>
+
+
+            </div>
+          </ul>
+          <app-footer></app-footer>
+        </nav>
+      </div>
     </div>
   </div>
 </div>

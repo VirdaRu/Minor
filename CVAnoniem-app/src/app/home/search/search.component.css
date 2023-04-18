@@ -1,3 +1,4 @@
 .SearchBar{
   margin-bottom: 50px;
+  z-index: 0;
 }

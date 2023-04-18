@@ -4,20 +4,31 @@
       <!--Mijn account functionalities-->
       <div class="MyAccountButtons col-md-3 text-center">
 
-        <button class="btn-outline"> Mijn Inbox</button>
-        <button class="btn-outline"> Upload CV</button>
-        <button class="btn-outline"> Gehele CV weergeven</button>
+        <button class="btn-outline" routerLink="/Inbox">
+          <i class="glyphicon glyphicon-envelope"></i>
+           Mijn Inbox
+        </button>
 
-        <button class="btn-outline"> Bewaarde CV's weergeven</button>
+        <button class="btn-outline">
+          <i class="glyphicon glyphicon-upload"></i>
+           Upload CV
+        </button>
+
+        <button class="btn-outline">
+          <i class="glyphicon glyphicon-eye-open"></i>
+          Gehele CV weergeven
+        </button>
+
+        <button class="btn-outline">
+          <i class="glyphicon glyphicon-bookmark"></i>
+          Bewaarde CV's weergeven
+        </button>
 
       </div>
 
-      <div class="col-md-7 bg-info">
-        <br>
-        <!--PDF Viewer comes here-->
-          <img class="img-responsive" src="https://cdn-images.zety.com/images/zety/landings/examples/academic-cv-example@3x.png" alt="Mijn CV">
-        <br>
-      </div>
+    <div class="col-md-7 bg-info">
+      <app-cv-user></app-cv-user>
     </div>
 
+  </div>
 </div>

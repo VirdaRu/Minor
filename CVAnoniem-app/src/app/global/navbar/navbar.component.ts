@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 
 let isLoggedin : boolean = true;
 
-declare function openNav(): void;
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -26,7 +25,4 @@ export class NavbarComponent {
     }
   }
 
-  public ChangeNav(){
-    openNav()
-  }
 }

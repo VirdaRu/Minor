@@ -1,7 +1,13 @@
-#Navbar{
+#largeWindow{
+  width: 100%;
+  transition: 0.3s ease;
+  background-color: rgba(84, 192, 255, 0.5);
+}
+
+#lgNavbar{
   position: sticky;
-  width: 0;
   overflow-x: hidden;
+  transition: width 0.3s ease;
 }
 
 .MenuItems {
@@ -9,7 +15,29 @@
   list-style-type: none;
 }
 
+.hamburger-btn i{
+  font-size: 40px;
+  transition: 0.25s;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 50%;
+}
+
+.hamburger-btn i:hover{
+  color: white;
+  background: linear-gradient(to right, rgba(84, 192, 255, 0.75),
+  rgba(147, 84, 255,0.75));
+}
+
+.hamburger-btn i:active{
+  font-size: 39px;
+  color: white;
+  background: linear-gradient(to right, rgba(84, 192, 255, 1),
+  rgba(147, 84, 255, 1));
+}
+
 a {
+  cursor: pointer;
   text-decoration: none;
   color: black;
   margin-bottom: 15px;
@@ -33,4 +61,15 @@ a li:hover {
 
 .whitespace {
   padding: 250px;
+}
+
+#SmNavbar{
+  /*height: 100%;*/
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  transition: 0.5s;
 }

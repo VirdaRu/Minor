@@ -27,6 +27,7 @@ import {RecaptchaComponent} from './user/recaptcha/recaptcha.component';
 import {SocialLoginComponent} from './user/social-login/social-login.component';
 import {SearchComponent} from './home/search/search.component';
 import { PrivacyComponent } from './privacy/privacy.component';
+import { AboutComponent } from './about/about.component';
 
 const Route: Routes = [
   //{path: '', redirectTo: 'Home',},
@@ -36,7 +37,9 @@ const Route: Routes = [
   {path: 'FAQ', component : FAQComponent},
   {path: 'Privacy', component : PrivacyComponent},
   {path: 'Contact', component : ContactComponent},
-  {path: 'Account', component : AccountComponent}
+  {path: 'Account', component : AccountComponent},
+  {path: 'Inbox', component : InboxComponent},
+  {path: 'About', component : AboutComponent}
 ]
 
 @NgModule({
@@ -65,7 +68,8 @@ const Route: Routes = [
     RecaptchaComponent,
     SocialLoginComponent,
     SearchComponent,
-    PrivacyComponent
+    PrivacyComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
