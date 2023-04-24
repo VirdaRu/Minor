@@ -1,5 +1,7 @@
-.Background{
+.Footer{
+  bottom: 0;
   background-image: linear-gradient(to right, #546bff, #9354ff);
+  margin-top: auto;
 }
 
 .LogoPlaceholder {

@@ -1,4 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+a{
+  cursor: pointer;
+}
 
 /*Small Icons for login using social media*/
 .Icon svg{
@@ -25,4 +28,10 @@
   scale: 105%;
   background-color: #54c0ff;
   color: white;
+}
+
+.returnBtn{
+  margin: 10px;
+  font-size: 20px;
+  color: black;
 }

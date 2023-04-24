@@ -13,5 +13,15 @@
     </div>
   </div>
   <!--PDF Viewer Placeholder-->
-  <img class="img-responsive" alt="CV pdf" src="https://blog.octo.com/wp-content/uploads/2015/12/react-logo-1000-transparent.png">
+  <ngx-extended-pdf-viewer
+    [src]="'/assets/TestPDFFile.pdf'"
+    [useBrowserLocale] = "true"
+    [showDownloadButton] = "false"
+    [showEditor] = "false"
+    [showRotateButton] = "false"
+    [showPropertiesButton] = "false"
+    [showTextEditor] = "false"
+    [showToolbar] = "false">
+
+  </ngx-extended-pdf-viewer>
 </div>

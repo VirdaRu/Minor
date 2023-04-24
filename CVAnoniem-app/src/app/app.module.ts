@@ -28,6 +28,9 @@ import {SocialLoginComponent} from './user/social-login/social-login.component';
 import {SearchComponent} from './home/search/search.component';
 import { PrivacyComponent } from './privacy/privacy.component';
 import { AboutComponent } from './about/about.component';
+import { SavedCvComponent } from './user/saved-cv/saved-cv.component';
+import { NgxExtendedPdfViewerModule } from "ngx-extended-pdf-viewer";
+
 
 const Route: Routes = [
   //{path: '', redirectTo: 'Home',},
@@ -69,12 +72,14 @@ const Route: Routes = [
     SocialLoginComponent,
     SearchComponent,
     PrivacyComponent,
-    AboutComponent
+    AboutComponent,
+    SavedCvComponent
   ],
   imports: [
-    BrowserModule,
-    RouterModule.forRoot(Route),
-    RouterOutlet
+    BrowserModule,                  //Browser Module
+    RouterModule.forRoot(Route),    //Page routing
+    RouterOutlet,                   //Page Routing
+    NgxExtendedPdfViewerModule      //PDF Viewer
   ],
   providers: [],
   bootstrap: [AppComponent]
