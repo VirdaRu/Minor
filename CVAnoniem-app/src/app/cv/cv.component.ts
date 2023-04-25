@@ -7,8 +7,15 @@ import {Component, Input} from '@angular/core';
 })
 export class CvComponent{
   @Input() PDFPath: string = "";
+  @Input() Title: string = "";
   @Input() Branche: string = "";
   @Input() Beschrijving: string = "";
   @Input() Provincie: string = "";
 
+
+  public displayResume(){
+    alert(`A ${this.Branche} Man, would like to know your location`);
+  }
 }
+
+

@@ -30,6 +30,7 @@ import { PrivacyComponent } from './privacy/privacy.component';
 import { AboutComponent } from './about/about.component';
 import { SavedCvComponent } from './user/saved-cv/saved-cv.component';
 import { NgxExtendedPdfViewerModule } from "ngx-extended-pdf-viewer";
+import { UploadCvComponent } from './account/upload-cv/upload-cv.component';
 
 
 const Route: Routes = [
@@ -43,7 +44,9 @@ const Route: Routes = [
   {path: 'Account', component : AccountComponent},
   {path: 'Inbox', component : InboxComponent},
   {path: 'About', component : AboutComponent},
-  {path: 'CVPage', component : CvPageComponent}
+  {path: 'CVPage', component : CvPageComponent},
+  {path: 'SavedCVPage', component : SavedCvComponent},
+  {path: 'UploadCV', component : UploadCvComponent}
 ]
 
 @NgModule({
@@ -74,7 +77,8 @@ const Route: Routes = [
     SearchComponent,
     PrivacyComponent,
     AboutComponent,
-    SavedCvComponent
+    SavedCvComponent,
+    UploadCvComponent
   ],
   imports: [
     BrowserModule,                  //Browser Module

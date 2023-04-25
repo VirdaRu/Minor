@@ -3,4 +3,14 @@
   font-size: 18px;
   border-radius: 10px;
   padding: 25px;
+  margin-bottom: 25px;
+}
+
+.CVOffer{
+  text-decoration: none;
+  color: black;
+}
+
+.resume-info{
+  font-size: 16px;
 }

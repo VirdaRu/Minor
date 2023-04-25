@@ -9,17 +9,19 @@
            Mijn Inbox
         </button>
 
-        <label class="btn-outline">
-          <input style="display: none" type="file" class="btn-outline"  accept=".pdf">
-            <i class="glyphicon glyphicon-upload"></i> Upload CV
-        </label>
+        <form >
+          <label class="btn-outline">
+            <input id="file-upload-btn" type="file" accept=".pdf" routerLink="/UploadCV">
+              <i class="glyphicon glyphicon-upload"></i> Upload CV
+          </label>
+        </form>
 
         <button class="btn-outline">
           <i class="glyphicon glyphicon-eye-open"></i>
           Gehele CV weergeven
         </button>
 
-        <button class="btn-outline">
+        <button class="btn-outline" routerLink="/SavedCVPage">
           <i class="glyphicon glyphicon-bookmark"></i>
           Bewaarde CV's weergeven
         </button>

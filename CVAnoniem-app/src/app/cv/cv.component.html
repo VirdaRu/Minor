@@ -1,23 +1,13 @@
-<div class="SearchResult">
-  <div class="row">
+<a class="CVOffer" (click)="displayResume()">
+  <div class="SearchResult">
+    <div class="row">
 
-    <div class="col-xs-3">
-      <!--
-      <ngx-extended-pdf-viewer
-        [src]="PDFPath"
-        [useBrowserLocale] = "true"
-        [showDownloadButton] = "false"
-      >
-      </ngx-extended-pdf-viewer>-->
+      <div class="resume-info">
+        <p class="title"><strong [textContent]="Title"></strong></p>
+        <strong>Branche: </strong><p [textContent]="Branche"></p>
+        <strong>Beschrijving: </strong><p [textContent]="Beschrijving"></p>
+        <strong>Provincie: </strong><p [textContent]="Provincie"></p>
+      </div>
     </div>
-
-    <div class="col-xs-9">
-      <strong>Branche: </strong><p [textContent]="Branche"></p>
-      <strong>Beschrijving: </strong><p [textContent]="Beschrijving"></p>
-      <strong>Provincie: </strong><p [textContent]="Provincie"></p>
-    </div>
-
   </div>
-</div>
-
-<br>
+</a>

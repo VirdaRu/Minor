@@ -11,8 +11,9 @@ a{
   margin: 10px;
 }
 
-.WelcomeTitle{
+.WelcomeTitle, .title{
   font-family: Calibri;
+  font-size: 30px;
 }
 
 /*Outline Button*/
@@ -35,6 +36,7 @@ a{
 }
 
 .returnBtn{
+  /*display:inline-block;*/
   margin: 10px;
   font-size: 20px;
   color: black;
