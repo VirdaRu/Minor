@@ -42,7 +42,8 @@ const Route: Routes = [
   {path: 'Contact', component : ContactComponent},
   {path: 'Account', component : AccountComponent},
   {path: 'Inbox', component : InboxComponent},
-  {path: 'About', component : AboutComponent}
+  {path: 'About', component : AboutComponent},
+  {path: 'CVPage', component : CvPageComponent}
 ]
 
 @NgModule({

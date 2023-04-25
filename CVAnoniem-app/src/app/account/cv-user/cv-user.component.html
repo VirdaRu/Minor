@@ -1,4 +1,16 @@
 <br>
+<br>
 <!--PDF Viewer comes here-->
-  <img class="img-responsive" src="https://cdn-images.zety.com/images/zety/landings/examples/academic-cv-example@3x.png" alt="Mijn CV">
+  <ngx-extended-pdf-viewer
+    [src]="'/assets/TestPDFFile.pdf'"
+    [useBrowserLocale] = "true"
+    [showDownloadButton] = "false"
+    [showEditor] = "false"
+    [showRotateButton] = "false"
+    [showPropertiesButton] = "false"
+    [showTextEditor] = "false"
+    [showToolbar] = "false">
+
+  </ngx-extended-pdf-viewer>
+<br>
 <br>

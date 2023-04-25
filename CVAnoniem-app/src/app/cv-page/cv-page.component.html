@@ -1,6 +1,23 @@
-<div class="row">
-  <div class="col-xs-12">
-    <h1>cv-page works!</h1>
-    <app-cv></app-cv>
+<!--Search Bar-->
+<div>
+  <div class="container">
+    <div class="col-xs-12">
+      <h1 class="WelcomeTitle text-center"><strong>Welkom bij CVAnoniem!</strong></h1>
+      <app-search></app-search>
+    </div>
+
+    <div class="row">
+      <!--List of all resumes-->
+      <div class="col-xs-12 col-lg-6">
+        <app-cv-list></app-cv-list>
+      </div>
+
+      <!--Full View of selected Resume-->
+      <div class="col-xs-12 col-lg-6">
+        <app-cv-full></app-cv-full>
+      </div>
+
+    </div>
+
   </div>
 </div>
