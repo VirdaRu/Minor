@@ -1,15 +1,19 @@
 <div class="pdfViewer">
   <div *ngIf="showOptions" class="row">
     <div class="col-xs-6">
-      <div class="btn-outline text-center">
-        Verzoek Geheel CV
-      </div>
+      <a (click)="SendRequest()">
+        <div class="btn-outline text-center">
+          Verzoek Geheel CV
+        </div>
+      </a>
     </div>
 
     <div class="col-xs-6">
-      <div class="btn-outline text-center">
-        <i class="glyphicon glyphicon-bookmark"></i> Bewaar CV
-      </div>
+      <a (click)="BookmarkResume()">
+        <div class="btn-outline text-center">
+          <i class="glyphicon glyphicon-bookmark"></i> Bewaar CV
+        </div>
+      </a>
     </div>
   </div>
 

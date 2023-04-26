@@ -66,12 +66,12 @@
     <div class="row">
       <div class="col-md-12">
         <nav id="SmNavMenu" class="navbar navbar-default">
-          <ul class="MenuItems">
+          <ul class="MenuItems" onclick="closeNav('SmNavbar')">
             <div class="container-fluid">
 
               <br>
 
-              <a onclick="closeNav('SmNavbar')"><li>
+              <a ><li>
                 <i class="glyphicon glyphicon-remove"></i>
               </li></a>
 
@@ -80,7 +80,7 @@
                 Home
               </li></a>
 
-              <a><li>
+              <a routerLink="/CVPage"><li>
                 <i class="glyphicon glyphicon-list-alt"></i>
                 CV's
               </li></a>

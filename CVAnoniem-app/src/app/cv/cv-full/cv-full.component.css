@@ -5,6 +5,10 @@
   padding: 25px;
 }
 
+.pdfViewer a{
+  text-decoration: none;
+}
+
 .btn-outline{
   border: 3px solid #54c0ff;
   color: #54c0ff;

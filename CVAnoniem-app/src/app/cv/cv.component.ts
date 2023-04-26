@@ -6,6 +6,7 @@ import {Component, Input} from '@angular/core';
   styleUrls: ['./cv.component.css']
 })
 export class CvComponent{
+  @Input() ResumeID: string = "";
   @Input() PDFPath: string = "";
   @Input() Title: string = "";
   @Input() Branche: string = "";
@@ -13,8 +14,9 @@ export class CvComponent{
   @Input() Provincie: string = "";
 
 
+
   public displayResume(){
-    alert(`A ${this.Branche} Man, would like to know your location`);
+    alert(`A ${this.Title}, would like to know your location`);
   }
 }
 

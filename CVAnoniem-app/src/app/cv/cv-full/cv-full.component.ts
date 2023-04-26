@@ -8,4 +8,12 @@ import {Component, Input} from '@angular/core';
 })
 export class CvFullComponent {
   @Input() showOptions: boolean = false;
+
+  public SendRequest() : void {
+    alert("Request sent to person");
+  }
+
+  public BookmarkResume() : void {
+    alert("Resume added to favourites.")
+  }
 }
