@@ -1,0 +1,41 @@
+<h1 class="text-center">Upload CV</h1>
+
+<div class="container">
+  <div class="col-md-6">
+
+    <form class="form-group">
+
+      <label for="title"> Geef hier een titel:</label>
+        <input type="text" class="form-control input-lg" placeholder="Titel" id="title">
+
+      <br><br>
+
+      <label for="branche"> Geef hier de branche waarin u werk zoekt:</label>
+        <input type="text" class="form-control input-lg" placeholder="Branche" id="branche">
+
+      <br><br>
+
+      <label for="provincie"> Geef hier de provincie waar u woont:</label>
+        <input type="text" class="form-control input-lg" placeholder="Provincie" id="provincie">
+
+      <br><br>
+
+      <label for="description">Geef hier een beschrijving over uw skills:</label>
+      <textarea id="description" class="form-control input-lg" rows="6" placeholder="Schrijf hier uw beschrijving..."></textarea>
+
+      <br>
+
+      <button class="btn-outline text-center">Uploaden</button>
+    </form>
+
+    <br>
+  </div>
+
+
+  <div class="uploaded-cv col-md-6">
+    <app-cv-full></app-cv-full>
+  </div>
+
+
+
+</div>

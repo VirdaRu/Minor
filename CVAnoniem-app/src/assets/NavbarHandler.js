@@ -13,9 +13,9 @@ function closeNav(ID) {
 }
 
 function changeNav(ID){
-  if (isOpened == true){
+  if (isOpened === true){
     closeNav(ID);
-  } else if(isOpened == false){
+  } else if(isOpened === false){
     openNav(ID);
   }
 }

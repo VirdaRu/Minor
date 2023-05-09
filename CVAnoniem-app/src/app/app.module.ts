@@ -26,27 +26,27 @@ import {UserComponent} from './user/user.component';
 import {RecaptchaComponent} from './user/recaptcha/recaptcha.component';
 import {SocialLoginComponent} from './user/social-login/social-login.component';
 import {SearchComponent} from './home/search/search.component';
-import { PrivacyComponent } from './privacy/privacy.component';
-import { AboutComponent } from './about/about.component';
-import { SavedCvComponent } from './user/saved-cv/saved-cv.component';
-import { NgxExtendedPdfViewerModule } from "ngx-extended-pdf-viewer";
-import { UploadCvComponent } from './account/upload-cv/upload-cv.component';
+import {PrivacyComponent} from './faq/privacy/privacy.component';
+import {AboutComponent} from './faq/about/about.component';
+import {SavedCvComponent} from './user/saved-cv/saved-cv.component';
+import {NgxExtendedPdfViewerModule} from "ngx-extended-pdf-viewer";
+import {UploadCvComponent} from './account/upload-cv/upload-cv.component';
 
 
 const Route: Routes = [
   //{path: '', redirectTo: 'Home',},
-  {path: '', component : HomeComponent},
-  {path: 'Login', component : LoginComponent},
-  {path: 'Register', component : RegisterComponent},
-  {path: 'FAQ', component : FAQComponent},
-  {path: 'Privacy', component : PrivacyComponent},
-  {path: 'Contact', component : ContactComponent},
-  {path: 'Account', component : AccountComponent},
-  {path: 'Inbox', component : InboxComponent},
-  {path: 'About', component : AboutComponent},
-  {path: 'CVPage', component : CvPageComponent},
-  {path: 'SavedCVPage', component : SavedCvComponent},
-  {path: 'UploadCV', component : UploadCvComponent}
+  {path: '', component: HomeComponent},
+  {path: 'Login', component: LoginComponent},
+  {path: 'Register', component: RegisterComponent},
+  {path: 'FAQ', component: FAQComponent},
+  {path: 'Privacy', component: PrivacyComponent},
+  {path: 'Contact', component: ContactComponent},
+  {path: 'Account', component: AccountComponent},
+  {path: 'Inbox', component: InboxComponent},
+  {path: 'About', component: AboutComponent},
+  {path: 'CVPage', component: CvPageComponent},
+  {path: 'SavedCVPage', component: SavedCvComponent},
+  {path: 'UploadCV', component: UploadCvComponent}
 ]
 
 @NgModule({

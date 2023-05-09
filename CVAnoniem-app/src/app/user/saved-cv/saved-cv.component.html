@@ -1,0 +1,28 @@
+<div class="container" xmlns="http://www.w3.org/1999/html">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-1">
+        <a>
+          <i class="returnBtn glyphicon glyphicon-chevron-left"
+             onclick="history.back()">
+          </i>
+        </a>
+      </div>
+      <div class="col-xs-10">
+        <h1 class="text-center">Opgeslagen CV's</h1>
+      </div>
+    </div>
+  </div>
+
+  <br>
+
+    <div class="row">
+      <div class="col-md-6">
+        <app-cv-list></app-cv-list>
+      </div>
+      <div class="col-md-6">
+        <app-cv-full [showOptions]=true></app-cv-full>
+      </div>
+
+    </div>
+</div>
