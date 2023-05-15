@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {RouterModule, RouterOutlet, Routes} from '@angular/router';
+import {HttpClientModule} from '@angular/common/http';
 
 import {AppComponent} from './app.component';
 import {HomeComponent} from './home/home.component';
@@ -84,7 +85,8 @@ const Route: Routes = [
     BrowserModule,                  //Browser Module
     RouterModule.forRoot(Route),    //Page routing
     RouterOutlet,                   //Page Routing
-    NgxExtendedPdfViewerModule      //PDF Viewer
+    NgxExtendedPdfViewerModule,     //PDF Viewer
+    HttpClientModule,               //Back end communication
   ],
   providers: [],
   bootstrap: [AppComponent]
