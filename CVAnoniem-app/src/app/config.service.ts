@@ -1,8 +1,11 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+
 
 @Injectable()
 export class ConfigService {
-  constructor(private http: HttpClient) {
+  constructor() {
+    //http.get("https://localhost:7229/api/offer/all-offers-list");
   }
+
+
 }
