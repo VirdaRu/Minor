@@ -1,4 +1,7 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {HttpClient, HttpParams} from "@angular/common/http";
+import {Offer} from "../../../models/offer";
+import {map, Observable, interval, tap} from "rxjs";
 
 @Component({
   selector: 'app-cv-list',
@@ -6,5 +9,57 @@ import {Component} from '@angular/core';
   styleUrls: ['./cv-list.component.css']
 })
 export class CvListComponent {
+
+  @Input() SavedPage : boolean = false;
+
+  offers! : Offer[];
+
+  public static query : string;
+
+  constructor(private http : HttpClient) {
+  }
+
+  ngOnInit(){
+    if (this.SavedPage)
+    {
+      this.getSavedResumes(10).subscribe( offers =>this.offers = offers);
+    }
+    else
+    {
+      setInterval(() : any => {
+        this.HandleResults();
+        }, 1000);
+    }
+  }
+
+  public getSavedResumes(userid: number)
+  {
+    return this.http.get<Offer[]>("https://localhost:7229/api/saved-offer",
+      { params: new HttpParams().set("userid", userid) });
+  }
+
+  public getResumeResults()
+  {
+      return this.http.get<Offer[]>("https://localhost:7229/api/offer/all-offers-list").
+        subscribe(response => this.offers = response);
+  }
+
+  public getResultsBySearch(query : string)
+  {
+    return this.http.get<Offer[]>("https://localhost:7229/api/offer/search-offers",
+      { params : new HttpParams().set('query',query)}).subscribe(
+      response => this.offers = response);
+  }
+
+  public HandleResults()
+  {
+    if (CvListComponent.query == "")
+    {
+    //  this.getResumeResults();
+    }else {
+      this.getResultsBySearch(CvListComponent.query);
+    }
+  }
+
 
 }

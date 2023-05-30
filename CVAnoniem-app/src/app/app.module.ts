@@ -32,6 +32,9 @@ import {AboutComponent} from './faq/about/about.component';
 import {SavedCvComponent} from './user/saved-cv/saved-cv.component';
 import {NgxExtendedPdfViewerModule} from "ngx-extended-pdf-viewer";
 import {UploadCvComponent} from './account/upload-cv/upload-cv.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MsgResultComponent } from './account/inbox/msg-result/msg-result.component';
 
 
 const Route: Routes = [
@@ -79,15 +82,20 @@ const Route: Routes = [
     PrivacyComponent,
     AboutComponent,
     SavedCvComponent,
-    UploadCvComponent
+    UploadCvComponent,
+    MsgResultComponent
   ],
-  imports: [
-    BrowserModule,                  //Browser Module
-    RouterModule.forRoot(Route),    //Page routing
-    RouterOutlet,                   //Page Routing
-    NgxExtendedPdfViewerModule,     //PDF Viewer
-    HttpClientModule,               //Back end communication
-  ],
+    imports: [
+        BrowserModule,                  //Browser Module
+        RouterModule.forRoot(Route),    //Page routing
+        RouterOutlet,                   //Page Routing
+        NgxExtendedPdfViewerModule,     //PDF Viewer
+        HttpClientModule,
+        FormsModule,
+        ReactiveFormsModule,
+        BrowserAnimationsModule,
+        //Back end communication
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

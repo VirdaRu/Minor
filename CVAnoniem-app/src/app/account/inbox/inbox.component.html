@@ -15,14 +15,12 @@
   </div>
 
   <br>
-
-  <div class="row">
-    <div class="message">
-      <p><strong>Verzender: </strong>Jan.degrote@mijndomein.nl</p>
-      <p><strong>Onderwerp: </strong>Verzoek toegang tot gehele CV</p>
-      <p><strong>Bericht: </strong> Hallo! Lorem ipsum dolor sit amet</p>
-      <p><strong>Datum: </strong>01-04-2023</p>
-
+    <div class="row">
+      <app-msg-result *ngFor="let msg of Messages"
+                      [Sender]="msg.EmployerID.toString()"
+                      [Subject]="msg.Subject"
+                      [message]="msg.message">
+      </app-msg-result>
     </div>
-  </div>
+
 </div>
