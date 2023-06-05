@@ -34,14 +34,14 @@ export class OfferAPI_Requests implements IAPI_Requests
 
   delete(id : any)
   {
-    //return this.http.delete("https://localhost:7229/api/offer",
-     // {params: new  HttpParams().set("id", id)})
+    return this.http.delete("https://localhost:7229/api/offer",
+      {params: new  HttpParams().set("id", id)})
   }
 
   getByID(id:any)
   {
-    //return this.http.get<Offer[]>(`${Constants.API_URL}/offer/search-offers`,
-    //  { params : new HttpParams().set('query',id)})
+    return this.http.get<Offer[]>(`${Constants.API_URL}/offer/search-offers`,
+        { params : new HttpParams().set('query',id)})
   }
 
 }
