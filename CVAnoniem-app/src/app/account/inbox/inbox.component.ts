@@ -1,6 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {Message} from "../../../models/message";
+import {SessionHandler} from "../SessionHandler";
 
 @Component({
   selector: 'app-inbox',
@@ -10,6 +11,7 @@ import {Message} from "../../../models/message";
 export class InboxComponent {
 
   Messages! : Message[];
+  private userid = SessionHandler.getSession();
 
   constructor(private http : HttpClient) {
   }
@@ -21,7 +23,8 @@ export class InboxComponent {
 
   public GetMessages()
   {
-    return this.http.get<Message[]>("https://localhost:7229/api/message", {params : new HttpParams().set("id", 10)})
+    return this.http.get<Message[]>("https://localhost:7229/api/message",
+      {params : new HttpParams().set("userid", this.userid)})
       .subscribe(response =>  this.Messages = response);
   }
 }

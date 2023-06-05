@@ -1,8 +1,9 @@
 import {Component} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
-import {Observable , map} from "rxjs";
+import {OfferAPI_Requests} from "../../config/API_Requests/OfferAPI_Requests"
 import {Offer} from "../../../models/offer"
 import { FormGroup, FormControl, Validators} from "@angular/forms";
+import {SessionHandler} from "../SessionHandler";
 
 @Component({
   selector: 'app-upload-cv',
@@ -12,7 +13,9 @@ import { FormGroup, FormControl, Validators} from "@angular/forms";
 
 export class UploadCvComponent{
 
-  userid : number = 17;
+  private userid : number = SessionHandler.getSession();
+
+  API_Request = new OfferAPI_Requests(this.http);
 
   constructor(private http : HttpClient) {
 
@@ -39,26 +42,14 @@ export class UploadCvComponent{
   })
   {
     offer.JobSeekerID = this.userid;
-
     this.addOffer(offer);
-    console.log(offer);
   }
 
   addOffer(offer : Offer)
   {
-    const headers = new HttpHeaders()
-      .set('content-type', 'application/json')
-      .set('Access-Control-Allow-Origin', '*');
-    let body = JSON.stringify(offer);
-
-    //Add new Resume
     if (this.confirmUpdate()){
-      this.http.post("https://localhost:7229/api/offer", body, {'headers': headers}).
-      subscribe();
-    }
-    else
-    {
-
+      //console.log(offer);
+      this.API_Request.post(offer).subscribe( response => console.log(response));
     }
     //TODO: In Angular.json there is a line referencing a proxy file, this is for development! On production REMOVE it!
   }
@@ -74,16 +65,6 @@ export class UploadCvComponent{
     {
       return false;
     }
-  }
-
-  public UpdateResume(body : string)
-  {
-    const headers = new HttpHeaders()
-      .set('content-type', 'application/json')
-      .set('Access-Control-Allow-Origin', '*');
-    this.http.put("https://localhost:7229/api/offer", body,
-      { 'headers': headers, params:new HttpParams().set('userid', this.userid)}).subscribe(
-        response => alert("Uw CV is geupdated."));
   }
 
 }

@@ -1,6 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {CvFullComponent} from "./cv-full/cv-full.component";
 import {HttpClient, HttpParams} from "@angular/common/http";
+import {SessionHandler} from "../account/SessionHandler";
 
 @Component({
   selector: 'app-cv',
@@ -16,20 +17,23 @@ export class CvComponent{
   @Input() Beschrijving: string = "";
   @Input() Provincie: string = "";
 
+  private userID = SessionHandler.getSession();
+
   constructor(private http : HttpClient) {
   }
 
   public displayResume()
   {
     CvFullComponent.OfferID = Number(this.OfferID);
-    this.ResumeIsSaved(Number(this.OfferID));
+    this.OfferIsSaved(Number(this.OfferID));
   }
 
-  public ResumeIsSaved(ResumeID : number)
+  public OfferIsSaved(ResumeID : number)
   {
     this.http.get("https://localhost:7229/api/saved-offer/user-saved-offer",
       { params: new HttpParams().set("offerid", ResumeID)
-          .set("userid", 10) }).subscribe(response => this.displayButton(Number(response)));
+          .set("userid", this.userID) }).subscribe(
+            response => this.displayButton(Number(response)));
   }
 
   public displayButton(ID : number)

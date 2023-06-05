@@ -1,6 +1,6 @@
 export interface Permission
 {
   PermissionID : number;
-  ResumeID : number;
+  OfferID : number;
   EmployerID : number;
 }

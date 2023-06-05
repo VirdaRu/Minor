@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient, HttpParams} from "@angular/common/http";
+import {SessionHandler} from "./SessionHandler";
 
 @Component({
   selector: 'app-account',
@@ -11,7 +12,7 @@ export class AccountComponent implements OnInit {
   }
   OfferID : number = 0;
 
-  UserID : number = 17;
+  UserID : number = SessionHandler.getSession();
   ngOnInit() {
     this.GetOfferID(this.UserID);
   }
@@ -28,7 +29,6 @@ export class AccountComponent implements OnInit {
     let dialog = confirm("Weet u zeker dat u uw CV wilt verwijderen?");
     if (dialog)
     {
-      alert("Yes my lord");
       this.http.delete("https://localhost:7229/api/offer",
         {params: new  HttpParams().set("id", this.OfferID)}).
       subscribe();

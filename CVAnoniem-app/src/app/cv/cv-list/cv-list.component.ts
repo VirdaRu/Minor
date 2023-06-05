@@ -2,6 +2,7 @@ import {Component, Input} from '@angular/core';
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {Offer} from "../../../models/offer";
 import {map, Observable, interval, tap} from "rxjs";
+import {SessionHandler} from "../../account/SessionHandler";
 
 @Component({
   selector: 'app-cv-list',
@@ -16,13 +17,16 @@ export class CvListComponent {
 
   public static query : string;
 
+  private userID = SessionHandler.getSession();
+
   constructor(private http : HttpClient) {
   }
 
   ngOnInit(){
     if (this.SavedPage)
     {
-      this.getSavedResumes(10).subscribe( offers =>this.offers = offers);
+      this.getSavedResumes(this.userID).
+      subscribe( offers =>this.offers = offers);
     }
     else
     {

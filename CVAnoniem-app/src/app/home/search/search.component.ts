@@ -28,10 +28,6 @@ export class SearchComponent  {
   public getResultsBySearch(query : string)
   {
     CvListComponent.query = query;
-    /*
-    return this.http.get<Offer[]>("https://localhost:7229/api/offer/search-offers",
-      { params : new HttpParams().set('query',query)}).pipe(
-        tap(response => this.offers = response));*/
   }
 }
 
