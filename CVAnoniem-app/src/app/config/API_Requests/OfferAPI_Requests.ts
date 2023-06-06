@@ -12,7 +12,13 @@ export class OfferAPI_Requests implements IAPI_Requests
 
   get()
   {
+    return this.http.get<Offer[]>(`${Constants.API_URL}/offer/all-offers-list`);
+  }
 
+  getByJobseekerID(id: number)
+  {
+    return this.http.get<Offer[]>(`${Constants.API_URL}/offer`,
+      {params : new HttpParams().set("userid", id)});
   }
 
   post(body : any)
@@ -34,7 +40,7 @@ export class OfferAPI_Requests implements IAPI_Requests
 
   delete(id : any)
   {
-    return this.http.delete("https://localhost:7229/api/offer",
+    return this.http.delete(`${Constants.API_URL}/offer`,
       {params: new  HttpParams().set("id", id)})
   }
 
@@ -42,6 +48,12 @@ export class OfferAPI_Requests implements IAPI_Requests
   {
     return this.http.get<Offer[]>(`${Constants.API_URL}/offer/search-offers`,
         { params : new HttpParams().set('query',id)})
+  }
+
+  checkOfferExist(id : any)
+  {
+    return this.http.get(`${Constants.API_URL}/offer/user-has-offer`,
+      {params: new HttpParams().set("userid", id)})
   }
 
 }

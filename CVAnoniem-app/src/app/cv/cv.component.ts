@@ -16,6 +16,7 @@ export class CvComponent{
   @Input() Branche: string = "";
   @Input() Beschrijving: string = "";
   @Input() Provincie: string = "";
+  @Input() JobSeekerID: string = "";
 
   private userID = SessionHandler.getSession();
 
@@ -25,6 +26,7 @@ export class CvComponent{
   public displayResume()
   {
     CvFullComponent.OfferID = Number(this.OfferID);
+    CvFullComponent.JobseekerID = Number(this.JobSeekerID);
     this.OfferIsSaved(Number(this.OfferID));
   }
 

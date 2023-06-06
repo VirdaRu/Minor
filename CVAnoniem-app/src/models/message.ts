@@ -6,5 +6,5 @@ export interface Message
   Subject : string;
   message : string;
   Attachment : string;
-  DateSent : Date;
+  DateSent : string;
 }

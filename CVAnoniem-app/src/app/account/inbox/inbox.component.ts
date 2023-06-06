@@ -21,15 +21,9 @@ export class InboxComponent {
 
   ngOnInit()
   {
-    this.GetMessages();
+    this.MessageAPI.getByID(this.userid).subscribe(
+      response => this.Messages = response
+    );
   }
 
-  public GetMessages()
-  {
-    return this.MessageAPI.get();
-    /*
-    return this.http.get<Message[]>("https://localhost:7229/api/message",
-      {params : new HttpParams().set("userid", this.userid)})
-      .subscribe(response =>  this.Messages = response);*/
-  }
 }

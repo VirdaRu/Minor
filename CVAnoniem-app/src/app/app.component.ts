@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Offer} from "../models/offer";
+import {SessionHandler} from "./account/SessionHandler";
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,10 +11,8 @@ import {Offer} from "../models/offer";
 export class AppComponent implements OnInit{
   title = 'CVAnoniem-app';
 
-  constructor(private http: HttpClient) {
-
-  }
   ngOnInit() {
+    SessionHandler.setSession(10);
   }
 }
 

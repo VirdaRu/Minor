@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {SessionHandler} from "./SessionHandler";
+import {OfferAPI_Requests} from "../config/API_Requests/OfferAPI_Requests";
 
 @Component({
   selector: 'app-account',
@@ -12,16 +13,13 @@ export class AccountComponent implements OnInit {
   }
   OfferID : number = 0;
 
-  UserID : number = SessionHandler.getSession();
-  ngOnInit() {
-    this.GetOfferID(this.UserID);
-  }
+  OfferAPI = new OfferAPI_Requests(this.http);
 
-  public GetOfferID(UID: number) {
-    this.http.get("https://localhost:7229/api/offer/user-has-offer",
-      {params: new HttpParams().set("userid", UID)}).subscribe(
-        response => this.OfferID = Number(response)
-    );
+  UserID : number = SessionHandler.getSession();
+
+  ngOnInit() {
+    this.OfferAPI.checkOfferExist(this.UserID)
+      .subscribe(response => this.OfferID = Number(response))
   }
 
   public DeleteCV()
@@ -29,9 +27,7 @@ export class AccountComponent implements OnInit {
     let dialog = confirm("Weet u zeker dat u uw CV wilt verwijderen?");
     if (dialog)
     {
-      this.http.delete("https://localhost:7229/api/offer",
-        {params: new  HttpParams().set("id", this.OfferID)}).
-      subscribe();
+      this.OfferAPI.delete(this.OfferID)
     }
   }
 }

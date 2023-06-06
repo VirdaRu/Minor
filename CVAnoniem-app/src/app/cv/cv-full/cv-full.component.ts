@@ -3,21 +3,27 @@ import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {SavedOffers} from "../../../models/savedoffers";
 import {FormControl, FormGroup} from "@angular/forms";
 import {SessionHandler} from "../../account/SessionHandler";
+import {SavedOffersAPI_Requests} from "../../config/API_Requests/SavedOffersAPI_Requests";
 
 @Component({
   selector: 'app-cv-full',
   templateUrl: './cv-full.component.html',
   styleUrls: ['./cv-full.component.css']
 })
+
 export class CvFullComponent{
   @Input() showOptions: boolean = false;
   @Input() SavedPage : boolean = false;
   public static Bookmarked : boolean = false;
 
   public static OfferID : number;
+  public static JobseekerID : number;
+
   private userID = SessionHandler.getSession();
 
   SaveOffer! : SavedOffers;
+
+  SavedOfferAPI = new SavedOffersAPI_Requests(this.http);
 
   onPostBookmark(bookmark : {
     SavedID : number,
@@ -31,29 +37,17 @@ export class CvFullComponent{
   }
 
   constructor(private http: HttpClient) {
-    SessionHandler.setSession(10);
-  }
 
-   public SendRequest() : void {
-    alert("Request sent to person");
   }
 
   public BookmarkResume(SaveOffer : SavedOffers)
   {
-    const headers = new HttpHeaders()
-      .set('content-type', 'application/json')
-      .set('Access-Control-Allow-Origin', '*');
-    let body = JSON.stringify(SaveOffer);
-    return this.http.post<SavedOffers>("https://localhost:7229/api/saved-offer", body,{'headers': headers}).
-    subscribe();
-    alert("Resume added to favourites.");
+    this.SavedOfferAPI.post(SaveOffer).subscribe();
   }
 
   public UnbookmarkResume()
   {
-    this.http.delete("https://localhost:7229/api/saved-offer",
-      { params: new HttpParams().set("offerid", this.getOfferID())
-                                       .set("userid", this.userID) }).subscribe();
+    this.SavedOfferAPI.delete(this.getOfferID()).subscribe()
     alert("CV niet meer opgeslagen.");
   }
 

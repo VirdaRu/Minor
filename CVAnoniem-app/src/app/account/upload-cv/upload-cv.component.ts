@@ -48,10 +48,8 @@ export class UploadCvComponent{
   addOffer(offer : Offer)
   {
     if (this.confirmUpdate()){
-      //console.log(offer);
       this.API_Request.post(offer).subscribe( response => console.log(response));
     }
-    //TODO: In Angular.json there is a line referencing a proxy file, this is for development! On production REMOVE it!
   }
 
   public confirmUpdate()
@@ -66,5 +64,6 @@ export class UploadCvComponent{
       return false;
     }
   }
-
 }
+
+//TODO: In Angular.json there is a line referencing a proxy file, this is for development! On production REMOVE it!
