@@ -1,0 +1,16 @@
+<form #PermissionForm="ngForm" >
+  <div class="message">
+    <div class="row">
+      <div class="col-sm-9">
+        <strong>Verzender: </strong><p [textContent]="Sender"></p>
+        <strong>Onderwerp: </strong><p [textContent]="Subject"></p>
+        <strong>Bericht: </strong><p [textContent]="message"></p>
+        <strong>Datum: </strong><p [textContent]="DateSent"></p>
+      </div>
+      <div class="grant-permission-btn col-sm-3">
+        <button (click)="onPostGrantPermission(PermissionForm.value)" class="btn btn-success">Accepteer</button>
+        <button (click)="rejectRequest()" class="btn btn-danger">Afwijzen</button>
+      </div>
+    </div>
+  </div>
+</form>
