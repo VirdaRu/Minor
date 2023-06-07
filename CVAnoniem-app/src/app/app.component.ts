@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {GoogleApiService} from "./user/social-login/google-login/google-api.service";
 
 @Component({
   selector: 'app-root',
@@ -8,4 +9,7 @@ import {Component} from '@angular/core';
 export class AppComponent {
 
   title = 'CVAnoniem-app';
+
+  constructor(private readonly google: GoogleApiService) {
+  }
 }

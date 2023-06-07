@@ -32,6 +32,9 @@ import {AboutComponent} from './faq/about/about.component';
 import {SavedCvComponent} from './user/saved-cv/saved-cv.component';
 import {NgxExtendedPdfViewerModule} from "ngx-extended-pdf-viewer";
 import {UploadCvComponent} from './account/upload-cv/upload-cv.component';
+import {OAuthModule} from "angular-oauth2-oidc";
+import {GoogleLoginComponent} from './user/social-login/google-login/google-login.component';
+import {NgOptimizedImage} from "@angular/common";
 
 
 const Route: Routes = [
@@ -47,7 +50,8 @@ const Route: Routes = [
   {path: 'About', component: AboutComponent},
   {path: 'CVPage', component: CvPageComponent},
   {path: 'SavedCVPage', component: SavedCvComponent},
-  {path: 'UploadCV', component: UploadCvComponent}
+  {path: 'UploadCV', component: UploadCvComponent},
+  {path: 'google-login', component: GoogleLoginComponent},
 ]
 
 @NgModule({
@@ -79,7 +83,8 @@ const Route: Routes = [
     PrivacyComponent,
     AboutComponent,
     SavedCvComponent,
-    UploadCvComponent
+    UploadCvComponent,
+    GoogleLoginComponent,
   ],
   imports: [
     BrowserModule,                  //Browser Module
@@ -87,6 +92,9 @@ const Route: Routes = [
     RouterOutlet,                   //Page Routing
     NgxExtendedPdfViewerModule,     //PDF Viewer
     HttpClientModule,               //Back end communication
+    OAuthModule.forRoot(),
+    NgOptimizedImage,
+    //OAuth2 Module
   ],
   providers: [],
   bootstrap: [AppComponent]
