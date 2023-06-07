@@ -6,6 +6,7 @@ import {Constants} from "../constants";
 
 export class OfferAPI_Requests implements IAPI_Requests
 {
+
   constructor(private http : HttpClient) {
 
   }
@@ -19,6 +20,12 @@ export class OfferAPI_Requests implements IAPI_Requests
   {
     return this.http.get<Offer[]>(`${Constants.API_URL}/offer`,
       {params : new HttpParams().set("userid", id)});
+  }
+
+  getByOfferID(id: number)
+  {
+    return this.http.get<Offer[]>(`${Constants.API_URL}/offer/offer-by-id`,
+      {params : new HttpParams().set("offerid", id)});
   }
 
   post(body : any)

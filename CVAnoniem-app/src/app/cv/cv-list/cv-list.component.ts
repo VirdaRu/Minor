@@ -3,6 +3,8 @@ import {HttpClient, HttpParams} from "@angular/common/http";
 import {Offer} from "../../../models/offer";
 import {map, Observable, interval, tap} from "rxjs";
 import {SessionHandler} from "../../account/SessionHandler";
+import {OfferAPI_Requests} from "../../config/API_Requests/OfferAPI_Requests";
+import {CvFullComponent} from "../cv-full/cv-full.component";
 
 @Component({
   selector: 'app-cv-list',
@@ -12,21 +14,31 @@ import {SessionHandler} from "../../account/SessionHandler";
 export class CvListComponent {
 
   @Input() SavedPage : boolean = false;
+  @Input() MessageView : boolean = false;
 
   offers! : Offer[];
+
+  OfferAPI = new OfferAPI_Requests(this.http);
 
   public static query : string;
 
   private userID = SessionHandler.getSession();
 
-  constructor(private http : HttpClient) {
+  constructor(private http : HttpClient)
+  {
   }
 
   ngOnInit(){
     if (this.SavedPage)
     {
       this.getSavedResumes(this.userID).
-      subscribe( offers =>this.offers = offers);
+      subscribe( offers => this.offers = offers);
+    }
+    else if (this.MessageView)
+    {
+      this.OfferAPI.getByOfferID(CvFullComponent.OfferID)
+        .subscribe(
+        offers => this.offers = offers);
     }
     else
     {
@@ -59,7 +71,7 @@ export class CvListComponent {
   {
     if (CvListComponent.query == "")
     {
-    //  this.getResumeResults();
+
     }else {
       this.getResultsBySearch(CvListComponent.query);
     }
