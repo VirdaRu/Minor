@@ -1,0 +1,10 @@
+<div *ngIf="isLoggedIn()">
+  <div class="container">Hi and Welcome!</div>
+  <div class="container">UID: {{userInfo?.info?.sub}}</div>
+  <div class="container">Name: {{userInfo?.info?.name}}</div>
+  <div class="container">E-mail: {{userInfo?.info?.email}}</div>
+  <div class="container"><img src="{{userInfo?.info?.picture}}" alt="User profile picture"></div>
+  <div class="container">
+    <button (click)="logOut()">Logout from Google</button>
+  </div>
+</div>
