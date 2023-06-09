@@ -7,3 +7,8 @@
   background-color: black;
   height: 1px;
 }
+
+.clickable-header-item{
+  text-decoration: none;
+  color: black;
+}

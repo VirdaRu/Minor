@@ -29,6 +29,7 @@ export class MessageAPI_Requests implements IAPI_Requests
       .set('content-type', 'application/json')
       .set('Access-Control-Allow-Origin', '*');
     body = JSON.stringify(body);
+    alert(body);
 
     return this.http.post(`${Constants.API_URL}/message`, body,
       {'headers' : headers});

@@ -5,6 +5,7 @@ import {map, Observable, interval, tap} from "rxjs";
 import {SessionHandler} from "../../account/SessionHandler";
 import {OfferAPI_Requests} from "../../config/API_Requests/OfferAPI_Requests";
 import {CvFullComponent} from "../cv-full/cv-full.component";
+import {SavedOffersAPI_Requests} from "../../config/API_Requests/SavedOffersAPI_Requests";
 
 @Component({
   selector: 'app-cv-list',
@@ -15,10 +16,12 @@ export class CvListComponent {
 
   @Input() SavedPage : boolean = false;
   @Input() MessageView : boolean = false;
+  @Input() AccountView : boolean = false;
 
   offers! : Offer[];
 
   OfferAPI = new OfferAPI_Requests(this.http);
+  SavedAPI = new SavedOffersAPI_Requests(this.http);
 
   public static query : string;
 
@@ -31,8 +34,12 @@ export class CvListComponent {
   ngOnInit(){
     if (this.SavedPage)
     {
-      this.getSavedResumes(this.userID).
-      subscribe( offers => this.offers = offers);
+      this.getSavedResumes(this.userID);
+    }
+    else if (this.AccountView)
+    {
+      this.OfferAPI.getByJobseekerID(SessionHandler.getSession())
+        .subscribe(response => this.offers = response);
     }
     else if (this.MessageView)
     {
@@ -50,20 +57,20 @@ export class CvListComponent {
 
   public getSavedResumes(userid: number)
   {
-    return this.http.get<Offer[]>("https://localhost:7229/api/saved-offer",
-      { params: new HttpParams().set("userid", userid) });
+    return this.SavedAPI.getByID(userid).subscribe(
+      offers => this.offers = offers
+    );
   }
 
   public getResumeResults()
   {
-      return this.http.get<Offer[]>("https://localhost:7229/api/offer/all-offers-list").
-        subscribe(response => this.offers = response);
+      return this.OfferAPI.get().subscribe(
+        response => this.offers = response);
   }
 
   public getResultsBySearch(query : string)
   {
-    return this.http.get<Offer[]>("https://localhost:7229/api/offer/search-offers",
-      { params : new HttpParams().set('query',query)}).subscribe(
+    return this.OfferAPI.getByID(query).subscribe(
       response => this.offers = response);
   }
 

@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {SessionHandler} from "./SessionHandler";
 import {OfferAPI_Requests} from "../config/API_Requests/OfferAPI_Requests";
+import {CvListComponent} from "../cv/cv-list/cv-list.component";
 
 @Component({
   selector: 'app-account',
@@ -9,8 +10,10 @@ import {OfferAPI_Requests} from "../config/API_Requests/OfferAPI_Requests";
   styleUrls: ['./account.component.css']
 })
 export class AccountComponent implements OnInit {
+
   constructor(private http: HttpClient) {
   }
+
   OfferID : number = 0;
 
   OfferAPI = new OfferAPI_Requests(this.http);
@@ -20,6 +23,8 @@ export class AccountComponent implements OnInit {
   ngOnInit() {
     this.OfferAPI.checkOfferExist(this.UserID)
       .subscribe(response => this.OfferID = Number(response))
+
+
   }
 
   public DeleteCV()
