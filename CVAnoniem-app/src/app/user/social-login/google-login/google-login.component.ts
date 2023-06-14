@@ -22,4 +22,6 @@ export class GoogleLoginComponent {
   logOut(): void {
     this.googleApi.signOut()
   }
+
+
 }

@@ -1,19 +1,21 @@
 import {Component, OnInit} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {Offer} from "../models/offer";
 import {SessionHandler} from "./config/SessionHandler";
+import {GoogleApiService} from "./user/social-login/google-login/google-api.service";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   title = 'CVAnoniem-app';
 
   ngOnInit() {
-    SessionHandler.setUserSession(10);
+    //SessionHandler.setUserSession(10);
     SessionHandler.setUsertypeSession("employee");
+  }
+
+  constructor(private readonly google: GoogleApiService) {
   }
 }
 

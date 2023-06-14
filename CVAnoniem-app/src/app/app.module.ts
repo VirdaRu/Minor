@@ -33,15 +33,17 @@ import {SavedCvComponent} from './user/saved-cv/saved-cv.component';
 import {NgxExtendedPdfViewerModule} from "ngx-extended-pdf-viewer";
 import {UploadCvComponent} from './account/upload-cv/upload-cv.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MsgResultComponent } from './account/inbox/msg-result/msg-result.component';
-import { MessageSenderComponent } from './message-sender/message-sender.component';
-import { UserPermissionsComponent } from './user-permissions/user-permissions.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MsgResultComponent} from './account/inbox/msg-result/msg-result.component';
+import {MessageSenderComponent} from './message-sender/message-sender.component';
+import {UserPermissionsComponent} from './user-permissions/user-permissions.component';
+import {GoogleLoginComponent} from "./user/social-login/google-login/google-login.component";
+import {OAuthModule} from "angular-oauth2-oidc";
 
 
 const Route: Routes = [
   //{path: '', redirectTo: 'Home',},
-  {path: '', component: HomeComponent},
+  //{path: '', component: HomeComponent},
   {path: 'Login', component: LoginComponent},
   {path: 'Register', component: RegisterComponent},
   {path: 'FAQ', component: FAQComponent},
@@ -54,7 +56,8 @@ const Route: Routes = [
   {path: 'SavedCVPage', component: SavedCvComponent},
   {path: 'UploadCV', component: UploadCvComponent},
   {path: 'SendMessage', component: MessageSenderComponent},
-  {path: 'user-permissions', component: UserPermissionsComponent}
+  {path: 'user-permissions', component: UserPermissionsComponent},
+  {path: 'google-login', component: GoogleLoginComponent}
 ]
 
 @NgModule({
@@ -89,19 +92,21 @@ const Route: Routes = [
     UploadCvComponent,
     MsgResultComponent,
     MessageSenderComponent,
-    UserPermissionsComponent
+    UserPermissionsComponent,
+    GoogleLoginComponent,
   ],
-    imports: [
-        BrowserModule,                  //Browser Module
-        RouterModule.forRoot(Route),    //Page routing
-        RouterOutlet,                   //Page Routing
-        NgxExtendedPdfViewerModule,     //PDF Viewer
-        HttpClientModule,
-        FormsModule,
-        ReactiveFormsModule,
-        BrowserAnimationsModule,
-        //Back end communication
-    ],
+  imports: [
+    BrowserModule,                  //Browser Module
+    RouterModule.forRoot(Route),    //Page routing
+    RouterOutlet,                   //Page Routing
+    NgxExtendedPdfViewerModule,     //PDF Viewer
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    OAuthModule.forRoot()         //Google Login
+    //Back end communication
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

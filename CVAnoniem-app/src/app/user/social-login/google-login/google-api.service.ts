@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {AuthConfig, OAuthService} from "angular-oauth2-oidc";
 import {Subject} from "rxjs";
 
+
 const oAuthConfig: AuthConfig = {
   issuer: 'https://accounts.google.com',
   strictDiscoveryDocumentValidation: false,
