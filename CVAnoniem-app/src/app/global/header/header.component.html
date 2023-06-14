@@ -1,13 +1,32 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-9">
-      <h1>header works!</h1>
+      <a class="clickable-header-item" routerLink="/">
+        <h1>header works!</h1>
+      </a>
     </div>
     <div class="col-xs-3">
-      <br>
-      <button class="SignInBtn btn-outline left" routerLink="/Login">
-        Inloggen / Registreren
-      </button>
+
+
+      <div *ngIf="loggedInUser == 0">
+        <br>
+        <button class="SignInBtn btn-outline left" routerLink="/Login">
+          Inloggen / Registreren
+        </button>
+      </div>
+
+      <div *ngIf="loggedInUser > 0">
+        <div class="left">
+
+         <h1>
+           <a class="clickable-header-item" routerLink="/Account">
+            Hello, {{loggedInUser.toString()}}!
+          </a>
+         </h1>
+
+        </div>
+      </div>
+
     </div>
   </div>
 

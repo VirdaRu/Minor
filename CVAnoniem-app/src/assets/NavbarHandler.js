@@ -1,4 +1,4 @@
-let isOpened = true;
+let isOpened = false;
 
 function openNav(ID) {
   isOpened = true;

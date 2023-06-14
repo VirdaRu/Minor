@@ -1,12 +1,12 @@
-
 <div class="container">
   <p>Zoek hier naar kandidaten!</p>
   <form class="form-horizontal">
     <div class="SearchBar col-sm-11">
       <div class="row input-group">
-        <input type="text" class="form-control input-lg" placeholder="Zoek hier per branche, beschrijving of provincie (bv. Groningen, ICT, Dierenarts, C#)">
+          <input #search type="text" formControlName="search" class="form-control input-lg"
+               placeholder="Zoek hier per branche, beschrijving of provincie (bv. Groningen, ICT, Dierenarts, C#)">
           <span class="input-group-btn">
-            <button routerLink="/CVPage" class="btn btn-primary btn-lg">
+            <button routerLink="/CVPage" class="btn btn-primary btn-lg" (click)="getResultsBySearch(search.value)" >
               <i class="glyphicon glyphicon-search"></i>
             </button>
           </span>

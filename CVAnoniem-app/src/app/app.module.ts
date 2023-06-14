@@ -32,9 +32,11 @@ import {AboutComponent} from './faq/about/about.component';
 import {SavedCvComponent} from './user/saved-cv/saved-cv.component';
 import {NgxExtendedPdfViewerModule} from "ngx-extended-pdf-viewer";
 import {UploadCvComponent} from './account/upload-cv/upload-cv.component';
-import {OAuthModule} from "angular-oauth2-oidc";
-import {GoogleLoginComponent} from './user/social-login/google-login/google-login.component';
-import {NgOptimizedImage} from "@angular/common";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MsgResultComponent } from './account/inbox/msg-result/msg-result.component';
+import { MessageSenderComponent } from './message-sender/message-sender.component';
+import { UserPermissionsComponent } from './user-permissions/user-permissions.component';
 
 
 const Route: Routes = [
@@ -51,7 +53,8 @@ const Route: Routes = [
   {path: 'CVPage', component: CvPageComponent},
   {path: 'SavedCVPage', component: SavedCvComponent},
   {path: 'UploadCV', component: UploadCvComponent},
-  {path: 'google-login', component: GoogleLoginComponent},
+  {path: 'SendMessage', component: MessageSenderComponent},
+  {path: 'user-permissions', component: UserPermissionsComponent}
 ]
 
 @NgModule({
@@ -84,18 +87,21 @@ const Route: Routes = [
     AboutComponent,
     SavedCvComponent,
     UploadCvComponent,
-    GoogleLoginComponent,
+    MsgResultComponent,
+    MessageSenderComponent,
+    UserPermissionsComponent
   ],
-  imports: [
-    BrowserModule,                  //Browser Module
-    RouterModule.forRoot(Route),    //Page routing
-    RouterOutlet,                   //Page Routing
-    NgxExtendedPdfViewerModule,     //PDF Viewer
-    HttpClientModule,               //Back end communication
-    OAuthModule.forRoot(),
-    NgOptimizedImage,
-    //OAuth2 Module
-  ],
+    imports: [
+        BrowserModule,                  //Browser Module
+        RouterModule.forRoot(Route),    //Page routing
+        RouterOutlet,                   //Page Routing
+        NgxExtendedPdfViewerModule,     //PDF Viewer
+        HttpClientModule,
+        FormsModule,
+        ReactiveFormsModule,
+        BrowserAnimationsModule,
+        //Back end communication
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

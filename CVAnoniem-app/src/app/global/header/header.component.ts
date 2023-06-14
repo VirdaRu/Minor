@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {SessionHandler} from "../../config/SessionHandler";
 
 @Component({
   selector: 'app-header',
@@ -7,4 +8,10 @@ import {Component} from '@angular/core';
 })
 export class HeaderComponent {
 
+  loggedInUser! : number;
+
+  constructor()
+  {
+    this.loggedInUser = SessionHandler.getUserSession();
+  }
 }

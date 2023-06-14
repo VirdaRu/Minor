@@ -1,19 +1,30 @@
 <div class="pdfViewer">
+
   <div *ngIf="showOptions" class="row">
-    <div class="col-xs-6">
-      <a (click)="SendRequest()">
-        <div class="btn-outline text-center">
+    <div *ngIf="isEmployer == 'employer'" class="col-xs-6">
+      <button class="btn-outline btn-padding" routerLink="/SendMessage">
           Verzoek Geheel CV
-        </div>
-      </a>
+      </button>
     </div>
 
-    <div class="col-xs-6">
-      <a (click)="BookmarkResume()">
-        <div class="btn-outline text-center">
-          <i class="glyphicon glyphicon-bookmark"></i> Bewaar CV
-        </div>
-      </a>
+    <div *ngIf="SavedPage == false && isBookmarked() == false" class="col-xs-6">
+      <form #OfferForm="ngForm" (ngSubmit)="onPostBookmark(OfferForm.value)">
+        <button type="submit" class="btn-outline btn-padding">
+          <div >
+            <i class="glyphicon glyphicon-bookmark"></i> Bewaar CV
+          </div>
+        </button>
+      </form>
+    </div>
+
+    <div *ngIf="(SavedPage == false && isBookmarked() == true) || SavedPage ==true" class="col-xs-6">
+      <form #OfferForm="ngForm" (ngSubmit)="UnbookmarkResume()">
+        <button type="submit" class="btn-outline btn-padding">
+          <div >
+            <i class="glyphicon glyphicon-bookmark"></i>CV Niet meer opslaan
+          </div>
+        </button>
+      </form>
     </div>
   </div>
 
@@ -31,4 +42,6 @@
     [showToolbar] = "false">
 
   </ngx-extended-pdf-viewer>
+
+    <p class="text-right" [textContent]="getOfferID()"></p>
 </div>

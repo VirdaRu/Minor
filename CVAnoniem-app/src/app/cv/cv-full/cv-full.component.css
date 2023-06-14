@@ -26,3 +26,8 @@
   background-color: #54c0ff;
   color: white;
 }
+
+.btn-padding{
+  padding-left: 50px;
+  padding-right: 50px;
+}

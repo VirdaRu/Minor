@@ -1,18 +1,11 @@
 <!--<h1>2 Resultaten voor: "ICT"</h1>-->
-
-<app-cv ResumeID = 0
-        Title="Angular Front-End Developer"
-        PDFPath="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/1200px-Angular_full_color_logo.svg.png"
-        Branche="ICT"
-        Beschrijving="Front-End, Web Development expert, HTML, CSS, Javascript, SQL, Databases, Python, Angular, Typescript"
-        Provincie="Friesland">
-</app-cv>
-
-<app-cv ResumeID = 1
-        Title="Deep Learning Expert"
-        PDFPath="https://blog.octo.com/wp-content/uploads/2015/12/react-logo-1000-transparent.png"
-        Branche="ICT"
-        Beschrijving="Deep Learning, AI, Python, Tensorflow, Pytorch"
-        Provincie="Limburg">
-</app-cv>
-
+<div id="list-of-offers">
+  <app-cv *ngFor="let offer of offers"
+          [OfferID]="offer.OfferID.toString()"
+          [Title]="offer.Title"
+          [Branche]="offer.WorkField"
+          [Beschrijving]="offer.Description"
+          [Provincie]="offer.Province"
+          [JobSeekerID]="offer.JobSeekerID.toString()">
+  </app-cv>
+</div>
