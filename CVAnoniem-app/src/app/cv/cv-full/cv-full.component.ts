@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {SavedOffers} from "../../../models/savedoffers";
 import {FormControl, FormGroup} from "@angular/forms";
-import {SessionHandler} from "../../account/SessionHandler";
+import {SessionHandler} from "../../config/SessionHandler";
 import {SavedOffersAPI_Requests} from "../../config/API_Requests/SavedOffersAPI_Requests";
 
 @Component({
@@ -19,7 +19,9 @@ export class CvFullComponent{
   public static OfferID : number;
   public static JobseekerID : number;
 
-  private userID = SessionHandler.getSession();
+  public isEmployer = SessionHandler.getUserTypeSession();
+
+  private userID = SessionHandler.getUserSession();
 
   SaveOffer! : SavedOffers;
 

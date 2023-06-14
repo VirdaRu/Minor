@@ -1,22 +1,24 @@
 import {IAPI_Requests} from "./IAPI_Requests";
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Constants} from "../constants";
-import {SessionHandler} from "../../account/SessionHandler";
+import {SessionHandler} from "../SessionHandler";
 
-class PermissionAPI_Requests implements  IAPI_Requests
+export class PermissionAPI_Requests implements  IAPI_Requests
 {
 
   constructor(private http : HttpClient) {
   }
 
-  get(): void
+  get()
   {
 
   }
 
-  getByID(id:any): void
+  getByID(id:any)
   {
-
+    return this.http.get(`${Constants.API_URL}/permission`,
+      {params : new HttpParams().set('id', SessionHandler.getUserSession())}
+    );
   }
 
   post(body : any)
@@ -25,11 +27,11 @@ class PermissionAPI_Requests implements  IAPI_Requests
       .set('content-type', 'application/json')
       .set('Access-Control-Allow-Origin', '*');
     body = JSON.stringify(body);
-    this.http.post(`${Constants.API_URL}/permission`,
+    return this.http.post(`${Constants.API_URL}/permission`,
       body,
       {'headers' : headers ,
         params : new HttpParams().set('senderid',
-          SessionHandler.getSession())})
+          SessionHandler.getUserSession())})
   }
 
 
@@ -38,9 +40,10 @@ class PermissionAPI_Requests implements  IAPI_Requests
 
   }
 
-  delete(id : any): void
+  delete(id : any)
   {
-
+    return this.http.delete(`${Constants.API_URL}/permission`,
+      { params : new HttpParams().set('id', id )});
   }
 
 }

@@ -7,9 +7,10 @@ export class MessageAPI_Requests implements IAPI_Requests
 {
   constructor(private http : HttpClient) { }
 
-  delete(id : any): void
+  delete(id : any)
   {
-
+    return this.http.delete(`${Constants.API_URL}/message`,
+      {params : new HttpParams().set("id", id)});
   }
 
   get(): void
@@ -29,7 +30,6 @@ export class MessageAPI_Requests implements IAPI_Requests
       .set('content-type', 'application/json')
       .set('Access-Control-Allow-Origin', '*');
     body = JSON.stringify(body);
-    alert(body);
 
     return this.http.post(`${Constants.API_URL}/message`, body,
       {'headers' : headers});

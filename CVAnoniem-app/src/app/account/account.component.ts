@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient, HttpParams} from "@angular/common/http";
-import {SessionHandler} from "./SessionHandler";
+import {SessionHandler} from "../config/SessionHandler";
 import {OfferAPI_Requests} from "../config/API_Requests/OfferAPI_Requests";
 import {CvListComponent} from "../cv/cv-list/cv-list.component";
 
@@ -18,7 +18,7 @@ export class AccountComponent implements OnInit {
 
   OfferAPI = new OfferAPI_Requests(this.http);
 
-  UserID : number = SessionHandler.getSession();
+  UserID : number = SessionHandler.getUserSession();
 
   ngOnInit() {
     this.OfferAPI.checkOfferExist(this.UserID)

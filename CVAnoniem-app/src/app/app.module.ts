@@ -36,6 +36,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MsgResultComponent } from './account/inbox/msg-result/msg-result.component';
 import { MessageSenderComponent } from './message-sender/message-sender.component';
+import { UserPermissionsComponent } from './user-permissions/user-permissions.component';
 
 
 const Route: Routes = [
@@ -52,7 +53,8 @@ const Route: Routes = [
   {path: 'CVPage', component: CvPageComponent},
   {path: 'SavedCVPage', component: SavedCvComponent},
   {path: 'UploadCV', component: UploadCvComponent},
-  {path: 'SendMessage', component: MessageSenderComponent}
+  {path: 'SendMessage', component: MessageSenderComponent},
+  {path: 'user-permissions', component: UserPermissionsComponent}
 ]
 
 @NgModule({
@@ -86,7 +88,8 @@ const Route: Routes = [
     SavedCvComponent,
     UploadCvComponent,
     MsgResultComponent,
-    MessageSenderComponent
+    MessageSenderComponent,
+    UserPermissionsComponent
   ],
     imports: [
         BrowserModule,                  //Browser Module

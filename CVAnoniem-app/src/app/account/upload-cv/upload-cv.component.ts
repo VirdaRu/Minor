@@ -3,7 +3,7 @@ import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {OfferAPI_Requests} from "../../config/API_Requests/OfferAPI_Requests"
 import {Offer} from "../../../models/offer"
 import { FormGroup, FormControl, Validators} from "@angular/forms";
-import {SessionHandler} from "../SessionHandler";
+import {SessionHandler} from "../../config/SessionHandler";
 
 @Component({
   selector: 'app-upload-cv',
@@ -13,7 +13,7 @@ import {SessionHandler} from "../SessionHandler";
 
 export class UploadCvComponent{
 
-  private userid : number = SessionHandler.getSession();
+  private userid : number = SessionHandler.getUserSession();
 
   API_Request = new OfferAPI_Requests(this.http);
 

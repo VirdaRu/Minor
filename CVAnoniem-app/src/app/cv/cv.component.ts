@@ -1,7 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {CvFullComponent} from "./cv-full/cv-full.component";
 import {HttpClient, HttpParams} from "@angular/common/http";
-import {SessionHandler} from "../account/SessionHandler";
+import {SessionHandler} from "../config/SessionHandler";
 
 @Component({
   selector: 'app-cv',
@@ -18,7 +18,7 @@ export class CvComponent{
   @Input() Provincie: string = "";
   @Input() JobSeekerID: string = "";
 
-  private userID = SessionHandler.getSession();
+  private userID = SessionHandler.getUserSession();
 
   constructor(private http : HttpClient) {
   }

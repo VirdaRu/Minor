@@ -3,7 +3,7 @@ import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Constants}  from "../constants";
 import {Offer} from "../../../models/offer";
 import {SavedOffers} from "../../../models/savedoffers";
-import {SessionHandler} from "../../account/SessionHandler";
+import {SessionHandler} from "../SessionHandler";
 
 export class SavedOffersAPI_Requests implements IAPI_Requests
 {
@@ -16,7 +16,7 @@ export class SavedOffersAPI_Requests implements IAPI_Requests
   {
     return this.http.delete(`${Constants.API_URL}/saved-offer`,
       { params: new HttpParams().set("offerid", id)
-          .set("userid", SessionHandler.getSession()) });
+          .set("userid", SessionHandler.getUserSession()) });
   }
 
   get()
