@@ -1,0 +1,12 @@
+<h1 class="text-center">Geaccepteerde Verzoeken</h1>
+
+<div *ngFor="let permission of PermissionList">
+  <div class="permission-result">
+    <p>Werkgever: {{ permission.EmployerID }}</p>
+    <button class="btn-outline-red"
+            (click)="RemovePermission(permission.PermissionID)">
+      Toestemming Gehele CV weghalen
+    </button>
+  </div>
+</div>
+

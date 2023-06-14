@@ -1,0 +1,29 @@
+<div class="container">
+  <form class="form-group" #MessageForm="ngForm" (ngSubmit)="onMessagePost(MessageForm.value)">
+    <h1 class="text-center">Verzoek gehele CV versturen</h1>
+
+    <br>
+
+    <p class="text-center">Aan:</p>
+    <app-cv-list [MessageView]="true">
+    </app-cv-list>
+    <!--
+        <h3 for="Title">Titel:</h3>
+        <input id="Title" class="form-control input-lg" placeholder="Titel" value="Verzoek toestemming voor gehele CV">
+    -->
+    <br>
+
+    <h3 for="Subject">Onderwerp:</h3>
+    <input ngModel name="Subject" class="form-control input-lg" placeholder="Onderwerp"
+           value="Verzoek toestemming voor gehele CV">
+
+    <br>
+
+    <h3 for="Message">Beschrijving:</h3>
+    <textarea ngModel name="Message" class="form-control" placeholder="Beschrijving" rows="6"></textarea>
+
+    <br>
+
+    <button class="btn-outline">Bericht Verzenden</button>
+  </form>
+</div>
