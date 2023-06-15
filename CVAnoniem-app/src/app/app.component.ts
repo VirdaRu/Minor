@@ -11,7 +11,7 @@ export class AppComponent implements OnInit {
   title = 'CVAnoniem-app';
 
   ngOnInit() {
-    //SessionHandler.setUserSession(10);
+    SessionHandler.setUserSession(10);
     SessionHandler.setUsertypeSession("employee");
   }
 

@@ -14,4 +14,6 @@ export class HeaderComponent {
   {
     this.loggedInUser = SessionHandler.getUserSession();
   }
+
+
 }
