@@ -1,9 +1,10 @@
 import {Component} from '@angular/core';
-import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 import {OfferAPI_Requests} from "../../config/API_Requests/OfferAPI_Requests"
 import {Offer} from "../../../models/offer"
-import { FormGroup, FormControl, Validators} from "@angular/forms";
+import {FormControl, FormGroup} from "@angular/forms";
 import {SessionHandler} from "../../config/SessionHandler";
+import {CvListComponent} from "../../cv/cv-list/cv-list.component";
 
 @Component({
   selector: 'app-upload-cv',
@@ -39,31 +40,41 @@ export class UploadCvComponent{
     Description: string,
     Province: string,
     JobSeekerID: number
-  })
-  {
-    offer.JobSeekerID = this.userid;
-    this.addOffer(offer);
-  }
-
-  addOffer(offer : Offer)
-  {
-    if (this.confirmUpdate()){
-      this.API_Request.post(offer).subscribe( response => console.log(response));
+  }) {
+    offer.OfferID =
+      offer.JobSeekerID = this.userid;
+    if (CvListComponent.OfferID != 0) {
+      this.addOffer(offer);
+    } else {
+      this.updateOffer(offer)
     }
   }
 
-  public confirmUpdate()
-  {
+  addOffer(offer: Offer) {
+    if (this.confirmUpdate()) {
+      this.API_Request.post(offer).subscribe(response => console.log(response));
+    }
+  }
+
+  updateOffer(offer: Offer) {
+    if (this.confirmUpdate()) {
+      this.API_Request.put(offer, offer.OfferID).subscribe
+      (response => console.log(response));
+    }
+  }
+
+
+  public confirmUpdate() {
     let confirmation =
       confirm("Als u al een CV heeft, wordt dit CV overschreven. Wilt u het huidige CV overschrijven?");
-    if(confirmation)
-    {
+    if (confirmation) {
       return true;
-    }else
+    } else
     {
       return false;
     }
   }
 }
 
+//TODO: For new components commit to git --> Add VCS
 //TODO: In Angular.json there is a line referencing a proxy file, this is for development! On production REMOVE it!

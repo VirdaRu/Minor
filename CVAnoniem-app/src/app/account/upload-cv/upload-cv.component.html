@@ -3,15 +3,17 @@
 <div class="container">
   <div class="col-md-6">
 
+    <app-cv-list [AccountView]="true"></app-cv-list>
+
     <form #OfferForm="ngForm" (ngSubmit)="onOfferPost(OfferForm.value)" class="form-group">
 
       <label for="title"> Geef hier een titel:</label>
-        <input ngModel name="Title" type="text" class="form-control input-lg" placeholder="Titel" id="title">
+      <input ngModel name="Title" type="text" class="form-control input-lg" placeholder="Titel" id="title">
 
       <br><br>
 
       <label for="branche"> Geef hier de branche waarin u werk zoekt:</label>
-        <input ngModel name="WorkField" type="text" class="form-control input-lg"  placeholder="Branche" id="branche">
+      <input ngModel name="WorkField" type="text" class="form-control input-lg" placeholder="Branche" id="branche">
 
       <br><br>
 

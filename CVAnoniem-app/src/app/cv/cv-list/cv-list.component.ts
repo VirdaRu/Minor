@@ -1,7 +1,6 @@
 import {Component, Input} from '@angular/core';
-import {HttpClient, HttpParams} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 import {Offer} from "../../../models/offer";
-import {map, Observable, interval, tap} from "rxjs";
 import {SessionHandler} from "../../config/SessionHandler";
 import {OfferAPI_Requests} from "../../config/API_Requests/OfferAPI_Requests";
 import {CvFullComponent} from "../cv-full/cv-full.component";
@@ -23,7 +22,8 @@ export class CvListComponent {
   OfferAPI = new OfferAPI_Requests(this.http);
   SavedAPI = new SavedOffersAPI_Requests(this.http);
 
-  public static query : string;
+  public static query: string;
+  public static OfferID = 0;
 
   private userID = SessionHandler.getUserSession();
 
@@ -40,6 +40,7 @@ export class CvListComponent {
     {
       this.OfferAPI.getByJobseekerID(this.userID)
         .subscribe(response => this.offers = response);
+      CvListComponent.OfferID = this.offers[0].OfferID;
     }
     else if (this.MessageView)
     {

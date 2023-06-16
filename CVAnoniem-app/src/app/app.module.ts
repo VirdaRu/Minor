@@ -47,7 +47,7 @@ import {
 
 const Route: Routes = [
   //{path: '', redirectTo: 'Home',},
-  //{path: '', component: HomeComponent},
+  {path: '', component: HomeComponent},
   {path: 'Login', component: LoginComponent},
   {path: 'Register', component: RegisterComponent},
   {path: 'FAQ', component: FAQComponent},

@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {IAPI_Requests} from "./IAPI_Requests";
 import {Offer} from "../../../models/offer";
@@ -42,7 +41,14 @@ export class OfferAPI_Requests implements IAPI_Requests
 
   put(body : any, id : any)
   {
+    const headers = new HttpHeaders()
+      .set('content-type', 'application/json')
+      .set('Access-Control-Allow-Origin', '*');
+    body = JSON.stringify(body);
 
+    return this.http.put(`${Constants.API_URL}/offer`,
+      body,
+      {'headers': headers});
   }
 
   delete(id : any)
