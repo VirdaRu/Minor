@@ -39,6 +39,10 @@ import {MessageSenderComponent} from './message-sender/message-sender.component'
 import {UserPermissionsComponent} from './user-permissions/user-permissions.component';
 import {GoogleLoginComponent} from "./user/social-login/google-login/google-login.component";
 import {OAuthModule} from "angular-oauth2-oidc";
+import {LinkedinLoginComponent} from './user/social-login/linkedin-login/linkedin-login.component';
+import {
+  LinkedinResponseComponent
+} from './user/social-login/linkedin-login/linkedin-response/linkedin-response.component';
 
 
 const Route: Routes = [
@@ -57,7 +61,10 @@ const Route: Routes = [
   {path: 'UploadCV', component: UploadCvComponent},
   {path: 'SendMessage', component: MessageSenderComponent},
   {path: 'user-permissions', component: UserPermissionsComponent},
-  {path: 'google-login', component: GoogleLoginComponent}
+  {path: 'google-login', component: GoogleLoginComponent},
+  {path: 'linkedin-login', component: LinkedinLoginComponent},
+  {path: 'linkedin-response', component: LinkedinResponseComponent},
+  // {path: '', redirectTo: '/login', pathMatch: 'full'},
 ]
 
 @NgModule({
@@ -94,6 +101,8 @@ const Route: Routes = [
     MessageSenderComponent,
     UserPermissionsComponent,
     GoogleLoginComponent,
+    LinkedinLoginComponent,
+    LinkedinResponseComponent,
   ],
   imports: [
     BrowserModule,                  //Browser Module
