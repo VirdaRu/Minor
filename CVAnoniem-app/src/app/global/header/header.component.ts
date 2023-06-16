@@ -1,5 +1,7 @@
 import {Component} from '@angular/core';
 import {SessionHandler} from "../../config/SessionHandler";
+import {GoogleLoginComponent} from "../../user/social-login/google-login/google-login.component";
+import {UserInfo} from "angular-oauth2-oidc";
 
 @Component({
   selector: 'app-header',
@@ -8,11 +10,23 @@ import {SessionHandler} from "../../config/SessionHandler";
 })
 export class HeaderComponent {
 
-  loggedInUser! : number;
+  loggedInUser!: number;
+  userInfo?: UserInfo;
 
-  constructor()
-  {
+  constructor() {
     this.loggedInUser = SessionHandler.getUserSession();
+  }
+
+  public logOut() {
+
+  }
+
+  public getUserInfo() {
+    return GoogleLoginComponent.userinfo;
+  }
+
+  public UserIsLoggedIn() {
+    return GoogleLoginComponent.LoggedIn;
   }
 
 

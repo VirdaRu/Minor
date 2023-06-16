@@ -8,22 +8,31 @@
     </div>
     <div class="col-xs-3">
 
-
-      <div *ngIf="loggedInUser == 0">
+      <!--<div *ngIf="loggedInUser == 0 ">-->
+      <div *ngIf="!UserIsLoggedIn()">
         <br>
         <button class="SignInBtn btn-outline left" routerLink="/Login">
           Inloggen / Registreren
         </button>
       </div>
 
-      <div *ngIf="loggedInUser > 0">
-        <div class="left">
+      <!--<div *ngIf="loggedInUser > 0">-->
+      <div *ngIf="UserIsLoggedIn()">
 
-         <h1>
-           <a class="clickable-header-item" routerLink="/Account">
-            Hello, {{loggedInUser.toString()}}!
+        <br>
+
+        <div class="left dropdown">
+          <a class="clickable-header-item" routerLink="/Account">
+            <div class="container">
+              <div class="row single-line">
+                <img class="img-responsive img-rounded" height="50" width="50" src="{{getUserInfo()?.info?.picture}}">
+                <h4 style="margin: 10px;">{{getUserInfo()?.info?.name }}</h4>
+              </div>
+            </div>
           </a>
-         </h1>
+          <ul class="dropdown-content">
+            <li><a (click)="logOut()">Uitloggen</a></li>
+          </ul>
 
         </div>
       </div>
