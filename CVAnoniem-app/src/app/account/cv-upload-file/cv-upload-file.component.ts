@@ -13,8 +13,8 @@ export class CvUploadFileComponent {
   }
 
   private userID = SessionHandler.getSession();
-  fileName = '';
-  filesrc : any;
+  fileInfo = '';
+  fileSrc : any;
   uploaded : boolean = false;
 
   onFileSelected({event}: { event: any }) {
@@ -41,13 +41,13 @@ export class CvUploadFileComponent {
 
   public onResponse(ID : number, file : File){
     if (ID == 1){
-      this.fileName = file.name;
-      this.filesrc = file;
+      this.fileInfo = file.name;
+      this.fileSrc = file;
       this.uploaded = true;
     }else if (ID == 0) {
-      this.fileName = "Deze website ondersteund alleen bestanden in PDF formaat.";
+      this.fileInfo = "Deze website ondersteund alleen bestanden in PDF formaat.";
     }else if (ID == 2) {
-      this.fileName = "Het bestand dat u heeft gekozen is groter dan 2MB, upload alstublieft een kleiner bestand.";
+      this.fileInfo = "Het bestand dat u heeft gekozen is groter dan 2MB, upload alstublieft een kleiner bestand.";
     }
   }
 

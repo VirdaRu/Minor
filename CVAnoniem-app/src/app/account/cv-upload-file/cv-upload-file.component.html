@@ -3,7 +3,7 @@
        (change)="onFileSelected({event : $event})" #fileUpload>
 
 <div class="file-upload">
-  {{fileName || "Nog geen bestand geupload."}}
+  {{fileInfo || "Nog geen bestand geupload."}}
   <button class="upload-btn"
           (click)="fileUpload.click()"> Kies een bestand
   </button>
@@ -11,7 +11,7 @@
 
 
   <ngx-extended-pdf-viewer *ngIf="uploaded"
-    [src]= filesrc
+    [src]= fileSrc
     [useBrowserLocale] = "true"
     [showDownloadButton] = "false"
     [showEditor] = "false"
