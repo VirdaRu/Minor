@@ -35,6 +35,7 @@ import {UploadCvComponent} from './account/upload-cv/upload-cv.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MsgResultComponent } from './account/inbox/msg-result/msg-result.component';
+import { CvUploadFileComponent } from './account/cv-upload-file/cv-upload-file.component';
 
 
 const Route: Routes = [
@@ -83,7 +84,8 @@ const Route: Routes = [
     AboutComponent,
     SavedCvComponent,
     UploadCvComponent,
-    MsgResultComponent
+    MsgResultComponent,
+    CvUploadFileComponent
   ],
     imports: [
         BrowserModule,                  //Browser Module
