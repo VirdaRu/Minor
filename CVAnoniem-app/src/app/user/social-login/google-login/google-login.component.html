@@ -8,3 +8,13 @@
     <button (click)="logOut()">Logout from Google</button>
   </div>
 </div>
+
+<div *ngIf="!isLoggedIn()">
+  <div class="container">
+    <h1>U bent uitgelogd.</h1>
+    <br>
+    <button class="btn-outline" routerLink="/">
+      Terug naar het hoofdmenu
+    </button>
+  </div>
+</div>
