@@ -1,7 +1,8 @@
 import {Component} from '@angular/core';
 import {GoogleApiService, UserInfo} from "./google-api.service";
 import {HttpClient} from "@angular/common/http";
-import {UserAPI_Requests} from "../../../config/API_Requests/UserAPI_Requests";
+import {UserAPI_Requests} from 'src/app/config/API_Requests/UserAPI_Requests';
+
 
 @Component({
   selector: 'app-google-login',
