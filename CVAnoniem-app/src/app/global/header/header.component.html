@@ -21,7 +21,7 @@
 
         <br>
 
-        <div class="left dropdown">
+        <div class="left dropdown-bar">
           <a class="clickable-header-item" routerLink="/Account">
             <div class="container">
               <div class="row single-line">
@@ -30,8 +30,14 @@
               </div>
             </div>
           </a>
-          <ul class="dropdown-content">
-            <li><a (click)="logOut()">Uitloggen</a></li>
+
+          <ul class="dropdown-nav-bar">
+            <li>
+              <a routerLink="/google-login" (click)="logOut()">
+                <span class="glyphicon glyphicon-log-out"></span>
+                Uitloggen
+              </a>
+            </li>
           </ul>
 
         </div>

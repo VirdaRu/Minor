@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {SessionHandler} from "../../config/SessionHandler";
 import {GoogleLoginComponent} from "../../user/social-login/google-login/google-login.component";
-import {UserInfo} from "angular-oauth2-oidc";
+import {GoogleApiService} from "../../user/social-login/google-login/google-api.service";
 
 @Component({
   selector: 'app-header',
@@ -11,14 +11,9 @@ import {UserInfo} from "angular-oauth2-oidc";
 export class HeaderComponent {
 
   loggedInUser!: number;
-  userInfo?: UserInfo;
 
-  constructor() {
+  constructor(private readonly googleApi: GoogleApiService) {
     this.loggedInUser = SessionHandler.getUserSession();
-  }
-
-  public logOut() {
-
   }
 
   public getUserInfo() {
@@ -29,5 +24,7 @@ export class HeaderComponent {
     return GoogleLoginComponent.LoggedIn;
   }
 
-
+  logOut() {
+    return this.googleApi.signOut();
+  }
 }

@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
 import {GoogleApiService, UserInfo} from "./google-api.service";
-import {SessionHandler} from "../../../config/SessionHandler";
 import {HttpClient} from "@angular/common/http";
 import {UserAPI_Requests} from "../../../config/API_Requests/UserAPI_Requests";
 
@@ -16,10 +15,13 @@ export class GoogleLoginComponent {
   userInfo?: UserInfo;
   static LoggedIn: boolean;
   static userinfo?: UserInfo;
+  UID: string = "";
 
   constructor(private readonly googleApi: GoogleApiService, private http: HttpClient) {
     googleApi.userProfileSubject.subscribe((info) => {
       this.userInfo = info
+      this.UID = info.info.sub
+      this.SetSession(this.UID)
     })
   }
 
@@ -29,12 +31,14 @@ export class GoogleLoginComponent {
     return this.googleApi.isLoggedIn();
   }
 
-  SessionSetter(TPID: string) {
-    let x: any;
-    this.userAPI.getThirdPartyID(TPID).subscribe(
-      response => x = response
-    );
-    SessionHandler.setUserSession(x);
+  SetSession(ThirdPartyID: string) {
+    if (ThirdPartyID === undefined) {
+      alert("ERROR: undefined")
+    } else {
+      this.userAPI.getThirdPartyID(ThirdPartyID).subscribe(
+        response => alert("ID Found: " + response)//SessionHandler.setUserSession(Number(response));
+      );
+    }
   }
 
   logOut(): void {
