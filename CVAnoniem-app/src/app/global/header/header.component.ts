@@ -1,5 +1,7 @@
 import {Component} from '@angular/core';
 import {SessionHandler} from "../../config/SessionHandler";
+import {GoogleLoginComponent} from "../../user/social-login/google-login/google-login.component";
+import {GoogleApiService} from "../../user/social-login/google-login/google-api.service";
 
 @Component({
   selector: 'app-header',
@@ -8,12 +10,21 @@ import {SessionHandler} from "../../config/SessionHandler";
 })
 export class HeaderComponent {
 
-  loggedInUser! : number;
+  loggedInUser!: number;
 
-  constructor()
-  {
+  constructor(private readonly googleApi: GoogleApiService) {
     this.loggedInUser = SessionHandler.getUserSession();
   }
 
+  public getUserInfo() {
+    return GoogleLoginComponent.userinfo;
+  }
 
+  public UserIsLoggedIn() {
+    return GoogleLoginComponent.LoggedIn;
+  }
+
+  logOut() {
+    return this.googleApi.signOut();
+  }
 }

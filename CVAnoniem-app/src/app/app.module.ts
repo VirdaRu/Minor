@@ -64,6 +64,7 @@ const Route: Routes = [
   {path: 'google-login', component: GoogleLoginComponent},
   {path: 'linkedin-login', component: LinkedinLoginComponent},
   {path: 'linkedin-response', component: LinkedinResponseComponent},
+  {path: '**', component: ErrorComponent},
   // {path: '', redirectTo: '/login', pathMatch: 'full'},
 ]
 
