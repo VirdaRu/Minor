@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {SessionHandler} from "./config/SessionHandler";
-import {GoogleApiService} from "./user/social-login/google-login/google-api.service";
 
 @Component({
   selector: 'app-root',
@@ -15,7 +14,6 @@ export class AppComponent implements OnInit {
     SessionHandler.setUsertypeSession("employee");
   }
 
-  constructor(private readonly google: GoogleApiService) {
-  }
+
 }
 

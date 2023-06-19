@@ -23,5 +23,4 @@ export class GoogleLoginComponent {
     this.googleApi.signOut()
   }
 
-
 }
