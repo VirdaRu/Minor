@@ -1,0 +1,19 @@
+<form>
+  <h3 class="text-center">Kies hier u gebruikerstype:</h3>
+  <div class="form-group">
+
+    <label>Type gebruiker: ik ben een </label>
+    <select #opts (click)="onSelect(opts.value)" class="form-control input-lg">
+      <option *ngFor="let o of options" [ngValue]="o.value">
+        {{o.value}}. {{o.option}}
+      </option>
+    </select>
+
+  </div>
+
+  <br>
+
+  <input type="button" (click)="continue()" class="col-centered btn btn-lg btn-primary" value="Bevestigen">
+
+</form>
+

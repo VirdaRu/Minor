@@ -33,8 +33,17 @@
 
           <ul class="dropdown-nav-bar">
             <li>
+              <a routerLink="/UserSettings">
+                <i class="glyphicon glyphicon-cog"></i>
+                Mijn Instellingen
+              </a>
+            </li>
+
+            <div style="padding:5px;"></div>
+
+            <li>
               <a routerLink="/google-login" (click)="logOut()">
-                <span class="glyphicon glyphicon-log-out"></span>
+                <i class="glyphicon glyphicon-log-out"></i>
                 Uitloggen
               </a>
             </li>
