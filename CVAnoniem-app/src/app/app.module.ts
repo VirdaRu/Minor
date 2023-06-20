@@ -108,7 +108,7 @@ const Route: Routes = [
     LinkedinLoginComponent,
     LinkedinResponseComponent,
     UserSettingsComponent,
-    UsertypeSwitchComponent,
+    UsertypeSwitchComponent
   ],
   imports: [
     BrowserModule,                  //Browser Module
