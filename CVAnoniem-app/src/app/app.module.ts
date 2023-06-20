@@ -43,11 +43,14 @@ import {LinkedinLoginComponent} from './user/social-login/linkedin-login/linkedi
 import {
   LinkedinResponseComponent
 } from './user/social-login/linkedin-login/linkedin-response/linkedin-response.component';
+import {UserSettingsComponent} from './user/user-settings/user-settings.component';
+import {UsertypeSwitchComponent} from './user/usertype-switch/usertype-switch.component';
 
 
 const Route: Routes = [
   //{path: '', redirectTo: 'Home',},
   {path: '', component: HomeComponent},
+  {path: 'UserSettings', component: UserSettingsComponent},
   {path: 'Login', component: LoginComponent},
   {path: 'Register', component: RegisterComponent},
   {path: 'FAQ', component: FAQComponent},
@@ -64,8 +67,8 @@ const Route: Routes = [
   {path: 'google-login', component: GoogleLoginComponent},
   {path: 'linkedin-login', component: LinkedinLoginComponent},
   {path: 'linkedin-response', component: LinkedinResponseComponent},
-  {path: '**', component: ErrorComponent},
-  // {path: '', redirectTo: '/login', pathMatch: 'full'},
+  {path: 'set-user-type', component: UsertypeSwitchComponent},
+  {path: '**', component: ErrorComponent}//Any other path will redirect to error
 ]
 
 @NgModule({
@@ -104,6 +107,8 @@ const Route: Routes = [
     GoogleLoginComponent,
     LinkedinLoginComponent,
     LinkedinResponseComponent,
+    UserSettingsComponent,
+    UsertypeSwitchComponent,
   ],
   imports: [
     BrowserModule,                  //Browser Module

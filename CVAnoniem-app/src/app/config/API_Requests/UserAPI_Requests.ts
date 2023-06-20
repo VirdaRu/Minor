@@ -1,5 +1,5 @@
 import {IAPI_Requests} from "./IAPI_Requests";
-import {HttpClient, HttpParams} from "@angular/common/http";
+import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Constants} from "../constants";
 
 export class UserAPI_Requests implements IAPI_Requests {
@@ -21,7 +21,17 @@ export class UserAPI_Requests implements IAPI_Requests {
       {params: new HttpParams().set("id", TPid)});
   }
 
-  post(body: any): void {
+  post(body: any) {
+    return this.http.post(`${Constants.API_URL}/user`, body);
+  }
+
+  postUsingThirdParty(body: any) {
+    const headers = new HttpHeaders()
+      .set('content-type', 'application/json')
+      .set('Access-Control-Allow-Origin', '*');
+    // body = JSON.stringify(body);
+
+    return this.http.post(`${Constants.API_URL}/user/third-party`, body, {'headers': headers});
   }
 
   put(body: any, id: any): void {
