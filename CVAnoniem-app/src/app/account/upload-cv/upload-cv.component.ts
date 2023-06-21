@@ -4,7 +4,6 @@ import {OfferAPI_Requests} from "../../config/API_Requests/OfferAPI_Requests"
 import {Offer} from "../../../models/offer"
 import {FormControl, FormGroup} from "@angular/forms";
 import {SessionHandler} from "../../config/SessionHandler";
-import {CvListComponent} from "../../cv/cv-list/cv-list.component";
 
 @Component({
   selector: 'app-upload-cv',
@@ -12,13 +11,21 @@ import {CvListComponent} from "../../cv/cv-list/cv-list.component";
   styleUrls: ['./upload-cv.component.css']
 })
 
-export class UploadCvComponent{
+export class UploadCvComponent {
 
-  private userid : number = SessionHandler.getUserSession();
+  private userid: number = SessionHandler.getUserSession();
 
-  API_Request = new OfferAPI_Requests(this.http);
+  private userHasOffer!: Offer[];
 
-  constructor(private http : HttpClient) {
+  OfferAPI = new OfferAPI_Requests(this.http);
+
+  constructor(private http: HttpClient) {
+    this.OfferAPI.getByJobseekerID(this.userid)
+      .subscribe(
+        response => {
+          this.userHasOffer = response;
+
+        });
 
   }
 
@@ -41,24 +48,30 @@ export class UploadCvComponent{
     Province: string,
     JobSeekerID: number
   }) {
-    offer.OfferID =
-      offer.JobSeekerID = this.userid;
-    if (CvListComponent.OfferID != 0) {
-      this.addOffer(offer);
+    if (this.userHasOffer.length < 1) {
+      offer.OfferID = 0;
     } else {
-      this.updateOffer(offer)
+      offer.OfferID = this.userHasOffer[0].OfferID;
+    }
+
+    offer.JobSeekerID = this.userid;
+
+    if (this.userHasOffer.length > 0) {
+      this.updateOffer(offer);
+    } else {
+      this.addOffer(offer);
     }
   }
 
   addOffer(offer: Offer) {
     if (this.confirmUpdate()) {
-      this.API_Request.post(offer).subscribe(response => console.log(response));
+      this.OfferAPI.post(offer).subscribe(response => console.log(response));
     }
   }
 
   updateOffer(offer: Offer) {
     if (this.confirmUpdate()) {
-      this.API_Request.put(offer, offer.OfferID).subscribe
+      this.OfferAPI.put(offer, offer.OfferID).subscribe
       (response => console.log(response));
     }
   }

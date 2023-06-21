@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {SessionHandler} from "../../config/SessionHandler";
 import {GoogleApiService} from "../../user/social-login/google-login/google-api.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-header',
@@ -11,7 +12,7 @@ export class HeaderComponent {
 
   loggedInUser!: number;
 
-  constructor(private googleApi: GoogleApiService) {
+  constructor(private googleApi: GoogleApiService, private router: Router) {
     this.loggedInUser = SessionHandler.getUserSession();
   }
 
@@ -24,7 +25,6 @@ export class HeaderComponent {
   }
 
   public UserIsLoggedIn() {
-    console.log(SessionHandler.getUsername())
     if (SessionHandler.getUsername()) {
       return true;
     } else {
@@ -33,8 +33,8 @@ export class HeaderComponent {
   }
 
   logOut() {
-    //alert("logged out")
-    //return this.router.navigate(['/google-login']);
-    //return this.googleApi.signOut();
+    this.googleApi.signOut();
+    SessionHandler.LogOutSessions();
+    return this.router.navigate(['/google-login']);
   }
 }
