@@ -1,6 +1,7 @@
 import {IAPI_Requests} from "./IAPI_Requests";
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Constants} from "../constants";
+import {User} from "../../../models/user";
 
 export class UserAPI_Requests implements IAPI_Requests {
 
@@ -11,9 +12,18 @@ export class UserAPI_Requests implements IAPI_Requests {
   }
 
   get(): void {
+
   }
 
   getByID(id: any): void {
+  }
+
+  getUserExist(email: string, password: string) {
+    return this.http.get<User>(`${Constants.API_URL}/user/user-exist`,
+      {
+        params: new HttpParams().set("email", email)
+          .set("password", password)
+      });
   }
 
   getThirdPartyID(TPid: string) {

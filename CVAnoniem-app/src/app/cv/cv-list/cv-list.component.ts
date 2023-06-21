@@ -50,7 +50,9 @@ export class CvListComponent {
     }
     else
     {
+      setInterval(() => {
         this.HandleResults();
+      }, 1000);
     }
   }
 
