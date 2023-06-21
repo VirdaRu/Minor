@@ -16,7 +16,6 @@ export class GoogleLoginComponent {
   userAPI = new UserAPI_Requests(this.http);
 
   userInfo?: UserInfo;
-  static LoggedIn: boolean;
   static userinfo?: UserInfo;
   UID: string = "";
 
@@ -24,25 +23,23 @@ export class GoogleLoginComponent {
     googleApi.userProfileSubject.subscribe((info) => {
       this.userInfo = info
       this.UID = info.info.sub
-      this.SetSession(this.UID)
+      this.setSessions()
     })
   }
 
   isLoggedIn(): boolean {
-    GoogleLoginComponent.LoggedIn = this.googleApi.isLoggedIn();
+    //GoogleLoginComponent.LoggedIn = this.googleApi.isLoggedIn();
     GoogleLoginComponent.userinfo = this.userInfo;
     return this.googleApi.isLoggedIn();
   }
 
-  SetSession(ThirdPartyID: string) {
+  SetUserIDSession(ThirdPartyID: string) {
     if (ThirdPartyID === undefined) {
-      alert("ERROR: undefined")
+      console.log("ERROR: Undefined")
     } else {
       this.userAPI.getThirdPartyID(ThirdPartyID).subscribe(
         response => {
           this.HandleSessionSetter(Number(response));
-          //alert("ID Found: " + response)
-          //SessionHandler.setUserSession(Number(response));
         }
       );
     }
@@ -52,12 +49,25 @@ export class GoogleLoginComponent {
     if (ID == 0) {
       this.router.navigate(["/set-user-type"], {relativeTo: this.route});
     } else {
-      SessionHandler.setUserSession(ID);
+      SessionHandler.setUserSession(ID);                  //Set Session for UserID
+      this.userAPI.getUsertype(ID).subscribe(             //Set Session for usertype
+        response => {
+          SessionHandler.setUsertypeSession(response.toString())
+        }
+      );
+
     }
   }
 
+  setSessions() {
+    this.SetUserIDSession(this.UID);
+    SessionHandler.setUsername(this.userInfo!.info.name);
+    SessionHandler.setPicture(this.userInfo?.info.picture);
+  }
+
   logOut(): void {
-    GoogleLoginComponent.LoggedIn = false;
+    SessionHandler.LogOutSessions();
+    //GoogleLoginComponent.LoggedIn = false;
     this.googleApi.signOut();
   }
 

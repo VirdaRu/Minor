@@ -37,7 +37,7 @@ export class UsertypeSwitchComponent {
           SessionHandler.setUserSession(Number(response));
         });
 
-      this.router.navigate(["/"], {relativeTo: this.route});
+      this.router.navigate(["/"]);
 
     } else {
       alert("Gestopt")
@@ -51,8 +51,10 @@ export class UsertypeSwitchComponent {
   getUserType(val: any) {
 
     if (val.includes("1")) {
+      SessionHandler.setUsertypeSession("employer");
       return true;
     } else {
+      SessionHandler.setUsertypeSession("employee");
       return false;
     }
   }

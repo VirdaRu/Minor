@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {HttpClient, HttpParams} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 import {SessionHandler} from "../config/SessionHandler";
 import {OfferAPI_Requests} from "../config/API_Requests/OfferAPI_Requests";
-import {CvListComponent} from "../cv/cv-list/cv-list.component";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-account',
@@ -11,7 +11,7 @@ import {CvListComponent} from "../cv/cv-list/cv-list.component";
 })
 export class AccountComponent implements OnInit {
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
   }
 
   OfferID : number = 0;
@@ -20,18 +20,31 @@ export class AccountComponent implements OnInit {
 
   UserID : number = SessionHandler.getUserSession();
 
+
   ngOnInit() {
-    this.OfferAPI.checkOfferExist(this.UserID)
-      .subscribe(response => this.OfferID = Number(response))
-
-
+    if (this.loggedIn()) {
+      this.OfferAPI.checkOfferExist(this.UserID)
+        .subscribe(response => this.OfferID = Number(response))
+    } else {
+      this.router.navigate(["/Login"])
+    }
   }
 
-  public DeleteCV()
-  {
-    let dialog = confirm("Weet u zeker dat u uw CV wilt verwijderen?");
-    if (dialog)
+  public loggedIn() {
+    if (this.UserID != 0)  //isLogged In
     {
+      return true;
+    }
+    return false;
+  }
+
+  public isEmployer() {
+    return (Number(SessionHandler.getUserTypeSession()));
+  }
+
+  public DeleteCV() {
+    let dialog = confirm("Weet u zeker dat u uw CV wilt verwijderen?");
+    if (dialog) {
       this.OfferAPI.delete(this.OfferID)
     }
   }

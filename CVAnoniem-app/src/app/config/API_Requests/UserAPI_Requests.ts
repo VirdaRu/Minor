@@ -25,11 +25,15 @@ export class UserAPI_Requests implements IAPI_Requests {
     return this.http.post(`${Constants.API_URL}/user`, body);
   }
 
+  getUsertype(id: number) {
+    return this.http.get(`${Constants.API_URL}/user/usertype`,
+      {params: new HttpParams().set("id", id)});
+  }
+
   postUsingThirdParty(body: any) {
     const headers = new HttpHeaders()
       .set('content-type', 'application/json')
       .set('Access-Control-Allow-Origin', '*');
-    // body = JSON.stringify(body);
 
     return this.http.post(`${Constants.API_URL}/user/third-party`, body, {'headers': headers});
   }

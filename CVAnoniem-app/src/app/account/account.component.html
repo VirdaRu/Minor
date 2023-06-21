@@ -8,13 +8,14 @@
     <!--Mijn account functionalities-->
     <div class="MyAccountButtons col-md-3 text-center">
 
-      <button id="edit-CV" class="btn-outline" type="submit" routerLink="/UploadCV">
+
+      <button *ngIf="!isEmployer()" id="edit-CV" class="btn-outline" type="submit" routerLink="/UploadCV">
         <i class="glyphicon glyphicon-upload"></i> CV Uploaden
       </button>
 
       <button class="btn-outline" routerLink="/Inbox">
         <i class="glyphicon glyphicon-envelope"></i>
-         Mijn Inbox
+        Mijn Inbox
       </button>
 
       <button class="btn-outline">
@@ -32,7 +33,7 @@
         Geaccepteerde Verzoeken
       </button>
 
-      <button class="btn-outline-red" (click)="DeleteCV()">
+      <button *ngIf="!isEmployer()" class="btn-outline-red" (click)="DeleteCV()">
         <i class="glyphicon glyphicon-trash"></i>
         Mijn CV Verwijderen
       </button>

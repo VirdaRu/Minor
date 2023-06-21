@@ -5,6 +5,7 @@ import {SessionHandler} from "../../../config/SessionHandler";
 import {Permission} from "../../../../models/permission";
 import {MessageAPI_Requests} from "../../../config/API_Requests/MessageAPI_Requests";
 import {PermissionAPI_Requests} from "../../../config/API_Requests/PermissionAPI_Requests";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-msg-result',
@@ -26,7 +27,7 @@ export class MsgResultComponent {
   @Input() Attachment: string = "";
   @Input() MessageID: string = "";
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
 
   }
 
@@ -47,7 +48,6 @@ export class MsgResultComponent {
 
   public acceptRequest(permission: Permission) {
     this.PermissionAPI.post(permission).subscribe();
-    //this.MessageAPI.post(permission).subscribe();
   }
 
   public deleteRequest() {
@@ -56,13 +56,12 @@ export class MsgResultComponent {
     );
 
     if (userConfirmRemoval) {
-      alert("Confirm");
       this.MessageAPI.delete(this.MessageID).subscribe();
     }
   }
 
   public rejectRequest() {
     //Offer Rejected
-    alert("Rejected")
+    alert("Offerte geweigerd")
   }
 }
