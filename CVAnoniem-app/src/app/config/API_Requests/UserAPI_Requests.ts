@@ -26,13 +26,25 @@ export class UserAPI_Requests implements IAPI_Requests {
       });
   }
 
+  getUserExistByEmail(email: string) {
+    return this.http.get<User>(`${Constants.API_URL}/user/user-exist-email`,
+      {
+        params: new HttpParams().set("email", email)
+      });
+  }
+
   getThirdPartyID(TPid: string) {
     return this.http.get(`${Constants.API_URL}/user/user-with-thirdpartyid`,
       {params: new HttpParams().set("id", TPid)});
   }
 
   post(body: any) {
-    return this.http.post(`${Constants.API_URL}/user`, body);
+    const headers = new HttpHeaders()
+      .set('content-type', 'application/json')
+      .set('Access-Control-Allow-Origin', '*');
+
+    return this.http.post(`${Constants.API_URL}/user`, body,
+      {'headers': headers});
   }
 
   getUsertype(id: number) {
@@ -49,6 +61,7 @@ export class UserAPI_Requests implements IAPI_Requests {
   }
 
   put(body: any, id: any): void {
+
   }
 
 }

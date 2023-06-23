@@ -39,8 +39,4 @@ export class LoginComponent {
     SessionHandler.setUsername(this.user.EmailAddress);
   }
 
-  public Navigate() {
-
-  }
-
 }

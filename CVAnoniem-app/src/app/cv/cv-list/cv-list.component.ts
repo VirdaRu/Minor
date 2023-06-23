@@ -5,6 +5,7 @@ import {SessionHandler} from "../../config/SessionHandler";
 import {OfferAPI_Requests} from "../../config/API_Requests/OfferAPI_Requests";
 import {CvFullComponent} from "../cv-full/cv-full.component";
 import {SavedOffersAPI_Requests} from "../../config/API_Requests/SavedOffersAPI_Requests";
+import {SearchComponent} from "../../home/search/search.component";
 
 @Component({
   selector: 'app-cv-list',
@@ -13,22 +14,26 @@ import {SavedOffersAPI_Requests} from "../../config/API_Requests/SavedOffersAPI_
 })
 export class CvListComponent {
 
-  @Input() SavedPage : boolean = false;
-  @Input() MessageView : boolean = false;
-  @Input() AccountView : boolean = false;
+  search!: SearchComponent;
 
-  offers! : Offer[];
+  @Input() SavedPage: boolean = false;
+  @Input() MessageView: boolean = false;
+  @Input() AccountView: boolean = false;
+
+  offers!: Offer[];
 
   OfferAPI = new OfferAPI_Requests(this.http);
   SavedAPI = new SavedOffersAPI_Requests(this.http);
 
   public static query: string;
+  public static oldquery: string;
   public static OfferID = 0;
 
   private userID = SessionHandler.getUserSession();
 
   constructor(private http : HttpClient)
   {
+
   }
 
   ngOnInit(){
@@ -51,7 +56,10 @@ export class CvListComponent {
     else
     {
       setInterval(() => {
-        this.HandleResults();
+        if (CvListComponent.query != CvListComponent.oldquery) {
+          this.getResultsBySearch(CvListComponent.query);
+        }
+        CvListComponent.oldquery = CvListComponent.query;
       }, 1000);
     }
   }
@@ -74,16 +82,5 @@ export class CvListComponent {
     return this.OfferAPI.getByID(query).subscribe(
       response => this.offers = response);
   }
-
-  public HandleResults()
-  {
-    if (CvListComponent.query == "")
-    {
-
-    }else {
-      this.getResultsBySearch(CvListComponent.query);
-    }
-  }
-
 
 }

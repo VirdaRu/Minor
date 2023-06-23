@@ -5,5 +5,6 @@ export interface User
   ThirdPartyID: string;
   Password: string;
   PhoneNumber: string;
-  IsEmployer: number;
+  IsEmployer: boolean;
+
 }

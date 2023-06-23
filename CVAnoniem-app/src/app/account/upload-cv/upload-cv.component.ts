@@ -24,9 +24,7 @@ export class UploadCvComponent {
       .subscribe(
         response => {
           this.userHasOffer = response;
-
         });
-
   }
 
   Offerform = new FormGroup({
@@ -38,7 +36,7 @@ export class UploadCvComponent {
     JobSeekerID : new FormControl()
   });
 
-  offer? : Offer;
+  //offer? : Offer;
 
   onOfferPost(offer : {
     OfferID : number,
