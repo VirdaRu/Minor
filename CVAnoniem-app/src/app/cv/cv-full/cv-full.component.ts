@@ -31,7 +31,7 @@ export class CvFullComponent{
   }
 
   constructor(private http: HttpClient) {
-    SessionHandler.setSession(10);
+
   }
 
    public SendRequest() : void {

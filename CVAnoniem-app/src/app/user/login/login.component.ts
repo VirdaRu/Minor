@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {SessionHandler} from "../../account/SessionHandler";
 
 @Component({
   selector: 'app-login',
