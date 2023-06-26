@@ -4,30 +4,39 @@
   <br>
 
   <div class="col-md-6 col-centered">
-    <form class="form-horizontal">
+    <form (ngSubmit)="RegisterUser(email.value,password.value,confirmpassword.value,tel.value)" class="form-horizontal">
       <div class="form-group">
         <label for="Email">Emailadres:</label>
-        <input class="form-control" id="Email" type="email" placeholder="Emailadres">
+        <input #email class="form-control" id="Email" type="email" placeholder="Emailadres">
         <br>
 
         <label for="Password">Wachtwoord</label>
-        <input class="form-control" id="Password" type="password" placeholder="Wachtwoord">
+        <input #password class="form-control" id="Password" type="password" placeholder="Wachtwoord">
         <br>
 
         <label for="PasswordRepeat">Wachtwoord Herhalen</label>
-        <input class="form-control" id="PasswordRepeat" type="password" placeholder="Wachtwoord herhalen">
+        <input (change)="confirmPassword(password.value, confirmpassword.value)" #confirmpassword class="form-control"
+               id="PasswordRepeat" type="password" placeholder="Wachtwoord herhalen">
+        <br>
+
+        <p *ngIf="!passwordMatch" class="text-danger"> Wachtwoorden komen niet overeen!</p>
+
+        <label for="Telephone">Telefoonnummer</label>
+        <input #tel class="form-control" id="Telephone" placeholder="Telefoonnummer">
         <br>
 
         <label for="UserType">Type gebruiker: ik ben een </label>
-        <select class="form-control" id="UserType">
-          <option>Werkzoekende</option>
-          <option>Werkgever</option>
+        <select #opts class="form-control" id="UserType" (click)="onSelect(opts.value)">
+          <option *ngFor="let o of options" [ngValue]="o.value">
+            {{o.value}}. {{o.option}}
+          </option>
         </select>
 
         <br>
         <br>
 
-        <input type="button" class="col-centered btn btn-lg btn-primary" value="Registreren">
+        <input (click)="RegisterUser(email.value,password.value,confirmpassword.value,tel.value)" type="button"
+               class="col-centered btn btn-lg btn-primary" value="Registreren">
 
         <br>
 

@@ -1,6 +1,7 @@
 import {IAPI_Requests} from "./IAPI_Requests";
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Constants} from "../constants";
+import {User} from "../../../models/user";
 
 export class UserAPI_Requests implements IAPI_Requests {
 
@@ -11,9 +12,25 @@ export class UserAPI_Requests implements IAPI_Requests {
   }
 
   get(): void {
+
   }
 
   getByID(id: any): void {
+  }
+
+  getUserExist(email: string, password: string) {
+    return this.http.get<User>(`${Constants.API_URL}/user/user-exist`,
+      {
+        params: new HttpParams().set("email", email)
+          .set("password", password)
+      });
+  }
+
+  getUserExistByEmail(email: string) {
+    return this.http.get<User>(`${Constants.API_URL}/user/user-exist-email`,
+      {
+        params: new HttpParams().set("email", email)
+      });
   }
 
   getThirdPartyID(TPid: string) {
@@ -22,7 +39,12 @@ export class UserAPI_Requests implements IAPI_Requests {
   }
 
   post(body: any) {
-    return this.http.post(`${Constants.API_URL}/user`, body);
+    const headers = new HttpHeaders()
+      .set('content-type', 'application/json')
+      .set('Access-Control-Allow-Origin', '*');
+
+    return this.http.post(`${Constants.API_URL}/user`, body,
+      {'headers': headers});
   }
 
   getUsertype(id: number) {
@@ -39,6 +61,7 @@ export class UserAPI_Requests implements IAPI_Requests {
   }
 
   put(body: any, id: any): void {
+
   }
 
 }

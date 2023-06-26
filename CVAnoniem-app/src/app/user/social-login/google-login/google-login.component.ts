@@ -27,8 +27,8 @@ export class GoogleLoginComponent {
     })
   }
 
+
   isLoggedIn(): boolean {
-    //GoogleLoginComponent.LoggedIn = this.googleApi.isLoggedIn();
     GoogleLoginComponent.userinfo = this.userInfo;
     return this.googleApi.isLoggedIn();
   }
@@ -67,7 +67,6 @@ export class GoogleLoginComponent {
 
   logOut(): void {
     SessionHandler.LogOutSessions();
-    //GoogleLoginComponent.LoggedIn = false;
     this.googleApi.signOut();
   }
 

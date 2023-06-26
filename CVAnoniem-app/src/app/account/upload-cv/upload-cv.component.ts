@@ -24,24 +24,29 @@ export class UploadCvComponent {
       .subscribe(
         response => {
           this.userHasOffer = response;
-
         });
-
   }
 
   Offerform = new FormGroup({
-    OfferID : new FormControl(),
-    Title : new FormControl(),
-    Workfield : new FormControl(),
-    Province : new FormControl(),
-    Description : new FormControl(),
-    JobSeekerID : new FormControl()
+    OfferID: new FormControl(),
+    Title: new FormControl(),
+    Workfield: new FormControl(),
+    Province: new FormControl(),
+    Description: new FormControl(),
+    JobSeekerID: new FormControl()
   });
 
-  offer? : Offer;
+  //offer? : Offer;
+  fileSrc: any = null;
 
-  onOfferPost(offer : {
-    OfferID : number,
+  onUpload(file: File) {
+
+    this.fileSrc = file;
+
+  }
+
+  onOfferPost(offer: {
+    OfferID: number,
     Title: string,
     WorkField: string,
     Description: string,

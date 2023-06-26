@@ -49,7 +49,6 @@ export class UsertypeSwitchComponent {
   }
 
   getUserType(val: any) {
-
     if (val.includes("1")) {
       SessionHandler.setUsertypeSession("employer");
       return true;
