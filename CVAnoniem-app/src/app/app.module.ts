@@ -45,6 +45,7 @@ import {
 } from './user/social-login/linkedin-login/linkedin-response/linkedin-response.component';
 import {UserSettingsComponent} from './user/user-settings/user-settings.component';
 import {UsertypeSwitchComponent} from './user/usertype-switch/usertype-switch.component';
+import {CvUploadFileComponent} from "./account/cv-upload-file/cv-upload-file.component";
 
 
 const Route: Routes = [
@@ -108,7 +109,8 @@ const Route: Routes = [
     LinkedinLoginComponent,
     LinkedinResponseComponent,
     UserSettingsComponent,
-    UsertypeSwitchComponent
+    UsertypeSwitchComponent,
+    CvUploadFileComponent
   ],
   imports: [
     BrowserModule,                  //Browser Module
