@@ -72,6 +72,8 @@ const Route: Routes = [
   {path: '**', component: ErrorComponent}//Any other path will redirect to error
 ]
 
+// @ts-ignore
+// @ts-ignore
 @NgModule({
   declarations: [
     AppComponent,
@@ -127,5 +129,6 @@ const Route: Routes = [
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule {
 }
