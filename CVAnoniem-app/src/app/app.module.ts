@@ -45,6 +45,8 @@ import {
 } from './user/social-login/linkedin-login/linkedin-response/linkedin-response.component';
 import {UserSettingsComponent} from './user/user-settings/user-settings.component';
 import {UsertypeSwitchComponent} from './user/usertype-switch/usertype-switch.component';
+import {AdminNavPanelComponent} from './admin/admin-nav-panel/admin-nav-panel.component';
+import {AdminDashboardComponent} from './admin/admin-dashboard/admin-dashboard.component';
 
 
 const Route: Routes = [
@@ -108,7 +110,9 @@ const Route: Routes = [
     LinkedinLoginComponent,
     LinkedinResponseComponent,
     UserSettingsComponent,
-    UsertypeSwitchComponent
+    UsertypeSwitchComponent,
+    AdminNavPanelComponent,
+    AdminDashboardComponent
   ],
   imports: [
     BrowserModule,                  //Browser Module

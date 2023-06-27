@@ -1,6 +1,5 @@
-import {Component, Output} from '@angular/core';
+import {Component} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Offer} from "../../../models/offer";
 import {CvListComponent} from "../../cv/cv-list/cv-list.component";
 
 @Component({
@@ -10,15 +9,10 @@ import {CvListComponent} from "../../cv/cv-list/cv-list.component";
 })
 export class SearchComponent {
 
-  @Output() offers : Offer[] = [];
+  // @Output() offers : Offer[] = [];
 
   constructor(private http : HttpClient) {
 
-  }
-
-  public getResumes(userInput :string)
-  {
-    this.OnClickSearch(userInput);
   }
 
   public OnClickSearch(query: string) {

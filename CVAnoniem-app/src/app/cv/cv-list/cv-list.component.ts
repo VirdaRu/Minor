@@ -56,7 +56,8 @@ export class CvListComponent {
     else
     {
       setInterval(() => {
-        if (CvListComponent.query != CvListComponent.oldquery) {
+        if (CvListComponent.query !== CvListComponent.oldquery) {
+          console.log(CvListComponent.query)
           this.getResultsBySearch(CvListComponent.query);
         }
         CvListComponent.oldquery = CvListComponent.query;
