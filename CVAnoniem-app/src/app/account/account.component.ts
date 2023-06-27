@@ -14,7 +14,8 @@ export class AccountComponent implements OnInit {
 
   UserID : number = SessionHandler.getSession();
   ngOnInit() {
-    this.GetOfferID(this.UserID);
+    //uitgecomment omdat het errors geeft in de api omdat 2x GetUserHasOffer wordt gecalled
+    //this.GetOfferID(this.UserID);
   }
 
   public GetOfferID(UID: number) {

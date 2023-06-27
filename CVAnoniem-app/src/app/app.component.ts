@@ -11,7 +11,7 @@ export class AppComponent implements OnInit{
   title = 'CVAnoniem-app';
 
   constructor(private http: HttpClient) {
-    SessionHandler.setSession(10);
+    SessionHandler.setSession(13);
   }
   ngOnInit() {
   }
