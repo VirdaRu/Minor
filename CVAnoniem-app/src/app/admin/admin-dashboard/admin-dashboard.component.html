@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="dashboard col-sm-4">
+    <div class="text-center">
+      <p>Huidig aantal:</p>
+      <h1>{{items.length}}</h1>
+    </div>
+  </div>
+
+
+  <div class="row">
+
+    <div *ngFor="let item of items">
+      <div class="list-item col-xs-9">
+        <p>
+          <strong>Titel:</strong>
+          {{item.Title}}
+        </p>
+        <p>
+          <strong>Branche:</strong>
+          {{item.WorkField}}
+        </p>
+        <p>
+          <strong>Beschrijving:</strong>
+          {{item.Description}}
+        </p>
+        <p>
+          <strong>Provincie:</strong>
+          {{item.Province}}
+        </p>
+      </div>
+      <div class="col-xs-3">
+        <button class="btn-lg btn-danger">
+          <i class="glyphicon glyphicon-trash"></i>
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
