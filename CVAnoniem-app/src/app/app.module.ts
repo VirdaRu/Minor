@@ -45,6 +45,8 @@ import {
 } from './user/social-login/linkedin-login/linkedin-response/linkedin-response.component';
 import {UserSettingsComponent} from './user/user-settings/user-settings.component';
 import {UsertypeSwitchComponent} from './user/usertype-switch/usertype-switch.component';
+import {AdminNavPanelComponent} from './admin/admin-nav-panel/admin-nav-panel.component';
+import {AdminDashboardComponent} from './admin/admin-dashboard/admin-dashboard.component';
 import {CvUploadFileComponent} from "./account/cv-upload-file/cv-upload-file.component";
 
 
@@ -72,8 +74,6 @@ const Route: Routes = [
   {path: '**', component: ErrorComponent}//Any other path will redirect to error
 ]
 
-// @ts-ignore
-// @ts-ignore
 @NgModule({
   declarations: [
     AppComponent,
@@ -112,6 +112,8 @@ const Route: Routes = [
     LinkedinResponseComponent,
     UserSettingsComponent,
     UsertypeSwitchComponent,
+    AdminNavPanelComponent,
+    AdminDashboardComponent,
     CvUploadFileComponent
   ],
   imports: [
@@ -129,6 +131,5 @@ const Route: Routes = [
   providers: [],
   bootstrap: [AppComponent]
 })
-
 export class AppModule {
 }

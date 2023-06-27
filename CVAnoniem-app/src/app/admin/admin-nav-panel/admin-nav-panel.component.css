@@ -1,0 +1,22 @@
+.nav-menu {
+
+  display: flex;
+  justify-content: center;
+  color: black;
+  text-decoration: none;
+}
+
+.nav-menu a {
+  margin: 10px 50px 0px 50px;
+  transition: width 1s ease;
+  color: black;
+  text-decoration: none;
+}
+
+.nav-menu :hover {
+  scale: 105%;
+}
+
+hr {
+  border: 1px solid black;
+}
