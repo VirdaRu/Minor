@@ -47,6 +47,7 @@ import {UserSettingsComponent} from './user/user-settings/user-settings.componen
 import {UsertypeSwitchComponent} from './user/usertype-switch/usertype-switch.component';
 import {AdminNavPanelComponent} from './admin/admin-nav-panel/admin-nav-panel.component';
 import {AdminDashboardComponent} from './admin/admin-dashboard/admin-dashboard.component';
+import {CvUploadFileComponent} from "./account/cv-upload-file/cv-upload-file.component";
 
 
 const Route: Routes = [
@@ -112,7 +113,8 @@ const Route: Routes = [
     UserSettingsComponent,
     UsertypeSwitchComponent,
     AdminNavPanelComponent,
-    AdminDashboardComponent
+    AdminDashboardComponent,
+    CvUploadFileComponent
   ],
   imports: [
     BrowserModule,                  //Browser Module
