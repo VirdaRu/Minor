@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {SessionHandler} from "../SessionHandler";
+import {SessionHandler} from "../../config/SessionHandler";
 import {HttpClient, HttpParams} from "@angular/common/http";
 
 
@@ -10,7 +10,7 @@ import {HttpClient, HttpParams} from "@angular/common/http";
 })
 export class CvUserComponent {
 
-  private userid : number = SessionHandler.getSession();
+  private userid : number = SessionHandler.getUserSession();
   fileInfo : string = "";
   fileSrc : any;
   received : boolean = false;
