@@ -3,9 +3,9 @@ import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Constants}  from "../constants";
 import {Offer} from "../../../models/offer";
 import {SavedOffers} from "../../../models/savedoffers";
-import {SessionHandler} from "../../account/SessionHandler";
+import {SessionHandler} from "../SessionHandler";
 
-class SavedOffersAPI_Requests implements IAPI_Requests
+export class SavedOffersAPI_Requests implements IAPI_Requests
 {
   constructor(private http: HttpClient)
   {
@@ -14,9 +14,9 @@ class SavedOffersAPI_Requests implements IAPI_Requests
 
   delete(id : any)
   {
-    this.http.delete(`${Constants.API_URL}/api/saved-offer`,
+    return this.http.delete(`${Constants.API_URL}/saved-offer`,
       { params: new HttpParams().set("offerid", id)
-          .set("userid", SessionHandler.getSession()) })
+          .set("userid", SessionHandler.getUserSession()) });
   }
 
   get()

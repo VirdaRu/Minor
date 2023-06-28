@@ -1,23 +1,30 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
+import {Component, Input} from '@angular/core';
+import {HttpClient, HttpParams} from "@angular/common/http";
 import {SavedOffers} from "../../../models/savedoffers";
-import {FormControl, FormGroup} from "@angular/forms";
-import {SessionHandler} from "../../account/SessionHandler";
+import {SessionHandler} from "../../config/SessionHandler";
+import {SavedOffersAPI_Requests} from "../../config/API_Requests/SavedOffersAPI_Requests";
+import {ResumeAPI_Requests} from "../../config/API_Requests/ResumeAPI_Requests";
+import {Constants} from "../../config/constants";
 
 @Component({
   selector: 'app-cv-full',
   templateUrl: './cv-full.component.html',
   styleUrls: ['./cv-full.component.css']
 })
-export class CvFullComponent{
+
+export class CvFullComponent {
   @Input() showOptions: boolean = false;
-  @Input() SavedPage : boolean = false;
+  @Input() SavedPage: boolean = false;
   public static Bookmarked : boolean = false;
 
   public static OfferID : number;
-  private userID = SessionHandler.getSession();
+  public static JobseekerID : number;
 
-  SaveOffer! : SavedOffers;
+  public isEmployer = SessionHandler.getUserTypeSession();
+  private userID = SessionHandler.getUserSession();
+
+  SavedOfferAPI = new SavedOffersAPI_Requests(this.http);
+  ResumeAPI = new ResumeAPI_Requests(this.http);
 
   onPostBookmark(bookmark : {
     SavedID : number,
@@ -34,37 +41,30 @@ export class CvFullComponent{
 
   }
 
-   public SendRequest() : void {
-    alert("Request sent to person");
-  }
-
   public BookmarkResume(SaveOffer : SavedOffers)
   {
-    const headers = new HttpHeaders()
-      .set('content-type', 'application/json')
-      .set('Access-Control-Allow-Origin', '*');
-    let body = JSON.stringify(SaveOffer);
-    return this.http.post<SavedOffers>("https://localhost:7229/api/saved-offer", body,{'headers': headers}).
-    subscribe();
-    alert("Resume added to favourites.");
+    this.SavedOfferAPI.post(SaveOffer).subscribe();
   }
 
   public UnbookmarkResume()
   {
-    this.http.delete("https://localhost:7229/api/saved-offer",
-      { params: new HttpParams().set("offerid", this.getOfferID())
-                                       .set("userid", this.userID) }).subscribe();
+    this.SavedOfferAPI.delete(this.getOfferID()).subscribe()
     alert("CV niet meer opgeslagen.");
   }
 
-  public getOfferID() :number
-  {
+  public getOfferID(): number {
     return CvFullComponent.OfferID;
   }
 
-  public isBookmarked() :boolean
-  {
+  public isBookmarked(): boolean {
     return CvFullComponent.Bookmarked;
+  }
+
+  public getResumes() {
+    this.http.get(`${Constants.API_URL}/resume`,
+      {
+        params: new HttpParams().set('id', this.getOfferID())
+      })
   }
 
 }

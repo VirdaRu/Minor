@@ -1,10 +1,10 @@
-<!--<h1>2 Resultaten voor: "ICT"</h1>-->
 <div id="list-of-offers">
   <app-cv *ngFor="let offer of offers"
           [OfferID]="offer.OfferID.toString()"
           [Title]="offer.Title"
           [Branche]="offer.WorkField"
           [Beschrijving]="offer.Description"
-          [Provincie]="offer.Province">
+          [Provincie]="offer.Province"
+          [JobSeekerID]="offer.JobSeekerID.toString()">
   </app-cv>
 </div>

@@ -1,35 +1,44 @@
 <div class="container">
   <h1 class="text-center">Mijn Account</h1>
-    <div class="row">
-      <!--Mijn account functionalities-->
-      <div class="MyAccountButtons col-md-3 text-center">
 
-        <button id="edit-CV" class="btn-outline" type="submit" routerLink="/UploadCV">
-          <i class="glyphicon glyphicon-upload"></i> CV Uploaden
-        </button>
-
-        <button class="btn-outline" routerLink="/Inbox">
-          <i class="glyphicon glyphicon-envelope"></i>
-           Mijn Inbox
-        </button>
-
-        <button class="btn-outline">
-          <i class="glyphicon glyphicon-eye-open"></i>
-          Gehele CV weergeven
-        </button>
-
-        <button class="btn-outline" routerLink="/SavedCVPage">
-          <i class="glyphicon glyphicon-bookmark"></i>
-          Bewaarde CV's weergeven
-        </button>
-
-        <button class="btn-outline-red" (click)="DeleteCV()">
-          <i class="glyphicon glyphicon-trash"></i>
-          Mijn CV Verwijderen
-        </button>
+  <div class="row">
+    <app-cv-list [AccountView]="true"></app-cv-list>
+  </div>
+  <div class="row">
+    <!--Mijn account functionalities-->
+    <div class="MyAccountButtons col-md-3 text-center">
 
 
-      </div>
+      <button *ngIf="!isEmployer()" id="edit-CV" class="btn-outline" type="submit" routerLink="/UploadCV">
+        <i class="glyphicon glyphicon-upload"></i> CV Uploaden
+      </button>
+
+      <button class="btn-outline" routerLink="/Inbox">
+        <i class="glyphicon glyphicon-envelope"></i>
+        Mijn Inbox
+      </button>
+
+      <button class="btn-outline">
+        <i class="glyphicon glyphicon-eye-open"></i>
+        Gehele CV weergeven
+      </button>
+
+      <button class="btn-outline" routerLink="/SavedCVPage">
+        <i class="glyphicon glyphicon-bookmark"></i>
+        Bewaarde CV's weergeven
+      </button>
+
+      <button class="btn-outline" routerLink="/user-permissions">
+        <i class="glyphicon"></i>
+        Geaccepteerde Verzoeken
+      </button>
+
+      <button *ngIf="!isEmployer()" class="btn-outline-red" (click)="DeleteCV()">
+        <i class="glyphicon glyphicon-trash"></i>
+        Mijn CV Verwijderen
+      </button>
+
+    </div>
 
     <div class="col-md-7 bg-info">
       <app-cv-user></app-cv-user>

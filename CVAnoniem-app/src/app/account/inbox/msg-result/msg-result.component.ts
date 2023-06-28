@@ -1,9 +1,11 @@
 import {Component, Input} from '@angular/core';
-import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 import {FormControl, FormGroup} from "@angular/forms";
-import {SessionHandler} from "../../SessionHandler";
+import {SessionHandler} from "../../../config/SessionHandler";
 import {Permission} from "../../../../models/permission";
-import {CvFullComponent} from "../../../cv/cv-full/cv-full.component";
+import {MessageAPI_Requests} from "../../../config/API_Requests/MessageAPI_Requests";
+import {PermissionAPI_Requests} from "../../../config/API_Requests/PermissionAPI_Requests";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-msg-result',
@@ -12,51 +14,54 @@ import {CvFullComponent} from "../../../cv/cv-full/cv-full.component";
 })
 export class MsgResultComponent {
 
+  MessageAPI = new MessageAPI_Requests(this.http);
+
+  PermissionAPI = new PermissionAPI_Requests(this.http);
+
+  private userID = SessionHandler.getUserSession();
+
   @Input() Sender: string = "";
   @Input() Subject: string = "";
   @Input() message: string = "";
   @Input() DateSent: string = "";
   @Input() Attachment: string = "";
+  @Input() MessageID: string = "";
 
-  constructor(private http : HttpClient)
-  {
+  constructor(private http: HttpClient, private router: Router) {
 
   }
 
   PermissionForm = new FormGroup({
-    PermissionID : new FormControl(),
-    OfferID : new FormControl(),
-    EmployerID : new FormControl()
+    PermissionID: new FormControl(),
+    OfferID: new FormControl(),
+    EmployerID: new FormControl()
   });
 
-  onPostGrantPermission(permission : {
-    PermissionID : number,
-    OfferID : number,
-    EmployerID : number
-  })
-  {
-    permission.EmployerID = SessionHandler.getSession();
-    this.acceptRequest(permission, Number(this.Sender));
+  onPostGrantPermission(permission: {
+    PermissionID: number,
+    OfferID: number,
+    EmployerID: number
+  }) {
+    permission.EmployerID = Number(this.Sender);
+    this.acceptRequest(permission);
   }
 
-  public acceptRequest(permission : Permission, senderid : number)
-  {
-    const headers = new HttpHeaders()
-      .set('content-type', 'application/json')
-      .set('Access-Control-Allow-Origin', '*');
-    let body = JSON.stringify(permission);
-    this.http.post("https://localhost:7229/api/permission",
-      body,
-      {'headers' : headers ,
-        params : new HttpParams().set('senderid', senderid)})
-      .subscribe(
-          response => alert("uploaded")
+  public acceptRequest(permission: Permission) {
+    this.PermissionAPI.post(permission).subscribe();
+  }
+
+  public deleteRequest() {
+    let userConfirmRemoval = confirm(
+      "Weet u zeker dat uw dit bericht wilt verwijderen?"
     );
+
+    if (userConfirmRemoval) {
+      this.MessageAPI.delete(this.MessageID).subscribe();
+    }
   }
 
-  public rejectRequest()
-  {
-    alert("Rejected")
-    this.http.delete("https://localhost:7229/api/permission");
+  public rejectRequest() {
+    //Offer Rejected
+    alert("Offerte geweigerd")
   }
 }

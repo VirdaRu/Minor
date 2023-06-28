@@ -33,14 +33,27 @@ import {SavedCvComponent} from './user/saved-cv/saved-cv.component';
 import {NgxExtendedPdfViewerModule} from "ngx-extended-pdf-viewer";
 import {UploadCvComponent} from './account/upload-cv/upload-cv.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MsgResultComponent } from './account/inbox/msg-result/msg-result.component';
-import { CvUploadFileComponent } from './account/cv-upload-file/cv-upload-file.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MsgResultComponent} from './account/inbox/msg-result/msg-result.component';
+import {MessageSenderComponent} from './message-sender/message-sender.component';
+import {UserPermissionsComponent} from './user-permissions/user-permissions.component';
+import {GoogleLoginComponent} from "./user/social-login/google-login/google-login.component";
+import {OAuthModule} from "angular-oauth2-oidc";
+import {LinkedinLoginComponent} from './user/social-login/linkedin-login/linkedin-login.component';
+import {
+  LinkedinResponseComponent
+} from './user/social-login/linkedin-login/linkedin-response/linkedin-response.component';
+import {UserSettingsComponent} from './user/user-settings/user-settings.component';
+import {UsertypeSwitchComponent} from './user/usertype-switch/usertype-switch.component';
+import {AdminNavPanelComponent} from './admin/admin-nav-panel/admin-nav-panel.component';
+import {AdminDashboardComponent} from './admin/admin-dashboard/admin-dashboard.component';
+import {CvUploadFileComponent} from "./account/cv-upload-file/cv-upload-file.component";
 
 
 const Route: Routes = [
   //{path: '', redirectTo: 'Home',},
   {path: '', component: HomeComponent},
+  {path: 'UserSettings', component: UserSettingsComponent},
   {path: 'Login', component: LoginComponent},
   {path: 'Register', component: RegisterComponent},
   {path: 'FAQ', component: FAQComponent},
@@ -51,7 +64,14 @@ const Route: Routes = [
   {path: 'About', component: AboutComponent},
   {path: 'CVPage', component: CvPageComponent},
   {path: 'SavedCVPage', component: SavedCvComponent},
-  {path: 'UploadCV', component: UploadCvComponent}
+  {path: 'UploadCV', component: UploadCvComponent},
+  {path: 'SendMessage', component: MessageSenderComponent},
+  {path: 'user-permissions', component: UserPermissionsComponent},
+  {path: 'google-login', component: GoogleLoginComponent},
+  {path: 'linkedin-login', component: LinkedinLoginComponent},
+  {path: 'linkedin-response', component: LinkedinResponseComponent},
+  {path: 'set-user-type', component: UsertypeSwitchComponent},
+  {path: '**', component: ErrorComponent}//Any other path will redirect to error
 ]
 
 @NgModule({
@@ -85,19 +105,29 @@ const Route: Routes = [
     SavedCvComponent,
     UploadCvComponent,
     MsgResultComponent,
+    MessageSenderComponent,
+    UserPermissionsComponent,
+    GoogleLoginComponent,
+    LinkedinLoginComponent,
+    LinkedinResponseComponent,
+    UserSettingsComponent,
+    UsertypeSwitchComponent,
+    AdminNavPanelComponent,
+    AdminDashboardComponent,
     CvUploadFileComponent
   ],
-    imports: [
-        BrowserModule,                  //Browser Module
-        RouterModule.forRoot(Route),    //Page routing
-        RouterOutlet,                   //Page Routing
-        NgxExtendedPdfViewerModule,     //PDF Viewer
-        HttpClientModule,
-        FormsModule,
-        ReactiveFormsModule,
-        BrowserAnimationsModule,
-        //Back end communication
-    ],
+  imports: [
+    BrowserModule,                  //Browser Module
+    RouterModule.forRoot(Route),    //Page routing
+    RouterOutlet,                   //Page Routing
+    NgxExtendedPdfViewerModule,     //PDF Viewer
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    OAuthModule.forRoot()         //Google Login
+    //Back end communication
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -1,10 +1,9 @@
 import {Component} from '@angular/core';
-import {Router} from '@angular/router';
-import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 import {OfferAPI_Requests} from "../../config/API_Requests/OfferAPI_Requests"
 import {Offer} from "../../../models/offer"
-import { FormGroup, FormControl, Validators} from "@angular/forms";
-import {SessionHandler} from "../SessionHandler";
+import {FormControl, FormGroup} from "@angular/forms";
+import {SessionHandler} from "../../config/SessionHandler";
 
 @Component({
   selector: 'app-upload-cv',
@@ -12,84 +11,88 @@ import {SessionHandler} from "../SessionHandler";
   styleUrls: ['./upload-cv.component.css']
 })
 
-export class UploadCvComponent{
+export class UploadCvComponent {
 
-  private userid : number = SessionHandler.getSession();
+  private userid: number = SessionHandler.getUserSession();
 
-  API_Request = new OfferAPI_Requests(this.http);
+  private userHasOffer!: Offer[];
 
-  constructor(private http : HttpClient, private router : Router) {
+  OfferAPI = new OfferAPI_Requests(this.http);
 
+  constructor(private http: HttpClient) {
+    this.OfferAPI.getByJobseekerID(this.userid)
+      .subscribe(
+        response => {
+          this.userHasOffer = response;
+        });
   }
 
   Offerform = new FormGroup({
-    OfferID : new FormControl(),
-    Title : new FormControl(),
-    Workfield : new FormControl(),
-    Province : new FormControl(),
-    Description : new FormControl(),
-    JobSeekerID : new FormControl()
+    OfferID: new FormControl(),
+    Title: new FormControl(),
+    Workfield: new FormControl(),
+    Province: new FormControl(),
+    Description: new FormControl(),
+    JobSeekerID: new FormControl()
   });
 
-  offer? : Offer;
+  //offer? : Offer;
+  fileSrc: any = null;
 
-
-
-  fileSrc : any = null;
-
-  onUpload(file : File){
+  onUpload(file: File) {
 
     this.fileSrc = file;
 
   }
 
-
-  onOfferPost(offer : {
-    OfferID : number,
+  onOfferPost(offer: {
+    OfferID: number,
     Title: string,
     WorkField: string,
     Description: string,
     Province: string,
     JobSeekerID: number
-  })
-  {
+  }) {
+    if (this.userHasOffer.length < 1) {
+      offer.OfferID = 0;
+    } else {
+      offer.OfferID = this.userHasOffer[0].OfferID;
+    }
+
     offer.JobSeekerID = this.userid;
-    if (this.fileSrc == null){
-      alert("Voeg alstublieft een pdf van een CV toe.")
-    }else {
+
+    if (this.userHasOffer.length > 0) {
+      this.updateOffer(offer);
+    } else {
       this.addOffer(offer);
     }
   }
 
-  addOffer(offer : Offer)
-  {
-    if (this.confirmUpdate()){
-      //console.log(offer);
-      const formData = new FormData();
-      //formData.append("offer", JSON.stringify(offer));
-      formData.append("file", this.fileSrc);
-
-      this.http.post("https://localhost:7229/api/offer", formData, {params: new HttpParams().set("offer", JSON.stringify(offer))}).subscribe( response => console.log(response));
-
-      // mischien confirm inplaats van alert
-      alert("CV geupload");
-      // test voor routerlink
-      this.router.navigate(['/Account']);
+  addOffer(offer: Offer) {
+    if (this.confirmUpdate()) {
+      this.OfferAPI.post(offer).subscribe(response => console.log(response));
     }
-    //TODO: In Angular.json there is a line referencing a proxy file, this is for development! On production REMOVE it!
   }
 
-  public confirmUpdate()
-  {
+  updateOffer(offer: Offer) {
+    if (this.confirmUpdate()) {
+      this.OfferAPI.put(offer, offer.OfferID).subscribe
+      (response => console.log(response));
+    }
+  }
+
+
+  public confirmUpdate() {
     let confirmation =
       confirm("Als u al een CV heeft, wordt dit CV overschreven. Wilt u het huidige CV overschrijven?");
-    if(confirmation)
-    {
+    if (confirmation) {
       return true;
-    }else
+    } else
     {
       return false;
     }
   }
-
 }
+
+//TODO: For new components commit to git --> Add VCS
+//TODO: In Angular.json there is a line referencing a proxy file, this is for development! On production REMOVE it!

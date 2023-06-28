@@ -1,7 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {Message} from "../../../models/message";
-import {SessionHandler} from "../SessionHandler";
+import {SessionHandler} from "../../config/SessionHandler";
 import { MessageAPI_Requests } from "../../config/API_Requests/MessageAPI_Requests"
 
 @Component({
@@ -12,7 +12,7 @@ import { MessageAPI_Requests } from "../../config/API_Requests/MessageAPI_Reques
 export class InboxComponent {
 
   Messages! : Message[];
-  private userid = SessionHandler.getSession();
+  private userid = SessionHandler.getUserSession();
 
   MessageAPI = new MessageAPI_Requests(this.http);
 
@@ -21,15 +21,9 @@ export class InboxComponent {
 
   ngOnInit()
   {
-    this.GetMessages();
+    this.MessageAPI.getByID(this.userid).subscribe(
+      response => this.Messages = response
+    );
   }
 
-  public GetMessages()
-  {
-    return this.MessageAPI.get();
-    /*
-    return this.http.get<Message[]>("https://localhost:7229/api/message",
-      {params : new HttpParams().set("userid", this.userid)})
-      .subscribe(response =>  this.Messages = response);*/
-  }
 }

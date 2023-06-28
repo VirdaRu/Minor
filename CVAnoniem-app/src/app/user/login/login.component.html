@@ -7,12 +7,12 @@
       <form class="form-horizontal">
         <div class="form-group">
           <label for="Email">Emailadres:</label>
-          <input class="form-control" id="Email" type="text" placeholder="Emailadres">
+          <input #email class="form-control" id="Email" type="text" placeholder="Emailadres">
 
           <br>
 
           <label for="Password">Wachtwoord</label>
-          <input class="form-control" id="Password" type="password" placeholder="Wachtwoord">
+          <input #password class="form-control" id="Password" type="password" placeholder="Wachtwoord">
           <br>
 
           <input id="rememberMe" type="checkbox">
@@ -27,7 +27,8 @@
           <br>
           <br>
 
-          <input type="button" class="col-centered btn btn-lg btn-primary" value="Login">
+          <input (click)="checkExist(email.value, password.value)" type="button"
+                 class="col-centered btn btn-lg btn-primary" value="Login">
 
           <p class="text-center"><strong>Of registreer met:</strong></p>
 

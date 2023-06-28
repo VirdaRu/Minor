@@ -1,18 +1,18 @@
-import { Component, EventEmitter, Output,OnInit } from '@angular/core';
-import {HttpClient, HttpParams} from "@angular/common/http";
-import {SessionHandler} from "../SessionHandler";
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {HttpClient} from "@angular/common/http";
+import {SessionHandler} from "../../config/SessionHandler";
 
 @Component({
   selector: 'app-cv-upload-file',
   templateUrl: './cv-upload-file.component.html',
   styleUrls: ['./cv-upload-file.component.css']
 })
-export class CvUploadFileComponent implements OnInit{
+export class CvUploadFileComponent implements OnInit {
 
-  constructor(private http : HttpClient) {
+  constructor(private http: HttpClient) {
   }
 
-  private userID = SessionHandler.getSession();
+  private userID = SessionHandler.getUserSession();
   fileInfo = '';
   fileSrc : any;
   uploaded : boolean = false;

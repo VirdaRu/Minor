@@ -19,7 +19,9 @@
       <app-msg-result *ngFor="let msg of Messages"
                       [Sender]="msg.EmployerID.toString()"
                       [Subject]="msg.Subject"
-                      [message]="msg.message">
+                      [message]="msg.message"
+                      [DateSent]="msg.DateSent"
+                      [MessageID]="msg.MessageID.toString()">
       </app-msg-result>
     </div>
 

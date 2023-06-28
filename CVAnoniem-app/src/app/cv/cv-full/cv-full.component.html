@@ -1,9 +1,9 @@
 <div class="pdfViewer">
 
   <div *ngIf="showOptions" class="row">
-    <div class="col-xs-6">
-      <button class="btn-outline btn-padding" (click)="SendRequest()">
-          Verzoek Geheel CV
+    <div *ngIf="isEmployer == '1'" class="col-xs-6">
+      <button class="btn-outline btn-padding" routerLink="/SendMessage">
+        Verzoek Geheel CV
       </button>
     </div>
 

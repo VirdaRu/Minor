@@ -1,8 +1,11 @@
 import {Component, Input} from '@angular/core';
-import {HttpClient, HttpParams} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 import {Offer} from "../../../models/offer";
-import {map, Observable, interval, tap} from "rxjs";
-import {SessionHandler} from "../../account/SessionHandler";
+import {SessionHandler} from "../../config/SessionHandler";
+import {OfferAPI_Requests} from "../../config/API_Requests/OfferAPI_Requests";
+import {CvFullComponent} from "../cv-full/cv-full.component";
+import {SavedOffersAPI_Requests} from "../../config/API_Requests/SavedOffersAPI_Requests";
+import {SearchComponent} from "../../home/search/search.component";
 
 @Component({
   selector: 'app-cv-list',
@@ -11,59 +14,74 @@ import {SessionHandler} from "../../account/SessionHandler";
 })
 export class CvListComponent {
 
-  @Input() SavedPage : boolean = false;
+  search!: SearchComponent;
 
-  offers! : Offer[];
+  @Input() SavedPage: boolean = false;
+  @Input() MessageView: boolean = false;
+  @Input() AccountView: boolean = false;
 
-  public static query : string;
+  offers!: Offer[];
 
-  private userID = SessionHandler.getSession();
+  OfferAPI = new OfferAPI_Requests(this.http);
+  SavedAPI = new SavedOffersAPI_Requests(this.http);
 
-  constructor(private http : HttpClient) {
+  public static query: string;
+  public static oldquery: string;
+  public static OfferID = 0;
+
+  private userID = SessionHandler.getUserSession();
+
+  constructor(private http : HttpClient)
+  {
+
   }
 
   ngOnInit(){
     if (this.SavedPage)
     {
-      this.getSavedResumes(this.userID).
-      subscribe( offers =>this.offers = offers);
+      this.getSavedResumes(this.userID);
+    }
+    else if (this.AccountView)
+    {
+      this.OfferAPI.getByJobseekerID(this.userID)
+        .subscribe(response => this.offers = response);
+      CvListComponent.OfferID = this.offers[0].OfferID;
+    }
+    else if (this.MessageView)
+    {
+      this.OfferAPI.getByOfferID(CvFullComponent.OfferID)
+        .subscribe(
+        offers => this.offers = offers);
     }
     else
     {
-      setInterval(() : any => {
-        this.HandleResults();
-        }, 1000);
+      setInterval(() => {
+        if (CvListComponent.query !== CvListComponent.oldquery) {
+          console.log(CvListComponent.query)
+          this.getResultsBySearch(CvListComponent.query);
+        }
+        CvListComponent.oldquery = CvListComponent.query;
+      }, 1000);
     }
   }
 
   public getSavedResumes(userid: number)
   {
-    return this.http.get<Offer[]>("https://localhost:7229/api/saved-offer",
-      { params: new HttpParams().set("userid", userid) });
+    return this.SavedAPI.getByID(userid).subscribe(
+      offers => this.offers = offers
+    );
   }
 
   public getResumeResults()
   {
-      return this.http.get<Offer[]>("https://localhost:7229/api/offer/all-offers-list").
-        subscribe(response => this.offers = response);
+      return this.OfferAPI.get().subscribe(
+        response => this.offers = response);
   }
 
   public getResultsBySearch(query : string)
   {
-    return this.http.get<Offer[]>("https://localhost:7229/api/offer/search-offers",
-      { params : new HttpParams().set('query',query)}).subscribe(
+    return this.OfferAPI.getByID(query).subscribe(
       response => this.offers = response);
   }
-
-  public HandleResults()
-  {
-    if (CvListComponent.query == "")
-    {
-    //  this.getResumeResults();
-    }else {
-      this.getResultsBySearch(CvListComponent.query);
-    }
-  }
-
 
 }
