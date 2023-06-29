@@ -7,10 +7,9 @@ import {Component} from '@angular/core';
 })
 export class AdminNavPanelComponent {
 
-  static chosenPage: string = "user";
+  static chosenPage: string = "offers";
 
   public ButtonPressed(page: string) {
     AdminNavPanelComponent.chosenPage = page;
-    alert(page);
   }
 }

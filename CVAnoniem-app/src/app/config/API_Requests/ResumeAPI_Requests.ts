@@ -1,6 +1,7 @@
 import {IAPI_Requests} from "./IAPI_Requests";
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Constants} from "../constants";
+import {Resume} from "../../../models/resume";
 
 export class ResumeAPI_Requests implements IAPI_Requests {
   constructor(private http: HttpClient) {
@@ -11,7 +12,7 @@ export class ResumeAPI_Requests implements IAPI_Requests {
   }
 
   get() {
-    return this.http.get(`${Constants.API_URL}/resume`);
+    return this.http.get<Resume[]>(`${Constants.API_URL}/resume`);
   }
 
   getByID(id: any) {

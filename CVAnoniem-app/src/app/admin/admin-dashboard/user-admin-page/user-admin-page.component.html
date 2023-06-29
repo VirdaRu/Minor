@@ -1,0 +1,29 @@
+<div *ngFor="let user of users" class="list">
+  <div class="col-sm-9">
+    <div class="list-item">
+      <h3>
+        <strong>
+          Emailadres:
+        </strong>
+        {{user.EmailAddress}}
+      </h3>
+      <h3>
+        <strong>
+          Telefoonnummer:
+        </strong>
+        {{user.PhoneNumber}}
+      </h3>
+      <h3>
+        <strong>
+          Gebruikers type:
+        </strong>
+        {{getUserType(user.IsEmployer)}}
+      </h3>
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <button class="btn-lg btn-danger" (click)="delete(user.UserID)">
+      <i class="glyphicon glyphicon-trash"></i>
+    </button>
+  </div>
+</div>
