@@ -48,6 +48,9 @@ import {UsertypeSwitchComponent} from './user/usertype-switch/usertype-switch.co
 import {AdminNavPanelComponent} from './admin/admin-nav-panel/admin-nav-panel.component';
 import {AdminDashboardComponent} from './admin/admin-dashboard/admin-dashboard.component';
 import {CvUploadFileComponent} from "./account/cv-upload-file/cv-upload-file.component";
+import {UserAdminPageComponent} from './admin/admin-dashboard/user-admin-page/user-admin-page.component';
+import {OfferAdminPageComponent} from './admin/admin-dashboard/offer-admin-page/offer-admin-page.component';
+import {MessageAdminPageComponent} from './admin/admin-dashboard/message-admin-page/message-admin-page.component';
 
 
 const Route: Routes = [
@@ -114,7 +117,10 @@ const Route: Routes = [
     UsertypeSwitchComponent,
     AdminNavPanelComponent,
     AdminDashboardComponent,
-    CvUploadFileComponent
+    CvUploadFileComponent,
+    UserAdminPageComponent,
+    OfferAdminPageComponent,
+    MessageAdminPageComponent
   ],
   imports: [
     BrowserModule,                  //Browser Module
