@@ -70,13 +70,40 @@ export class UploadCvComponent {
 
   addOffer(offer: Offer) {
     if (this.confirmUpdate()) {
-      this.OfferAPI.post(offer).subscribe(response => console.log(response));
+      console.log("add");
+      const formData = new FormData();
+      //formData.append("offer", JSON.stringify(offer));
+      formData.append("file", this.fileSrc);
+      this.OfferAPI.postWithResume(formData, JSON.stringify(offer)).subscribe(response => console.log(response));
     }
   }
 
+  addOffer2(offer: Offer) {
+    if (this.confirmUpdate()) {
+
+      const formData = new FormData();
+      //formData.append("offer", JSON.stringify(offer));
+      formData.append("file", this.fileSrc);
+
+      //this.http.post("https://localhost:7229/api/offer", formData, {params: new HttpParams().set("offer", JSON.stringify(offer))}).subscribe( response => console.log(response));
+
+    }
+  }
+
+  // addOffer(offer: Offer) {
+  //   if (this.confirmUpdate()) {
+  //     this.OfferAPI.post(offer).subscribe(response => console.log(response));
+  //   }
+  // }
+
+
   updateOffer(offer: Offer) {
     if (this.confirmUpdate()) {
-      this.OfferAPI.put(offer, offer.OfferID).subscribe
+      console.log("update");
+      const formData = new FormData();
+      formData.append("file", this.fileSrc);
+
+      this.OfferAPI.putWithResume(formData, JSON.stringify(offer)).subscribe
       (response => console.log(response));
     }
   }
