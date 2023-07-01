@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {SessionHandler} from "../config/SessionHandler";
 import {OfferAPI_Requests} from "../config/API_Requests/OfferAPI_Requests";
 import {Router} from "@angular/router";
+import {CvUserComponent} from "./cv-user/cv-user.component";
 
 @Component({
   selector: 'app-account',
@@ -20,11 +21,13 @@ export class AccountComponent implements OnInit {
 
   UserID : number = SessionHandler.getUserSession();
 
+  //@ViewChild(CvUserComponent) viewCV : CvUserComponent = new CvUserComponent();
 
   ngOnInit() {
     if (this.loggedIn()) {
       this.OfferAPI.checkOfferExist(this.UserID)
         .subscribe(response => this.OfferID = Number(response))
+      console.log(this.OfferID)
     } else {
       this.router.navigate(["/Login"])
     }

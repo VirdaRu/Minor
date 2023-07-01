@@ -1,8 +1,8 @@
 <br>
 <br>
 <!--PDF Viewer comes here-->
-  <ngx-extended-pdf-viewer
-    [src]="'/assets/TestPDFFile.pdf'"
+  <ngx-extended-pdf-viewer *ngIf="received"
+    [src]=fileSrc
     [useBrowserLocale] = "true"
     [showDownloadButton] = "false"
     [showRotateButton] = "false"

@@ -2,7 +2,7 @@
   <h1 class="text-center">Mijn Account</h1>
 
   <div class="row">
-    <app-cv-list [AccountView]="true"></app-cv-list>
+    <!--<app-cv-list [AccountView]="true"></app-cv-list>-->
   </div>
   <div class="row">
     <!--Mijn account functionalities-->
@@ -41,7 +41,7 @@
     </div>
 
     <div class="col-md-7 bg-info">
-      <app-cv-user></app-cv-user>
+      <app-cv-user [offerID]="OfferID"></app-cv-user>
     </div>
 
   </div>
