@@ -1,6 +1,6 @@
 
 export class Constants {
-  public static readonly API_URL: string = "https://localhost:7229/api";
+  public static readonly API_URL: string = "http://localhost:7229/api";
 
   static UserTypeOptions = [
     {option: 'Werknemer (Ik ben op zoek naar werk)', value: 0},
