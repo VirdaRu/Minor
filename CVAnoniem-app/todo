@@ -1,0 +1,53 @@
+Comments plaatsen
+-User
+[ ]--user-permissions
+[ ]--usetype-switch
+[ ]--user-settings
+[ ]--social-login
+[ ]--google-login
+[ ]--linkedin-login
+[ ]--saved-cv
+[ ]--register
+[ ]--recaptcha???
+[ ]--login
+-message-sender
+[ ]--message-sender
+-home
+[ ]--home
+[ ]--search
+-global
+[ ]--global
+[ ]--error
+[ ]--footer
+[ ]--header
+[ ]--navbar
+-faq
+[ ]--faq
+[ ]--about
+[ ]--privacy
+-environments
+[ ]--environments
+-cv-page
+[ ]--cv-page
+-cv
+[ ]--cv
+[ ]--cv-full
+[ ]--cv-list
+-core
+[ ]--services
+contact
+[ ]--contact
+[ ]--e-mail
+-config
+[ ]--config
+[ ]--API_Requests
+-admin
+[ ]--admin
+[ ]--admin-dashboard
+[ ]--admin-nav-panel
+-account
+[ ]--account
+[ ]--cv-upload-file
+[ ]--cv-user
+[ ]--inbox
+[ ]--upload-cv
