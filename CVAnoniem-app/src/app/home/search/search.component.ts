@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {CvListComponent} from "../../cv/cv-list/cv-list.component";
+import {FormControl, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-search',
@@ -10,8 +11,11 @@ import {CvListComponent} from "../../cv/cv-list/cv-list.component";
 export class SearchComponent {
 
   // @Output() offers : Offer[] = [];
+  mySearch = new FormGroup({
+    query: new FormControl()
+  })
 
-  constructor(private http : HttpClient) {
+  constructor(private http: HttpClient) {
 
   }
 
