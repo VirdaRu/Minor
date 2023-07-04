@@ -13,9 +13,8 @@ export class MessageAPI_Requests implements IAPI_Requests
       {params : new HttpParams().set("id", id)});
   }
 
-  get(): void
-  {
-
+  get() {
+    return this.http.get<Message[]>(`${Constants.API_URL}/message/all-messages`);
   }
 
   getByID(id : any)

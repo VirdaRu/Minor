@@ -7,8 +7,8 @@ const oAuthConfig: AuthConfig = {
   issuer: 'https://accounts.google.com',
   strictDiscoveryDocumentValidation: false,
   redirectUri: window.location.origin,
-  //clientId: '788323653867-3235j2n5oojmfk548lgqs919101chcr8.apps.googleusercontent.com',
-  clientId: '934610700309-h717n627pkfb5s39518lbs4hhkn13lo7.apps.googleusercontent.com',
+  //clientId: '788323653867-3235j2n5oojmfk548lgqs919101chcr8.apps.googleusercontent.com', //this is the id for the end host
+  clientId: '934610700309-h717n627pkfb5s39518lbs4hhkn13lo7.apps.googleusercontent.com', //this is the id for the localhost
   scope: 'openid profile email',
 }
 

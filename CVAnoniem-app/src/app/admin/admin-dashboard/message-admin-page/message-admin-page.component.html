@@ -1,0 +1,31 @@
+<div class="col-xs-10 col-md-9">
+  <div *ngFor="let message of messages" class="list">
+    <div class="col-sm-9">
+      <div class="list-item">
+        <h3>
+          <strong>
+            Onderwerp:
+          </strong>
+          {{message.Subject}}
+        </h3>
+        <h3>
+          <strong>
+            Bericht:
+          </strong>
+          {{message.message}}
+        </h3>
+        <h3>
+          <strong>
+            Verzonden op:
+          </strong>
+          {{message.DateSent}}
+        </h3>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <button class="btn-lg btn-danger" (click)="delete(message.MessageID)">
+        <i class="glyphicon glyphicon-trash"></i>
+      </button>
+    </div>
+  </div>
+</div>

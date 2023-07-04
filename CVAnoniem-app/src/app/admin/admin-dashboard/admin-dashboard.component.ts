@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
-import {Offer} from "../../../models/offer";
 import {HttpClient} from "@angular/common/http";
 import {OfferAPI_Requests} from "../../config/API_Requests/OfferAPI_Requests";
+import {AdminNavPanelComponent} from "../admin-nav-panel/admin-nav-panel.component";
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -9,21 +9,21 @@ import {OfferAPI_Requests} from "../../config/API_Requests/OfferAPI_Requests";
   styleUrls: ['./admin-dashboard.component.css']
 })
 export class AdminDashboardComponent {
-  items!: Offer[];
+
+  static ItemsAmount: number
 
   OfferAPI = new OfferAPI_Requests(this.http);
 
   constructor(private http: HttpClient) {
 
-    this.OfferAPI.get().subscribe(
-      response => this.items = response
-    );
   }
 
-  public showPage(page: string) {
-    if (page === "user") {
+  public showPage() {
+    return AdminNavPanelComponent.chosenPage;
+  }
 
-    }
+  public getItemAmount() {
+    return AdminDashboardComponent.ItemsAmount;
   }
 
 

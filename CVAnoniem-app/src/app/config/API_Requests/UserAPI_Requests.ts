@@ -8,11 +8,13 @@ export class UserAPI_Requests implements IAPI_Requests {
   constructor(private http: HttpClient) {
   }
 
-  delete(id: any): void {
+  delete(id: any) {
+    return this.http.delete(`${Constants.API_URL}/user`,
+      {params: new HttpParams().set('id', id)});
   }
 
-  get(): void {
-
+  get() {
+    return this.http.get<User[]>(`${Constants.API_URL}/user`);
   }
 
   getByID(id: any): void {
