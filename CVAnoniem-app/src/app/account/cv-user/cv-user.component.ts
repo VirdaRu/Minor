@@ -1,8 +1,8 @@
 import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
 import {SessionHandler} from "../../config/SessionHandler";
 import {HttpClient, HttpParams} from "@angular/common/http";
-import {OfferAPI_Requests} from "../../config/API_Requests/OfferAPI_Requests";
 import {ResumeAPI_Requests} from "../../config/API_Requests/ResumeAPI_Requests";
+import {Constants} from "../../config/constants";
 
 
 @Component({
@@ -35,14 +35,6 @@ export class CvUserComponent implements OnChanges{
   ResumeAPI = new ResumeAPI_Requests(this.http);
 
   constructor(private http: HttpClient) {
-    // check of user al een offer/resume heeft
-    // this.http.get("https://localhost:7229/api/resume/user-has-resume", {params: new HttpParams().set("userID", this.userid)}).subscribe(response => {
-    //   console.log(Number(response))
-    //   if (Number(response) != 0) {
-    //     this.GotResume()
-    //   }
-    // });
-    //this.GotResume();
 
     console.log(this.offerID);
   }
@@ -51,7 +43,7 @@ export class CvUserComponent implements OnChanges{
     //this.ResumeAPI.get()
 
 
-    this.http.get("https://localhost:7229/api/resume", {
+    this.http.get(`${Constants.API_URL}/resume`, {
       'responseType': 'arraybuffer' as 'json',
       params: new HttpParams().set("userID", this.offerID)
     }).subscribe(response => {

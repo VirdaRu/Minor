@@ -14,22 +14,27 @@ export class PermissionAPI_Requests implements  IAPI_Requests
 
   }
 
-  getByID(id:any)
-  {
+  getByID(id: any) {
     return this.http.get(`${Constants.API_URL}/permission`,
-      {params : new HttpParams().set('id', SessionHandler.getUserSession())}
+      {params: new HttpParams().set('id', SessionHandler.getUserSession())}
     );
   }
 
-  post(body : any)
-  {
+  getByEmployer(id: any) {
+    return this.http.get(`${Constants.API_URL}/permission/for-employer`,
+      {params: new HttpParams().set('id', SessionHandler.getUserSession())}
+    );
+  }
+
+  post(body: any) {
     const headers = new HttpHeaders()
       .set('content-type', 'application/json')
       .set('Access-Control-Allow-Origin', '*');
     body = JSON.stringify(body);
     return this.http.post(`${Constants.API_URL}/permission`,
       body,
-      {'headers' : headers ,
+      {
+        'headers': headers,
         params : new HttpParams().set('senderid',
           SessionHandler.getUserSession())})
   }

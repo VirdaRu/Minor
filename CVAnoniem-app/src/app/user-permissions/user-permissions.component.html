@@ -2,9 +2,12 @@
 
 <div *ngFor="let permission of PermissionList">
   <div class="permission-result">
-    <p>Werkgever: {{ permission.EmployerID }}</p>
-    <button class="btn-outline-red"
-            (click)="RemovePermission(permission.PermissionID)">
+    <p *ngIf="!isEmployer">Werkgever: {{ permission.EmployerID }}</p>
+    <p>ID van CV: {{permission.OfferID}}</p>
+    <button
+      *ngIf="!isEmployer"
+      class="btn-outline-red"
+      (click)="RemovePermission(permission.PermissionID)">
       Toestemming Gehele CV weghalen
     </button>
   </div>

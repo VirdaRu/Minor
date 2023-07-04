@@ -1,7 +1,4 @@
 import {Component} from '@angular/core';
-import {Offer} from "../../models/offer";
-import {HttpClient} from "@angular/common/http";
-import {CvComponent} from "../cv/cv.component"
 
 @Component({
   selector: 'app-cv-page',
@@ -10,4 +7,10 @@ import {CvComponent} from "../cv/cv.component"
 })
 export class CvPageComponent {
 
+  public OfferID: number = 0;
+
+  onClickOffer(event: any) {
+    this.OfferID = event;
+    console.log(event + 1);
+  }
 }

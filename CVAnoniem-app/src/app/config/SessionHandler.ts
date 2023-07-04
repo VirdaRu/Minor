@@ -16,7 +16,11 @@ export class SessionHandler {
   }
 
   static getUserTypeSession() {
-    return sessionStorage.getItem("isemployer");
+    if (sessionStorage.getItem("isemployer") == 'true') {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   static setUsername(username: string) {

@@ -1,5 +1,6 @@
 <div id="list-of-offers">
-  <app-cv *ngFor="let offer of offers"
+  <app-cv (ClickedID)="OnClickShare($event)"
+          *ngFor="let offer of offers"
           [OfferID]="offer.OfferID.toString()"
           [Title]="offer.Title"
           [Branche]="offer.WorkField"

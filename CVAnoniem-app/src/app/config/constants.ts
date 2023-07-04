@@ -6,5 +6,4 @@ export class Constants {
     {option: 'Werknemer (Ik ben op zoek naar werk)', value: 0},
     {option: 'Werkgever (Ik ben op zoek naar kandidaten)', value: 1}
   ]
-  //public static readonly newString: string = "";
 }

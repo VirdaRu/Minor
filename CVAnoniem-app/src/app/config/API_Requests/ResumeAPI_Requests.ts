@@ -15,11 +15,18 @@ export class ResumeAPI_Requests implements IAPI_Requests {
     return this.http.get<Resume[]>(`${Constants.API_URL}/resume`);
   }
 
-  getByID(id: any) {
+  getByID(userid: any) {
     return this.http.get(`${Constants.API_URL}/resume`,
       {
-        params: new HttpParams().set("id", id)
+        params: new HttpParams().set("id", userid)
       });
+  }
+
+  getByOfferID(Offerid: any) {
+    return this.http.get(`${Constants.API_URL}/resume/for-offer`, {
+      'responseType': 'arraybuffer' as 'json',
+      params: new HttpParams().set("offerid", Offerid)
+    });
   }
 
   post(body: any) {

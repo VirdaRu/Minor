@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Offer} from "../../../models/offer";
 import {SessionHandler} from "../../config/SessionHandler";
@@ -20,6 +20,8 @@ export class CvListComponent {
   @Input() MessageView: boolean = false;
   @Input() AccountView: boolean = false;
 
+  @Output() OutputOfferID = new EventEmitter<number>();
+
   offers!: Offer[];
 
   OfferAPI = new OfferAPI_Requests(this.http);
@@ -31,18 +33,18 @@ export class CvListComponent {
 
   private userID = SessionHandler.getUserSession();
 
-  constructor(private http : HttpClient)
-  {
+  constructor(private http: HttpClient) {
 
   }
 
-  ngOnInit(){
-    if (this.SavedPage)
-    {
+  OnClickShare(offerID: number) {
+    this.OutputOfferID.emit(offerID)
+  }
+
+  ngOnInit() {
+    if (this.SavedPage) {
       this.getSavedResumes(this.userID);
-    }
-    else if (this.AccountView)
-    {
+    } else if (this.AccountView) {
       this.OfferAPI.getByJobseekerID(this.userID)
         .subscribe(response => this.offers = response);
       CvListComponent.OfferID = this.offers[0].OfferID;

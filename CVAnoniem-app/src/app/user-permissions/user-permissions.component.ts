@@ -11,11 +11,19 @@ import {SessionHandler} from "../config/SessionHandler";
 export class UserPermissionsComponent {
   PermissionList!: any;
   PermissionAPI = new PermissionAPI_Requests(this.http);
+  isEmployer = SessionHandler.getUserTypeSession();
+
 
   constructor(private http: HttpClient) {
-    this.PermissionAPI.getByID(SessionHandler.getUserSession()).subscribe(
-      response => this.PermissionList = response
-    )
+    if (this.isEmployer) {
+      this.PermissionAPI.getByEmployer(SessionHandler.getUserSession()).subscribe(
+        response => this.PermissionList = response
+      )
+    } else {
+      this.PermissionAPI.getByID(SessionHandler.getUserSession()).subscribe(
+        response => this.PermissionList = response
+      )
+    }
   }
 
   RemovePermission(PermissionID: number) {

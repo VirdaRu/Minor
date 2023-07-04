@@ -1,7 +1,7 @@
 <div class="pdfViewer">
 
   <div *ngIf="showOptions" class="row">
-    <div *ngIf="isEmployer == '1'" class="col-xs-6">
+    <div *ngIf="isEmployer === true" class="col-xs-6">
       <button class="btn-outline btn-padding" routerLink="/SendMessage">
         Verzoek Geheel CV
       </button>
@@ -31,16 +31,18 @@
   <br>
 
   <!--PDF Viewer Placeholder-->
-  <ngx-extended-pdf-viewer
-    [src]="'/assets/TestPDFFile.pdf'"
-    [useBrowserLocale] = "true"
-    [showDownloadButton] = "false"
-    [showRotateButton] = "false"
-    [showPropertiesButton] = "false"
-    [showTextEditor] = "false"
-    [showToolbar] = "false">
+  <div *ngIf="received">
+    <ngx-extended-pdf-viewer
+      [src]="fileSrc"
+      [useBrowserLocale]="true"
+      [showDownloadButton]="false"
+      [showRotateButton]="false"
+      [showPropertiesButton]="false"
+      [showTextEditor]="false"
+      [showToolbar]="false">
 
-  </ngx-extended-pdf-viewer>
+    </ngx-extended-pdf-viewer>
+  </div>
 
-    <p class="text-right" [textContent]="getOfferID()"></p>
+  <p class="text-right" [textContent]="getOfferID()"></p>
 </div>
