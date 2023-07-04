@@ -2,7 +2,8 @@
   <h1 class="text-center">Mijn Account</h1>
 
   <div class="row">
-    <!--<app-cv-list [AccountView]="true"></app-cv-list>-->
+<!--    maakt een zelfde call naar de api als account.ts-->
+    <app-account-offer [resumeLoaded]="loadedResume"></app-account-offer>
   </div>
   <div class="row">
     <!--Mijn account functionalities-->
@@ -41,7 +42,7 @@
     </div>
 
     <div class="col-md-7 bg-info">
-      <app-cv-user [offerID]="OfferID"></app-cv-user>
+      <app-cv-user [offerID]="OfferID" (gotResume)="onGetResume($event)"></app-cv-user>
     </div>
 
   </div>

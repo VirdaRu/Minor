@@ -17,6 +17,8 @@ export class AccountComponent implements OnInit {
 
   OfferID : number = 0;
 
+  loadedResume: boolean = false
+
   OfferAPI = new OfferAPI_Requests(this.http);
 
   UserID : number = SessionHandler.getUserSession();
@@ -43,6 +45,10 @@ export class AccountComponent implements OnInit {
 
   public isEmployer() {
     return (Number(SessionHandler.getUserTypeSession()));
+  }
+
+  public onGetResume(bool : boolean){
+    this.loadedResume = bool;
   }
 
   public DeleteCV() {

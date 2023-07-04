@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
 import {SessionHandler} from "../../config/SessionHandler";
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {OfferAPI_Requests} from "../../config/API_Requests/OfferAPI_Requests";
@@ -13,6 +13,7 @@ import {ResumeAPI_Requests} from "../../config/API_Requests/ResumeAPI_Requests";
 
 export class CvUserComponent implements OnChanges{
 
+  @Output() gotResume = new EventEmitter<boolean>();
   @Input() offerID = 7;
 
   ngOnChanges(changes: SimpleChanges) {
@@ -48,8 +49,6 @@ export class CvUserComponent implements OnChanges{
   }
 
   public GotResume() {
-    //this.ResumeAPI.get()
-
 
     this.http.get("https://localhost:7229/api/resume", {
       'responseType': 'arraybuffer' as 'json',
@@ -58,7 +57,7 @@ export class CvUserComponent implements OnChanges{
       console.log(response);
       this.downloadBuffer(response, "test");
     });
-
+    this.gotResume.emit(true);
   }
 
   public downloadBuffer(arrayBuffer: any, fileName: string) {
