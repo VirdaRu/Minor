@@ -17,7 +17,12 @@
         Mijn Inbox
       </button>
 
-      <button class="btn-outline">
+      <button *ngIf="displayFullResume" class="btn-outline" (click)="OnClickDisplay()">
+        <i class="glyphicon glyphicon-eye-open"></i>
+        Gecensueerde CV weergeven
+      </button>
+
+      <button *ngIf="!displayFullResume" class="btn-outline" (click)="OnClickDisplay()">
         <i class="glyphicon glyphicon-eye-open"></i>
         Gehele CV weergeven
       </button>
@@ -40,7 +45,7 @@
     </div>
 
     <div class="col-md-7 bg-info">
-      <app-cv-user [offerID]="OfferID"></app-cv-user>
+      <app-cv-user [clickToShowFull]="showFullResume" [offerID]="OfferID"></app-cv-user>
     </div>
 
   </div>

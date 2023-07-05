@@ -53,7 +53,7 @@ export class CvListComponent {
     {
       this.OfferAPI.getByOfferID(CvFullComponent.OfferID)
         .subscribe(
-        offers => this.offers = offers);
+          offers => this.offers = offers);
     }
     else
     {

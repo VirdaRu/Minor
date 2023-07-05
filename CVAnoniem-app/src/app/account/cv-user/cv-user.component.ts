@@ -3,6 +3,7 @@ import {SessionHandler} from "../../config/SessionHandler";
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {ResumeAPI_Requests} from "../../config/API_Requests/ResumeAPI_Requests";
 import {Constants} from "../../config/constants";
+import {Subject} from "rxjs";
 
 
 @Component({
@@ -11,17 +12,33 @@ import {Constants} from "../../config/constants";
   styleUrls: ['./cv-user.component.css']
 })
 
-export class CvUserComponent implements OnChanges{
+export class CvUserComponent implements OnChanges {
 
   @Input() offerID = 7;
+
+  @Input() clickToShowFull: Subject<any> = new Subject<any>();
+
+  ShowFullResume: boolean = false;
 
   ngOnChanges(changes: SimpleChanges) {
     console.log("V");
     console.log(this.offerID)
-    if (this.offerID != 0){
-      this.GotResume();
+    this.clickToShowFull.subscribe(response => {
+
+      if (this.offerID != 0) {      //if user has an offer
+
+        if (response) {            //if user clicked show full resume
+          this.getFullResume();
+        } else {                     //else display censored resume
+          this.getResume();
+        }
+      }
+    });
+
+    if (this.offerID != 0) {
+      this.getResume();
     }
-    //this.GotResume();
+    //this.getResume();
     // You can also use categoryId.previousValue and
     // categoryId.firstChange for comparing old and new values
 
@@ -35,25 +52,29 @@ export class CvUserComponent implements OnChanges{
   ResumeAPI = new ResumeAPI_Requests(this.http);
 
   constructor(private http: HttpClient) {
-
     console.log(this.offerID);
   }
 
-  public GotResume() {
-    //this.ResumeAPI.get()
-
-
+  public getResume() {
     this.http.get(`${Constants.API_URL}/resume`, {
       'responseType': 'arraybuffer' as 'json',
-      params: new HttpParams().set("userID", this.offerID)
+      params: new HttpParams().set("userID", this.userid)
     }).subscribe(response => {
       console.log(response);
-      this.downloadBuffer(response, "test");
+      this.downloadBuffer(response);
     });
-
   }
 
-  public downloadBuffer(arrayBuffer: any, fileName: string) {
+  public getFullResume() {
+    this.http.get(`${Constants.API_URL}/resume/full-resume`, {
+      'responseType': 'arraybuffer' as 'json',
+      params: new HttpParams().set("userID", this.userid)
+    }).subscribe(response => {
+      this.downloadBuffer(response)
+    })
+  }
+
+  public downloadBuffer(arrayBuffer: any) {
     this.fileSrc = new Blob([arrayBuffer], {type: 'application/pdf'})
     this.received = true;
     // const a = document.createElement('a')
@@ -64,7 +85,4 @@ export class CvUserComponent implements OnChanges{
     // a.download = fileName
     // a.click()
   }
-
-  // haal cv op op basis van userid
-
 }

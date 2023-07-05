@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {SessionHandler} from "../config/SessionHandler";
 import {OfferAPI_Requests} from "../config/API_Requests/OfferAPI_Requests";
 import {Router} from "@angular/router";
+import {Subject} from "rxjs";
 
 @Component({
   selector: 'app-account',
@@ -14,11 +15,19 @@ export class AccountComponent implements OnInit {
   constructor(private http: HttpClient, private router: Router) {
   }
 
-  OfferID : number = 0;
+  showFullResume: Subject<any> = new Subject();
+
+  notifyClick() {
+    this.showFullResume.next(true);
+  }
+
+  OfferID: number = 0;
 
   OfferAPI = new OfferAPI_Requests(this.http);
 
-  UserID : number = SessionHandler.getUserSession();
+  UserID: number = SessionHandler.getUserSession();
+
+  displayFullResume: boolean = false;
 
 
   ngOnInit() {
@@ -47,6 +56,16 @@ export class AccountComponent implements OnInit {
     let dialog = confirm("Weet u zeker dat u uw CV wilt verwijderen?");
     if (dialog) {
       this.OfferAPI.delete(this.OfferID)
+    }
+  }
+
+  OnClickDisplay() {
+    if (this.displayFullResume) {
+      this.showFullResume.next(false);
+      this.displayFullResume = false
+    } else {
+      this.showFullResume.next(true);
+      this.displayFullResume = true
     }
   }
 }
