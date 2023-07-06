@@ -1,6 +1,7 @@
 <!--Search Bar-->
 <div>
-  <div class="container">
+
+  <div class="container" >
     <div class="col-xs-12">
       <h1 class="WelcomeTitle text-center"><strong>Welkom bij CVAnoniem!</strong></h1>
       <app-search></app-search>
@@ -13,7 +14,7 @@
       </div>
 
       <!--Full View of selected Resume-->
-      <div class="col-xs-12 col-md-6 col-lg-6">
+      <div [style.position]="position" class="col-xs-12 col-md-6 col-lg-6 fixedElement">
         <app-cv-full [showOptions]=true [RecOfferID]="OfferID" [SavedPage]="false"></app-cv-full>
       </div>
 
@@ -21,3 +22,4 @@
 
   </div>
 </div>
+

@@ -14,6 +14,7 @@ import {SearchComponent} from "../../home/search/search.component";
 })
 export class CvListComponent {
 
+
   search!: SearchComponent;
 
   @Input() SavedPage: boolean = false;

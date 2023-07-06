@@ -46,3 +46,19 @@
 
   <p class="text-right" [textContent]="getOfferID()"></p>
 </div>
+
+<script>
+  $(window).scroll(function(e){
+    console.log("200");
+    var $el = $('.fixedElement');
+    var isPositionFixed = ($el.css('position') == 'fixed');
+    if ($(this).scrollTop() > 100 && !isPositionFixed){
+      $el.css({'position': 'fixed', 'top': '0px'});
+      console.log("100");
+    }
+    if ($(this).scrollTop() < 100 && isPositionFixed){
+      $el.css({'position': 'static', 'top': '0px'});
+      console.log("200");
+    }
+  });
+</script>

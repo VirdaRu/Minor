@@ -14,7 +14,7 @@ import {Subject} from "rxjs";
 
 export class CvUserComponent implements OnChanges {
 
-  @Input() offerID = 7;
+  @Input() offerID = 0;
 
   @Input() clickToShowFull: Subject<any> = new Subject<any>();
 
@@ -50,7 +50,7 @@ export class CvUserComponent implements OnChanges {
   public getResume() {
     this.http.get(`${Constants.API_URL}/resume`, {
       'responseType': 'arraybuffer' as 'json',
-      params: new HttpParams().set("userID", this.userid)
+      params: new HttpParams().set("userID", this.offerID)
     }).subscribe(response => {
       console.log(response);
       this.downloadBuffer(response);
