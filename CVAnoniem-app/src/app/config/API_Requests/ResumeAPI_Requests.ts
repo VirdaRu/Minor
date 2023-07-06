@@ -22,10 +22,10 @@ export class ResumeAPI_Requests implements IAPI_Requests {
       });
   }
 
-  getByOfferID(Offerid: any) {
+  getByOfferID(Offerid: any, userID: any) {
     return this.http.get(`${Constants.API_URL}/resume/for-offer`, {
       'responseType': 'arraybuffer' as 'json',
-      params: new HttpParams().set("offerid", Offerid)
+      params: new HttpParams().set("offerid", Offerid).set("userID", userID)
     });
   }
 
