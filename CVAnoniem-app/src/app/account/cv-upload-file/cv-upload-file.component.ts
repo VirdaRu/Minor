@@ -31,7 +31,7 @@ export class CvUploadFileComponent implements OnInit {
 
       formData.append("file", file);
 
-      const upload$ = this.http.post("https://localhost:7229/api/resume/check", formData);
+      const upload$ = this.http.post("http://localhost:7229/api/resume/check", formData);
       upload$.subscribe(response => this.onResponse(Number(response), file));
 
       //this.fileName = file.name;

@@ -42,8 +42,8 @@ export class AccountOfferComponent {
     if (this.resumeLoaded){
       this.OfferAPI.getByJobseekerID(this.userID)
         .subscribe(response => this.offers = response);
-      this.offerID = this.offers[0].OfferID;
-      this.resumeLoaded = false;
+      //this.offerID = this.offers[0].OfferID;
+      //this.resumeLoaded = false;
     }
   }
 

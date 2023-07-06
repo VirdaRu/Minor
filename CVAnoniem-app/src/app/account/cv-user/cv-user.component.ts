@@ -43,14 +43,13 @@ export class CvUserComponent implements OnChanges{
     //     this.GotResume()
     //   }
     // });
-    //this.GotResume();
 
     console.log(this.offerID);
   }
 
   public GotResume() {
 
-    this.http.get("https://localhost:7229/api/resume", {
+    this.http.get("http://localhost:7229/api/resume", {
       'responseType': 'arraybuffer' as 'json',
       params: new HttpParams().set("userID", this.offerID)
     }).subscribe(response => {
