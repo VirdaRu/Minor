@@ -51,6 +51,7 @@ import {CvUploadFileComponent} from "./account/cv-upload-file/cv-upload-file.com
 import {UserAdminPageComponent} from './admin/admin-dashboard/user-admin-page/user-admin-page.component';
 import {OfferAdminPageComponent} from './admin/admin-dashboard/offer-admin-page/offer-admin-page.component';
 import {MessageAdminPageComponent} from './admin/admin-dashboard/message-admin-page/message-admin-page.component';
+//import {RECAPTCHA_V3_SITE_KEY, RecaptchaV3Module} from "ng-recaptcha";
 
 
 const Route: Routes = [
@@ -120,7 +121,8 @@ const Route: Routes = [
     CvUploadFileComponent,
     UserAdminPageComponent,
     OfferAdminPageComponent,
-    MessageAdminPageComponent
+    MessageAdminPageComponent,
+
   ],
   imports: [
     BrowserModule,                  //Browser Module
@@ -131,10 +133,16 @@ const Route: Routes = [
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    OAuthModule.forRoot()         //Google Login
+    OAuthModule.forRoot(),
+    //RecaptchaV3Module,
+    //Google Login
     //Back end communication
   ],
-  providers: [],
+  providers: [//{
+    //provide: RECAPTCHA_V3_SITE_KEY,
+    //useValue: environment.recaptcha.siteKey,
+    //},],
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
