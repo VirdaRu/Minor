@@ -12,6 +12,10 @@
         <i class="glyphicon glyphicon-upload"></i> CV Uploaden
       </button>
 
+      <button *ngIf="!isEmployer()" class="btn-outline" routerLink="/redact-resume">
+        CV Anonimiseren
+      </button>
+
       <button class="btn-outline" routerLink="/Inbox">
         <i class="glyphicon glyphicon-envelope"></i>
         Mijn Inbox
@@ -41,6 +45,7 @@
         <i class="glyphicon glyphicon-trash"></i>
         Mijn CV Verwijderen
       </button>
+
 
     </div>
 

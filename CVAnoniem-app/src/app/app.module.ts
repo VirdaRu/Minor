@@ -52,6 +52,7 @@ import {UserAdminPageComponent} from './admin/admin-dashboard/user-admin-page/us
 import {OfferAdminPageComponent} from './admin/admin-dashboard/offer-admin-page/offer-admin-page.component';
 import {MessageAdminPageComponent} from './admin/admin-dashboard/message-admin-page/message-admin-page.component';
 import {AccountOfferComponent} from "./account/account-offer/account-offer.component";
+import {RedactResumeComponent} from './redact-resume/redact-resume.component';
 //import {RECAPTCHA_V3_SITE_KEY, RecaptchaV3Module} from "ng-recaptcha";
 
 
@@ -76,6 +77,7 @@ const Route: Routes = [
   {path: 'linkedin-login', component: LinkedinLoginComponent},
   {path: 'linkedin-response', component: LinkedinResponseComponent},
   {path: 'set-user-type', component: UsertypeSwitchComponent},
+  {path: 'redact-resume', component: RedactResumeComponent},
   {path: '**', component: ErrorComponent}//Any other path will redirect to error
 ]
 
@@ -124,6 +126,7 @@ const Route: Routes = [
     OfferAdminPageComponent,
     MessageAdminPageComponent,
     AccountOfferComponent,
+    RedactResumeComponent,
 
   ],
   imports: [
@@ -136,6 +139,7 @@ const Route: Routes = [
     ReactiveFormsModule,
     BrowserAnimationsModule,
     OAuthModule.forRoot(),
+    ReactiveFormsModule,
     //RecaptchaV3Module,
     //Google Login
     //Back end communication

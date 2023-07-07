@@ -18,8 +18,6 @@ export class CvUserComponent implements OnChanges {
 
   @Input() clickToShowFull: Subject<any> = new Subject<any>();
 
-  ShowFullResume: boolean = true;
-
   ngOnChanges(changes: SimpleChanges) {
     console.log("V");
     console.log(this.offerID)
@@ -50,7 +48,7 @@ export class CvUserComponent implements OnChanges {
   public getResume() {
     this.http.get(`${Constants.API_URL}/resume`, {
       'responseType': 'arraybuffer' as 'json',
-      params: new HttpParams().set("userID", this.offerID)
+      params: new HttpParams().set("userID", this.userid)
     }).subscribe(response => {
       console.log(response);
       this.downloadBuffer(response);
