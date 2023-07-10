@@ -31,34 +31,19 @@
   <br>
 
   <!--PDF Viewer Placeholder-->
-  <div *ngIf="received">
+  <div *ngIf="received" class="pdf-height">
     <ngx-extended-pdf-viewer
       [src]="fileSrc"
       [useBrowserLocale]="true"
-      [showDownloadButton]="false"
+      [showDownloadButton]="true"
       [showRotateButton]="false"
       [showPropertiesButton]="false"
       [showTextEditor]="false"
-      [showToolbar]="false">
-
+      [showToolbar]="true"
+      [enablePrint]="false"
+      [showDrawEditor]="false"
+      [contentEditable]="false">
     </ngx-extended-pdf-viewer>
   </div>
-
-  <p class="text-right" [textContent]="getOfferID()"></p>
 </div>
 
-<script>
-  $(window).scroll(function(e){
-    console.log("200");
-    var $el = $('.fixedElement');
-    var isPositionFixed = ($el.css('position') == 'fixed');
-    if ($(this).scrollTop() > 100 && !isPositionFixed){
-      $el.css({'position': 'fixed', 'top': '0px'});
-      console.log("100");
-    }
-    if ($(this).scrollTop() < 100 && isPositionFixed){
-      $el.css({'position': 'static', 'top': '0px'});
-      console.log("200");
-    }
-  });
-</script>

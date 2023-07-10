@@ -4,6 +4,7 @@ import {OfferAPI_Requests} from "../../config/API_Requests/OfferAPI_Requests"
 import {Offer} from "../../../models/offer"
 import {FormControl, FormGroup} from "@angular/forms";
 import {SessionHandler} from "../../config/SessionHandler";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-upload-cv',
@@ -19,7 +20,7 @@ export class UploadCvComponent {
 
   OfferAPI = new OfferAPI_Requests(this.http);
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router:Router) {
     this.OfferAPI.getByJobseekerID(this.userid)
       .subscribe(
         response => {
@@ -70,41 +71,32 @@ export class UploadCvComponent {
 
   addOffer(offer: Offer) {
     if (this.confirmUpdate()) {
-      console.log("add");
+
       const formData = new FormData();
-      //formData.append("offer", JSON.stringify(offer));
       formData.append("file", this.fileSrc);
+
       this.OfferAPI.postWithResume(formData, JSON.stringify(offer)).subscribe(response => console.log(response));
+
+      this.redirect();
     }
   }
 
-  addOffer2(offer: Offer) {
-    if (this.confirmUpdate()) {
-
-      const formData = new FormData();
-      //formData.append("offer", JSON.stringify(offer));
-      formData.append("file", this.fileSrc);
-
-      //this.http.post("https://localhost:7229/api/offer", formData, {params: new HttpParams().set("offer", JSON.stringify(offer))}).subscribe( response => console.log(response));
-
-    }
+  redirect(){
+    alert("upload succesvol");
+    this.router.navigate(["/Account"]);
   }
-
-  // addOffer(offer: Offer) {
-  //   if (this.confirmUpdate()) {
-  //     this.OfferAPI.post(offer).subscribe(response => console.log(response));
-  //   }
-  // }
 
 
   updateOffer(offer: Offer) {
     if (this.confirmUpdate()) {
-      console.log("update");
+
       const formData = new FormData();
       formData.append("file", this.fileSrc);
 
       this.OfferAPI.putWithResume(formData, JSON.stringify(offer)).subscribe
       (response => console.log(response));
+
+      this.redirect();
     }
   }
 
@@ -121,5 +113,3 @@ export class UploadCvComponent {
   }
 }
 
-//TODO: For new components commit to git --> Add VCS
-//TODO: In Angular.json there is a line referencing a proxy file, this is for development! On production REMOVE it!

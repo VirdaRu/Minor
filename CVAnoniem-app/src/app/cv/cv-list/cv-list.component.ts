@@ -32,6 +32,8 @@ export class CvListComponent {
   public static oldquery: string;
   public static OfferID = 0;
 
+
+
   private userID = SessionHandler.getUserSession();
 
   constructor(private http: HttpClient) {
@@ -58,10 +60,12 @@ export class CvListComponent {
     }
     else
     {
+      this.getOffersLimit();
       setInterval(() => {
         if (CvListComponent.query !== CvListComponent.oldquery) {
           console.log(CvListComponent.query)
           this.getResultsBySearch(CvListComponent.query);
+
         }
         CvListComponent.oldquery = CvListComponent.query;
       }, 1000);
@@ -81,10 +85,17 @@ export class CvListComponent {
         response => this.offers = response);
   }
 
+  public getOffersLimit()
+  {
+    return this.OfferAPI.getLimit(10).subscribe(
+      response => { this.offers = response; this.OutputOfferID.emit(this.offers[0].OfferID);});
+  }
+
   public getResultsBySearch(query : string)
   {
     return this.OfferAPI.getByID(query).subscribe(
-      response => this.offers = response);
+      response => { this.offers = response; this.OutputOfferID.emit(this.offers[0].OfferID);});
+
   }
 
 }

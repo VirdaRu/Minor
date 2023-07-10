@@ -7,7 +7,7 @@ import {GoogleApiService} from "../user/social-login/google-login/google-api.ser
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-  constructor(private readonly googleApi: GoogleApiService) {
+  constructor() {
 
   }
 }

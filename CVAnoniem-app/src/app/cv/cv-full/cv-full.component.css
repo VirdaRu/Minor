@@ -3,8 +3,12 @@
   font-size: 18px;
   border-radius: 10px;
   padding: 25px;
-  /*position: fixed;*/
-  /*width: 40%;*/
+  margin-bottom: 1em;
+  height: 100%;
+}
+
+.pdf-height {
+  height: 90%;
 }
 
 .pdfViewer a{
