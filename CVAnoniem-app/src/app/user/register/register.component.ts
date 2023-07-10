@@ -63,7 +63,6 @@ export class RegisterComponent {
   public RegisterUser(email: string, password: string, passwordConfirm: string, tel: string) {
     if (this.passwordMatch) {
       let body = JSON.stringify([{
-        //userid : 0,
         EmailAddress: email,
         Password: password,
         PhoneNumber: tel,
@@ -71,7 +70,9 @@ export class RegisterComponent {
         ThirdPartyID: ""
       }])
       console.log(body);
-      this.userAPI.post(body).subscribe(response => alert(response));
+      this.userAPI.post(body).subscribe(response => {
+        alert("Account is aangemaakt.");
+      });
     }
   }
 }

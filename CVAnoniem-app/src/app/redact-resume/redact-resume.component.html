@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+      <h1>Voer hier woorden in die u uit uw CV wilt filteren.</h1>
+      <h5>Doe het als volgt: "woord1,woord 2,woord 3,woord4"</h5>
+      <textarea #wordsToRedact class="form-control input-lg" rows="25" cols="50"></textarea>
+
+      <br>
+
+      <button class="btn-outline" (click)="anonimize(wordsToRedact.value)">Anonimiseer</button>
+    </div>
+    <div class="col-sm-6">
+      <app-cv-user [offerID]="offerID"></app-cv-user>
+    </div>
+  </div>
+</div>
