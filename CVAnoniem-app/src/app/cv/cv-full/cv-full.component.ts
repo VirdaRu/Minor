@@ -53,13 +53,7 @@ export class CvFullComponent implements OnChanges {
 
 
   constructor(private http: HttpClient, private router: Router) {
-    // setInterval(() =>{
-    //   if (CvFullComponent.Clicked === true){
-    //     this.GotResume();
-    //     CvFullComponent.Clicked = false;
-    //   }
-    //   console.log(CvFullComponent.OfferID)
-    // }, 5000)
+
   }
 
   public BookmarkResume(SaveOffer: SavedOffers) {
@@ -84,13 +78,13 @@ export class CvFullComponent implements OnChanges {
     return CvFullComponent.Bookmarked;
   }
 
-
   public GotResume() {
-    this.ResumeAPI.getByOfferID(CvFullComponent.OfferID).subscribe(
-      response => {
-        this.downloadBuffer(response);
-      }
-    )
+    this.ResumeAPI.getByOfferID(CvFullComponent.OfferID, this.userID)
+      .subscribe(
+        response => {
+          this.downloadBuffer(response);
+        }
+      )
   }
 
   public downloadBuffer(arrayBuffer: any) {

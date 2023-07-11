@@ -17,13 +17,7 @@ export class AccountComponent implements OnInit {
 
   showFullResume: Subject<any> = new Subject();
 
-  notifyClick() {
-    this.showFullResume.next(true);
-  }
-
   OfferID: number = 0;
-
-  loadedResume: boolean = false
 
   OfferAPI = new OfferAPI_Requests(this.http);
 
@@ -52,10 +46,6 @@ export class AccountComponent implements OnInit {
 
   public isEmployer() {
     return SessionHandler.getUserTypeSession();
-  }
-
-  public onGetResume(bool: boolean) {
-    this.loadedResume = bool;
   }
 
   public DeleteCV() {

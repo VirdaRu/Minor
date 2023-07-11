@@ -2,7 +2,7 @@
   <h1 class="text-center">Mijn Account</h1>
 
   <div class="row">
-    <!--<app-cv-list [AccountView]="true"></app-cv-list>-->
+    <app-account-offer [AccountView]="true"></app-account-offer>
   </div>
   <div class="row">
     <!--Mijn account functionalities-->
@@ -10,6 +10,10 @@
 
       <button *ngIf="!isEmployer()" id="edit-CV" class="btn-outline" type="submit" routerLink="/UploadCV">
         <i class="glyphicon glyphicon-upload"></i> CV Uploaden
+      </button>
+
+      <button *ngIf="!isEmployer()" class="btn-outline" routerLink="/redact-resume">
+        CV Anonimiseren
       </button>
 
       <button class="btn-outline" routerLink="/Inbox">
@@ -41,6 +45,7 @@
         <i class="glyphicon glyphicon-trash"></i>
         Mijn CV Verwijderen
       </button>
+
 
     </div>
 

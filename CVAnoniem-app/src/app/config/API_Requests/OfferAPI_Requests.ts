@@ -3,17 +3,22 @@ import {IAPI_Requests} from "./IAPI_Requests";
 import {Offer} from "../../../models/offer";
 import {Constants} from "../constants";
 //implement
-export class OfferAPI_Requests implements IAPI_Requests
-{
+export class OfferAPI_Requests implements IAPI_Requests {
 
-  constructor(private http : HttpClient) {
+  constructor(private http: HttpClient) {
 
   }
 
-  get()
-  {
+  get() {
     return this.http.get<Offer[]>(`${Constants.API_URL}/offer/all-offers-list`);
   }
+
+  getLimit(limit: number)
+  {
+    return this.http.get<Offer[]>(`${Constants.API_URL}/offer/limit-offers-list`,
+      {params : new HttpParams().set("limit", limit)});
+  }
+
 
   getByJobseekerID(id: number)
   {
@@ -85,6 +90,8 @@ export class OfferAPI_Requests implements IAPI_Requests
     return this.http.get<Offer[]>(`${Constants.API_URL}/offer/search-offers`,
         { params : new HttpParams().set('query',id)})
   }
+
+
 
   checkOfferExist(id : any)
   {

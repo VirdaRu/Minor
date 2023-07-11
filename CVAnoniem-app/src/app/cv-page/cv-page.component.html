@@ -1,6 +1,7 @@
 <!--Search Bar-->
 <div>
-  <div class="container">
+
+  <div class="container" >
     <div class="col-xs-12">
       <h1 class="WelcomeTitle text-center"><strong>Welkom bij CVAnoniem!</strong></h1>
       <app-search></app-search>
@@ -8,12 +9,12 @@
 
     <div class="row">
       <!--List of all resumes-->
-      <div class="col-xs-12 col-md-6 col-lg-6">
+      <div class="col-xs-12 col-md-6 col-lg-6 scrollable">
         <app-cv-list (OutputOfferID)="onClickOffer($event)" [SavedPage]="false"></app-cv-list>
       </div>
 
       <!--Full View of selected Resume-->
-      <div class="col-xs-12 col-md-6 col-lg-6">
+      <div  class="col-xs-12 col-md-6 col-lg-6 CVHeight">
         <app-cv-full [showOptions]=true [RecOfferID]="OfferID" [SavedPage]="false"></app-cv-full>
       </div>
 
@@ -21,3 +22,4 @@
 
   </div>
 </div>
+

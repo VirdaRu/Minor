@@ -1,4 +1,9 @@
-<div class="row">
+<div *ngIf="!PasswordCorrect">
+  <h1>Voer het admin wachtwoord in:</h1>
+  <input class="form-control" #pw type="password" (change)="CheckPassword(pw.value)">
+</div>
+
+<div *ngIf="PasswordCorrect" class="row">
   <h1 class="text-center">
     Admin Pagina
   </h1>

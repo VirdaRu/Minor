@@ -31,18 +31,19 @@
   <br>
 
   <!--PDF Viewer Placeholder-->
-  <div *ngIf="received">
+  <div *ngIf="received" class="pdf-height">
     <ngx-extended-pdf-viewer
       [src]="fileSrc"
       [useBrowserLocale]="true"
-      [showDownloadButton]="false"
+      [showDownloadButton]="true"
       [showRotateButton]="false"
       [showPropertiesButton]="false"
       [showTextEditor]="false"
-      [showToolbar]="false">
-
+      [showToolbar]="true"
+      [enablePrint]="false"
+      [showDrawEditor]="false"
+      [contentEditable]="false">
     </ngx-extended-pdf-viewer>
   </div>
-
-  <p class="text-right" [textContent]="getOfferID()"></p>
 </div>
+

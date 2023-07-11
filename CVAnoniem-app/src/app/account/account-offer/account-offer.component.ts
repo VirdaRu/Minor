@@ -37,16 +37,11 @@ export class AccountOfferComponent {
 
   ngOnChanges(changes: SimpleChanges) {
 
-    if (this.resumeLoaded) {
-      this.OfferAPI.getByJobseekerID(this.userID)
-        .subscribe(response => this.offers = response);
-      this.offerID = this.offers[0].OfferID;
-      this.resumeLoaded = false;
-    }
   }
 
   ngOnInit() {
-
+    this.OfferAPI.getByJobseekerID(this.userID)
+      .subscribe(response => this.offers = response);
   }
 
   public getSavedResumes(userid: number) {

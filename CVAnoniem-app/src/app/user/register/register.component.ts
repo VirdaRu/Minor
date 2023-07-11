@@ -14,6 +14,7 @@ import {Constants} from "../../config/constants";
 export class RegisterComponent {
 
   userAPI = new UserAPI_Requests(this.http);
+  isEmployer: boolean = false;
   options = Constants.UserTypeOptions;
   user!: User;
   passwordMatch: boolean = true;
@@ -46,8 +47,10 @@ export class RegisterComponent {
 
   public onSelect(isEmployer: string) {
     if (isEmployer.includes("1")) {
+      this.isEmployer = true;
       return true;
     } else {
+      this.isEmployer = false;
       return false;
     }
   }
@@ -63,15 +66,16 @@ export class RegisterComponent {
   public RegisterUser(email: string, password: string, passwordConfirm: string, tel: string) {
     if (this.passwordMatch) {
       let body = JSON.stringify([{
-        //userid : 0,
         EmailAddress: email,
         Password: password,
         PhoneNumber: tel,
-        IsEmployer: true,
+        IsEmployer: this.isEmployer,
         ThirdPartyID: ""
       }])
       console.log(body);
-      this.userAPI.post(body).subscribe(response => alert(response));
+      this.userAPI.post(body).subscribe(response => {
+        alert("Account is aangemaakt.");
+      });
     }
   }
 }

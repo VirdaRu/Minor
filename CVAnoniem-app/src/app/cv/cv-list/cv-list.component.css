@@ -5,6 +5,10 @@
   padding: 25px;
 }
 
+.offerList{
+  /*height: 70em;*/
+  /*overflow-y:auto;*/
+}
 .resume-info {
   margin: 100px;
 }

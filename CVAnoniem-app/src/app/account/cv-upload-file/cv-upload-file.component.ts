@@ -1,13 +1,14 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {SessionHandler} from "../../config/SessionHandler";
+import {ResumeAPI_Requests} from "../../config/API_Requests/ResumeAPI_Requests";
 
 @Component({
   selector: 'app-cv-upload-file',
   templateUrl: './cv-upload-file.component.html',
   styleUrls: ['./cv-upload-file.component.css']
 })
-export class CvUploadFileComponent implements OnInit {
+export class CvUploadFileComponent {
 
   constructor(private http: HttpClient) {
   }
@@ -17,8 +18,8 @@ export class CvUploadFileComponent implements OnInit {
   fileSrc : any;
   uploaded : boolean = false;
 
-  ngOnInit() {
-  }
+  ResumeAPI = new ResumeAPI_Requests(this.http);
+
 
   @Output() upload = new EventEmitter<File>();
 
@@ -31,23 +32,7 @@ export class CvUploadFileComponent implements OnInit {
 
       formData.append("file", file);
 
-      const upload$ = this.http.post("http://localhost:7229/api/resume/check", formData);
-      upload$.subscribe(response => this.onResponse(Number(response), file));
-
-      //this.fileName = file.name;
-      // this.fileSrc = file;
-      // this.uploaded = true;
-      // this.upload.emit(file);
-      // const formData = new FormData();
-      //
-      // formData.append("file", file);
-      //
-      // const upload$ = this.http.post("https://localhost:7229/api/resume/test", formData, {params: new HttpParams().set("userID", this.userID)});
-      //
-      // upload$.subscribe(response => this.onResponse(Number(response), file));
-      // upload$.subscribe(response => {
-      //   this.fileName = response.toString();
-      //});
+      this.ResumeAPI.checkUpload(formData).subscribe(response => this.onResponse(Number(response), file));
     }
 
 
