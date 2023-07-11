@@ -83,7 +83,7 @@ export class UploadCvComponent {
 
   redirect(){
     alert("upload succesvol");
-    this.router.navigate(["/Account"]);
+    this.router.navigate(["/redact-resume"]);
   }
 
 

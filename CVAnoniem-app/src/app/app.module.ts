@@ -52,7 +52,7 @@ import {UserAdminPageComponent} from './admin/admin-dashboard/user-admin-page/us
 import {OfferAdminPageComponent} from './admin/admin-dashboard/offer-admin-page/offer-admin-page.component';
 import {MessageAdminPageComponent} from './admin/admin-dashboard/message-admin-page/message-admin-page.component';
 import {AccountOfferComponent} from "./account/account-offer/account-offer.component";
-import {RedactResumeComponent} from './redact-resume/redact-resume.component';
+import {RedactResumeComponent} from './account/redact-resume/redact-resume.component';
 //import {RECAPTCHA_V3_SITE_KEY, RecaptchaV3Module} from "ng-recaptcha";
 
 
