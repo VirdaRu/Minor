@@ -7,4 +7,14 @@ import {Component} from '@angular/core';
 })
 export class AdminComponent {
 
+  PasswordCorrect: boolean = false;
+
+  constructor() {
+  }
+
+  CheckPassword(input: any) {
+    if (input === "Hello") {
+      this.PasswordCorrect = true;
+    }
+  }
 }

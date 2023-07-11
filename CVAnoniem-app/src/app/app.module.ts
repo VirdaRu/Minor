@@ -78,6 +78,7 @@ const Route: Routes = [
   {path: 'linkedin-response', component: LinkedinResponseComponent},
   {path: 'set-user-type', component: UsertypeSwitchComponent},
   {path: 'redact-resume', component: RedactResumeComponent},
+  {path: 'admin-page', component: AdminComponent},
   {path: '**', component: ErrorComponent}//Any other path will redirect to error
 ]
 
