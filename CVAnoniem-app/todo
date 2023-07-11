@@ -3,9 +3,9 @@ Comments plaatsen
 [ ]--user-permissions
 [ ]--usetype-switch
 [ ]--user-settings
-[ ]--social-login
-[ ]--google-login
-[ ]--linkedin-login
+[x]--social-login
+[x]--google-login
+[x]--linkedin-login
 [ ]--saved-cv
 [ ]--register
 [ ]--recaptcha???
