@@ -17,6 +17,7 @@ import {ControlContainer, FormGroupDirective} from "@angular/forms";
 export class SearchComponent {
 
   // @Output() offers : Offer[] = [];
+  mySearch: any;
 
   constructor(private http: HttpClient) {
 

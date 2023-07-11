@@ -10,11 +10,12 @@ export class LinkedinLoginComponent {
 
   linkedInCredentials = {
     clientId: "789e1yzbgzpcmc",
-    redirectUrl: "http://localhost:4200/linkedin-response",
+    redirectUrl: "http://localhost:4200",
     scope: "r_liteprofile%20r_emailaddress" // To read basic user profile data and email
   };
 
   constructor(private http: HttpClient) {
+    this.login()
   }
 
   login() {

@@ -76,7 +76,7 @@ const Route: Routes = [
   {path: 'linkedin-login', component: LinkedinLoginComponent},
   {path: 'linkedin-response', component: LinkedinResponseComponent},
   {path: 'set-user-type', component: UsertypeSwitchComponent},
-  {path: '**', component: ErrorComponent}//Any other path will redirect to error
+  {path: '**', component: ErrorComponent},//Any other path will redirect to error page
 ]
 
 @NgModule({
