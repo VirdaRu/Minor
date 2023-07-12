@@ -3,6 +3,10 @@ import {HttpClient} from '@angular/common/http';
 import {CvListComponent} from "../../cv/cv-list/cv-list.component";
 import {ControlContainer, FormControl, FormGroup, FormGroupDirective} from "@angular/forms";
 
+
+/**
+ * This component is responsible for the search bar on the home page.
+ */
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',

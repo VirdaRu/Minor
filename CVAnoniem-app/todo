@@ -1,32 +1,33 @@
 Comments plaatsen
 -User
+[x]--user
 [ ]--user-permissions
 [ ]--usetype-switch
-[ ]--user-settings
+[x]--user-settings
 [x]--social-login
 [x]--google-login
-[x]--linkedin-login
-[ ]--saved-cv
-[ ]--register
-[ ]--recaptcha???
-[ ]--login
+[x]--linkedin-login/linkedin-response
+[ ]--saved-cv (not neccesary)
+[x]--register
+[ ]--recaptcha??? (not neccesary
+[x]--login
 -message-sender
 [ ]--message-sender
 -home
 [ ]--home
-[ ]--search
+[x]--search
 -global
-[ ]--global
-[ ]--error
-[ ]--footer
-[ ]--header
-[ ]--navbar
+[x]--global
+[x]--error
+[x]--footer
+[x]--header
+[x]--navbar
 -faq
-[ ]--faq
-[ ]--about
-[ ]--privacy
+[x]--faq
+[x]--about
+[x]--privacy
 -environments
-[ ]--environments
+[x]--environments (not used at the moment) for later development
 -cv-page
 [ ]--cv-page
 -cv

@@ -19,6 +19,12 @@ export class LoginComponent {
   constructor(private http: HttpClient, private router: Router) {
   }
 
+  /**
+   * This function checks if the email and password match.
+   * If the email and password match, the user will be logged in.
+   * @param email
+   * @param pw
+   */
   public checkExist(email: string, pw: string) {
     this.userAPI.getUserExist(email, pw).subscribe(
       response => {
@@ -33,6 +39,9 @@ export class LoginComponent {
     );
   }
 
+  /**
+   * This function sets the session of the user.
+   */
   public setSession() {
     SessionHandler.setUsertypeSession(this.user.IsEmployer.toString());
     SessionHandler.setUserSession(this.user.UserID);

@@ -22,6 +22,9 @@ export class MessageSenderComponent {
 
   }
 
+  /**
+   * This function posts a message to the database.
+   */
   MessageForm = new FormGroup({
     MessageID: new FormControl(),
     JobSeekerID: new FormControl(),
@@ -48,6 +51,7 @@ export class MessageSenderComponent {
     Message.DateSent = CurrentDate.toDateString();
     this.sendMessage(Message);
   }
+
 
   public sendMessage(body: any) {
     this.MessageAPI.post(body).subscribe(response => console.log(response));

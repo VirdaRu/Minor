@@ -12,6 +12,13 @@ import {ActivatedRoute, Router} from "@angular/router";
   styleUrls: ['./google-login.component.css']
 })
 export class GoogleLoginComponent {
+  /**
+   * in this file we use the google api service to get the user info from google
+   * we then use the user info to get the third party id from the database
+   * with this third party id we can check if the user is in the database
+   * if the user is in the database we set the session
+   * if the user is not in the database we redirect the user to the usertype switch page
+   */
 
   userAPI = new UserAPI_Requests(this.http);
 
@@ -59,12 +66,22 @@ export class GoogleLoginComponent {
     }
   }
 
+  /**
+   * this function sets the sessions
+   * the sessions are used to check if the user is logged in
+   * and to set the username and picture in the navbar
+   */
   setSessions() {
     this.SetUserIDSession(this.UID);
     SessionHandler.setUsername(this.userInfo!.info.name);
     SessionHandler.setPicture(this.userInfo?.info.picture);
   }
 
+  /**
+   * the logout button calls this function
+   * this function calls the google api service to sign out
+   * and calls the session handler to clear the sessions
+   */
   logOut(): void {
     SessionHandler.LogOutSessions();
     this.googleApi.signOut();

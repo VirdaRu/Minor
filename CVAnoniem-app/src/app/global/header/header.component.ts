@@ -11,19 +11,33 @@ export class HeaderComponent {
 
   loggedInUser!: number;
 
+  /**
+   * Constructor for the header component.
+   * @param router
+   */
 //private googleApi: GoogleApiService,
   constructor(private router: Router) {
     this.loggedInUser = SessionHandler.getUserSession();
   }
 
+  /**
+   * Returns the username of the logged in user.
+   */
   public getUsername() {
     return SessionHandler.getUsername();
   }
 
+  /**
+   * Returns the picture of the logged in user.
+   */
   public getPicture() {
     return SessionHandler.getPicture();
   }
 
+  /**
+   * if the user is logged in, return true, else return false.
+   * @constructor
+   */
   public UserIsLoggedIn() {
     if (SessionHandler.getUsername()) {
       return true;
@@ -32,6 +46,9 @@ export class HeaderComponent {
     }
   }
 
+  /**
+   * Logs the user out.
+   */
   logOut() {
     //this.googleApi.signOut();
     SessionHandler.LogOutSessions();
