@@ -1,14 +1,19 @@
 <br>
 <br>
 <!--PDF Viewer comes here-->
+<div class="pdf-height">
   <ngx-extended-pdf-viewer *ngIf="received"
-    [src]=fileSrc
-    [useBrowserLocale] = "true"
-    [showDownloadButton] = "false"
-    [showRotateButton] = "false"
-    [showPropertiesButton] = "false"
-    [showTextEditor] = "false"
-    [showToolbar] = "false">
+       [src]=fileSrc
+       [useBrowserLocale]="true"
+       [showDownloadButton]="true"
+       [showRotateButton]="false"
+       [showPropertiesButton]="false"
+       [showTextEditor]="false"
+       [showToolbar]="true"
+       [enablePrint]="false"
+       [showDrawEditor]="false"
+       [contentEditable]="false">
   </ngx-extended-pdf-viewer>
+</div>
 <br>
 <br>

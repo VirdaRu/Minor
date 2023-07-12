@@ -2,6 +2,10 @@
   display: none;
 }
 
+.resumeView{
+  height: 43em;
+}
+
 .MyAccountButtons button, .MyAccountButtons label{
   margin: 20px;
   cursor: pointer;
