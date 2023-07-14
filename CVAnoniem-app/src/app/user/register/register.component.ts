@@ -112,7 +112,7 @@ export class RegisterComponent {
         IsEmployer: this.isEmployer,
         ThirdPartyID: ""
       }])
-      console.log(body);
+      //console.log(body);
       this.userAPI.post(body).subscribe(response => {
         alert("Account is aangemaakt.");
       });

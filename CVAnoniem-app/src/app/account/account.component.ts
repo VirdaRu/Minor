@@ -37,8 +37,7 @@ export class AccountComponent implements OnInit {
   }
 
   public loggedIn() {
-    if (this.UserID != 0)  //isLogged In
-    {
+    if (this.UserID != 0) {
       return true;
     }
     return false;

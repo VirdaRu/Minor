@@ -1,7 +1,8 @@
 import {Component} from '@angular/core';
 import {Router} from '@angular/router';
+import {SessionHandler} from "../../config/SessionHandler";
 
-let isLoggedin : boolean = true;
+let isLoggedin: number = SessionHandler.getUserSession();
 
 @Component({
   selector: 'app-navbar',
@@ -17,10 +18,9 @@ export class NavbarComponent {
 
   //Check which page to navigate to based on login status
   public isLoggedIn() {
-
-    if(isLoggedin){
+    if (isLoggedin != 0) {
       this.router.navigateByUrl('/Account')
-    }else{
+    } else {
       this.router.navigateByUrl('/Login')
     }
   }

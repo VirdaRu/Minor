@@ -35,7 +35,7 @@ export class CvComponent {
   public displayResume() {
     CvFullComponent.OfferID = Number(this.OfferID);
     CvFullComponent.JobseekerID = Number(this.JobSeekerID);
-    CvFullComponent.Clicked = true;
+    this.OfferIsSaved(Number(this.OfferID));
     this.ClickedID.emit(Number(this.OfferID));
   }
 

@@ -13,8 +13,6 @@ import {SearchComponent} from "../../home/search/search.component";
   styleUrls: ['./cv-list.component.css']
 })
 export class CvListComponent {
-
-
   search!: SearchComponent;
 
   @Input() SavedPage: boolean = false;
@@ -41,7 +39,7 @@ export class CvListComponent {
   }
 
   OnClickShare(offerID: number) {
-    this.OutputOfferID.emit(offerID)
+    this.OutputOfferID.emit(offerID);
   }
 
   ngOnInit() {
@@ -49,11 +47,12 @@ export class CvListComponent {
       this.getSavedResumes(this.userID);
     } else if (this.AccountView) {
       this.OfferAPI.getByJobseekerID(this.userID)
-        .subscribe(response => this.offers = response);
-      CvListComponent.OfferID = this.offers[0].OfferID;
+        .subscribe(response => {
+          this.offers = response
+          CvListComponent.OfferID = this.offers[0].OfferID;
+        });
     }
-    else if (this.MessageView)
-    {
+    else if (this.MessageView) {
       this.OfferAPI.getByOfferID(CvFullComponent.OfferID)
         .subscribe(
           offers => this.offers = offers);
@@ -65,7 +64,6 @@ export class CvListComponent {
         if (CvListComponent.query !== CvListComponent.oldquery) {
           console.log(CvListComponent.query)
           this.getResultsBySearch(CvListComponent.query);
-
         }
         CvListComponent.oldquery = CvListComponent.query;
       }, 1000);
@@ -79,12 +77,6 @@ export class CvListComponent {
     );
   }
 
-  public getResumeResults()
-  {
-      return this.OfferAPI.get().subscribe(
-        response => this.offers = response);
-  }
-
   public getOffersLimit()
   {
     return this.OfferAPI.getLimit(10).subscribe(
@@ -94,7 +86,10 @@ export class CvListComponent {
   public getResultsBySearch(query : string)
   {
     return this.OfferAPI.getByID(query).subscribe(
-      response => { this.offers = response; this.OutputOfferID.emit(this.offers[0].OfferID);});
+      response => {
+        this.offers = response;
+        this.OutputOfferID.emit(this.offers[0].OfferID);
+      });
 
   }
 

@@ -2,7 +2,7 @@ import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {IAPI_Requests} from "./IAPI_Requests";
 import {Offer} from "../../../models/offer";
 import {Constants} from "../constants";
-//implement
+
 export class OfferAPI_Requests implements IAPI_Requests {
 
   constructor(private http: HttpClient) {
@@ -34,22 +34,12 @@ export class OfferAPI_Requests implements IAPI_Requests {
 
   postWithResume(body : FormData, offer : string)
   {
-    // const headers = new HttpHeaders()
-    //   .set('content-type', 'application/PDF')
-    //   .set('Access-Control-Allow-Origin', '*');
-    //body = JSON.stringify(body);
-
     return this.http.post(`${Constants.API_URL}/offer`,
       body, {params: new  HttpParams().set("offer", offer)});
   }
 
   putWithResume(body : FormData, offer : string)
   {
-    // const headers = new HttpHeaders()
-    //   .set('content-type', 'application/json')
-    //   .set('Access-Control-Allow-Origin', '*');
-    // body = JSON.stringify(body);
-
     return this.http.put(`${Constants.API_URL}/offer`,
       body, {params: new  HttpParams().set("updatedOffer", offer)});
   }

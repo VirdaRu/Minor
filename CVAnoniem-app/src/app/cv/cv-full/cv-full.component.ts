@@ -39,7 +39,6 @@ export class CvFullComponent implements OnChanges {
 
   fileSrc: any;
   received: boolean = false;
-  public static Clicked = false;
 
   onPostBookmark(bookmark: {
     SavedID: number,

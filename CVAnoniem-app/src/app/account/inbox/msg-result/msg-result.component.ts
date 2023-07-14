@@ -1,11 +1,9 @@
 import {Component, Input} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {FormControl, FormGroup} from "@angular/forms";
-import {SessionHandler} from "../../../config/SessionHandler";
 import {Permission} from "../../../../models/permission";
 import {MessageAPI_Requests} from "../../../config/API_Requests/MessageAPI_Requests";
 import {PermissionAPI_Requests} from "../../../config/API_Requests/PermissionAPI_Requests";
-import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-msg-result',
@@ -18,8 +16,6 @@ export class MsgResultComponent {
 
   PermissionAPI = new PermissionAPI_Requests(this.http);
 
-  private userID = SessionHandler.getUserSession();
-
   @Input() Sender: string = "";
   @Input() Subject: string = "";
   @Input() message: string = "";
@@ -27,7 +23,7 @@ export class MsgResultComponent {
   @Input() Attachment: string = "";
   @Input() MessageID: string = "";
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient) {
 
   }
 

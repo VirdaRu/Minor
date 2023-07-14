@@ -31,7 +31,7 @@ export class MessageSenderComponent {
     EmployerID: new FormControl(),
     Subject: new FormControl(),
     Attachment: new FormControl(),
-    Message: new FormControl(),
+    message: new FormControl(),
     DateSent: new FormControl()
   });
 
@@ -41,7 +41,7 @@ export class MessageSenderComponent {
     EmployerID: number,
     Subject: string,
     Attachment: string,
-    Message: string,
+    message: string,
     DateSent: string
   }) {
     let CurrentDate = new Date();
@@ -54,7 +54,9 @@ export class MessageSenderComponent {
 
 
   public sendMessage(body: any) {
-    this.MessageAPI.post(body).subscribe(response => console.log(response));
+    this.MessageAPI.post(body).subscribe(response =>
+      console.log(response)
+    );
     alert("Bericht is verzonden!")
     console.log(body);
   }
